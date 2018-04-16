@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">diary</string>
     <string name="title_activity_write_diary">WriteDiary</string>
+    <string name="title_activity_reavial">ReavialActivity</string>
 </resources>

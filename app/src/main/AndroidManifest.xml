@@ -17,10 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Animation" />
-        <activity
-            android:name=".WriteDiary"
-            android:label="@string/title_activity_write_diary"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
