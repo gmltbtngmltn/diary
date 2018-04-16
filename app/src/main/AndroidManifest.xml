@@ -20,7 +20,9 @@
         <activity
             android:name=".WriteDiary"
             android:label="@string/title_activity_write_diary"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MonthListView" />
+        <activity android:name=".MonthCalendar" />
     </application>
 
 </manifest>
