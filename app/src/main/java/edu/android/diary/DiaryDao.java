@@ -28,22 +28,33 @@ public class DiaryDao {
         makedata();
     }
 
-    public List<Diary> getContactList() {
-        return diaries;
-    }//diary객체들을 전체 열람하는 부분
-
+    ////////////
     private void makedata() {
         for (int i = 0; i < 100; i++) {
             Diary contact = new Diary(IMAGE_IDS[i % IMAGE_IDS.length],"shit"+i);
             diaries.add(contact);
         }
+    }//임시
+    /////////////////
+
+    public List<Diary> getContactList() {
+        return diaries;
+    }//diary객체들을 전체 열람하는 부분
+    //diary의 Array에서 선택된 index의 정보를 볼때 =
+    // getInstance().getContactList().get(index).getPhotoId; , getInstance().getContactList().get(index).getTxt;
+    
+    public void writeDiary(int photoId, String diaryTxt) {
+        Diary contact = new Diary(photoId,diaryTxt);
+        diaries.add(contact);
     }//diary객체들을 생성하는 부분
 
-    public void deleteDiary(){
-
+    public void deleteDiary(int position){
+        diaries.remove(position);
     }//diary객체들을 삭제하는 부분
 
-    public void updateDiary(){
-
+    public void updateDiary(int position,int photoId, String diaryTxt){
+        Diary diary=new Diary(photoId,diaryTxt);
+        diaries.set(position,diary);
     }//diary객체들을 수정하는 부분
+
 }
