@@ -1,10 +1,11 @@
 package edu.android.diary;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import com.hitomi.cmlibrary.CircleMenu;
 import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+
+import com.hitomi.cmlibrary.CircleMenu;
 
 
 public class DiaryPartMain extends AppCompatActivity {
@@ -27,26 +28,26 @@ public class DiaryPartMain extends AppCompatActivity {
 
                                                  @Override
                                                  public void onMenuSelected(int index) {
-                                                     switch (index) {
-                                                         case 0:
-                                                             Toast.makeText(DiaryPartMain.this, "Home Button Clicked", Toast.LENGTH_SHORT).show();
-                                                             break;
-                                                         case 1:
-                                                             Toast.makeText(DiaryPartMain.this, "Search button Clicked", Toast.LENGTH_SHORT).show();
-                                                             break;
-                                                         case 2:
-                                                             Toast.makeText(DiaryPartMain.this, "Notify button Clciked", Toast.LENGTH_SHORT).show();
-                                                             break;
-                                                         case 3:
-                                                             Toast.makeText(DiaryPartMain.this, "Settings button Clcked", Toast.LENGTH_SHORT).show();
-                                                             break;
-                                                         case 4:
-                                                             Toast.makeText(DiaryPartMain.this, "GPS button Clicked", Toast.LENGTH_SHORT).show();
-                                                             break;
-                                                     }
-                                                 }
+                  switch (index) {
+                           case 0:
+                              Toast.makeText(DiaryPartMain.this, "Home Button Clicked", Toast.LENGTH_SHORT).show();
+                               break;
+                           case 1:
+                               Toast.makeText(DiaryPartMain.this, "Search button Clicked", Toast.LENGTH_SHORT).show();
+                                 break;
+                           case 2:
+                               Toast.makeText(DiaryPartMain.this, "Notify button Clciked", Toast.LENGTH_SHORT).show();
+                               break;
+                           case 3:
+                                Toast.makeText(DiaryPartMain.this, "Settings button Clcked", Toast.LENGTH_SHORT).show();
+                                 break;
+                           case 4:
+                                Toast.makeText(DiaryPartMain.this, "GPS button Clicked", Toast.LENGTH_SHORT).show();
+                                 break;
+                      }
+                       }
                                              }
-                                             );
+         );
          this.circleMenu.setOnMenuStatusChangeListener(new com.hitomi.cmlibrary.OnMenuStatusChangeListener() {
 
                                                      @Override
