@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.tsengvn.typekit.Typekit;
 
+
 public class DiarySetting extends AppCompatActivity {
 
 
@@ -20,7 +21,7 @@ public class DiarySetting extends AppCompatActivity {
     private RadioButton btn0,btn1,btn2,btn3,btn4,btn5,btn6;
     private Spinner spinner;
     private Button saveBtn,cancelBtn,backupBtn;
-
+    private Typekit typekit;
 
 
 
