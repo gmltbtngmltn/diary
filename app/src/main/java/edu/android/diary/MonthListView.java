@@ -16,9 +16,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MonthListView extends AppCompatActivity
             implements NavigationView.OnNavigationItemSelectedListener{
+
+    private List<MonthListModel> View;
+    private ListView MonthView;
+
+    public class MonthAdapter extends ArrayList<MonthListModel> {
+      private
+    }
 
     @SuppressLint("WrongViewCast")
     @Override
