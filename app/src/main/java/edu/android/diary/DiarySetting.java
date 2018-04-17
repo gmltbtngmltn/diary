@@ -1,5 +1,6 @@
 package edu.android.diary;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 import com.tsengvn.typekit.Typekit;
 
 
-public class DiarySetting extends AppCompatActivity {
+public class DiarySetting extends Fonts {
 
 
     private TextView textView1 , textView2 , textView3 ,textView4 , settingTitle;
@@ -55,7 +56,7 @@ public class DiarySetting extends AppCompatActivity {
         //Button
         saveBtn = findViewById(R.id.saveBtn);
         cancelBtn = findViewById(R.id.cancelBtn);
-        backupBtn = findViewById(R.id.backupBtn);
+
 
 
 
@@ -70,8 +71,9 @@ public class DiarySetting extends AppCompatActivity {
     public void settingSave(View view) {
          int id = RadioGroup1.getCheckedRadioButtonId();
          RadioButton cRb = findViewById(id);
-         if(id == -1){
-             Typekit.getInstance().addNormal(Typekit.createFromAsset(this,"fonts/SangSangTitle"));
+         if(id == 1){
+
+
          }
 
 

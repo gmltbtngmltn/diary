@@ -23,4 +23,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void gotosetting(View view) {
+         Intent intent = new Intent(MainActivity.this, DiarySetting.class);
+         startActivity(intent);
+
+
+    }
 }
