@@ -2,4 +2,31 @@
     <string name="app_name">diary</string>
     <string name="title_activity_month_list_view">MonthListView</string>
     <string name="title_activity_write_diary">WriteDiary</string>
+    <string name="title_activity_reavial">ReavialActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_write_diary_fab">WriteDiaryFAB</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="theme1">
+        <item>theme1</item>
+        <item>theme2</item>
+        <item>theme3</item>
+        <item>theme4</item>
+        <item>theme5</item>
+        <item>theme6</item>
+
+
+    </string-array>
+
+
+
+
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+
 </resources>
