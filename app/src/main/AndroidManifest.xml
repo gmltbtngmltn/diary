@@ -3,6 +3,7 @@
     package="edu.android.diary">
 
     <application
+        android:name=".SSFontsBase"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -17,7 +18,9 @@
         </activity>
         <activity android:name=".Animation" />
         <activity android:name=".DiarySetting" />
-        <activity android:name=".DiaryPartMain"></activity>
+        <activity android:name=".DiaryPartMain" />
+        <activity android:name=".SSFontsBase" />
+        <activity android:name=".Fonts"></activity>
     </application>
 
 </manifest>
