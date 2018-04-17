@@ -9,6 +9,9 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.tsengvn.typekit.Typekit;
 
 public class DiarySetting extends AppCompatActivity {
 
@@ -18,6 +21,7 @@ public class DiarySetting extends AppCompatActivity {
     private RadioButton btn0,btn1,btn2,btn3,btn4,btn5,btn6;
     private Spinner spinner;
     private Button saveBtn,cancelBtn,backupBtn;
+
 
 
 
@@ -67,11 +71,10 @@ public class DiarySetting extends AppCompatActivity {
          int id = RadioGroup1.getCheckedRadioButtonId();
          RadioButton cRb = findViewById(id);
          if(id == -1){
-
+             Typekit.getInstance().addNormal(Typekit.createFromAsset(this,"fonts/SangSangTitle"));
          }
 
 
-
-
+        Toast.makeText(this, "환경 설정 저장", Toast.LENGTH_SHORT).show();
     }
 }
