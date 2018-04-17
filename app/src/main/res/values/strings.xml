@@ -7,15 +7,7 @@
     <string name="action_settings">Settings</string>
 
 
-    <!--환경설정 스피너에 사용되는 리스트 -->
-    <string-array name = "spinner_list">
-        <item>테마1</item>
-        <item>테마2</item>
-        <item>테마3</item>
-        <item>테마4</item>
-        <item>테마5</item>
-        <item>테마6</item>
-    </string-array>
+
 
 
 
