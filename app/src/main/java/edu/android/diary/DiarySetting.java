@@ -1,17 +1,17 @@
 package edu.android.diary;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tsengvn.typekit.Typekit;
+
 
 public class DiarySetting extends AppCompatActivity {
 
@@ -21,7 +21,7 @@ public class DiarySetting extends AppCompatActivity {
     private RadioButton btn0,btn1,btn2,btn3,btn4,btn5,btn6;
     private Spinner spinner;
     private Button saveBtn,cancelBtn,backupBtn;
-
+    private Typekit typekit;
 
 
 
