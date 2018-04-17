@@ -6,7 +6,16 @@
     <string name="title_activity_write_diary_fab">WriteDiaryFAB</string>
     <string name="action_settings">Settings</string>
 
+    <string-array name="theme1">
+        <item>theme1</item>
+        <item>theme2</item>
+        <item>theme3</item>
+        <item>theme4</item>
+        <item>theme5</item>
+        <item>theme6</item>
 
+
+    </string-array>
 
 
 

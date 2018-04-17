@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 public class DiarySetting extends AppCompatActivity {
@@ -19,11 +20,14 @@ public class DiarySetting extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary_setting);
-        spinner = findViewById(R.id.spinner);
+
+
+
 
 
     }
