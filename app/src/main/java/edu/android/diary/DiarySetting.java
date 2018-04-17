@@ -70,7 +70,7 @@ public class DiarySetting extends AppCompatActivity {
     public void settingSave(View view) {
          int id = RadioGroup1.getCheckedRadioButtonId();
          RadioButton cRb = findViewById(id);
-         if(id == -1){
+         if(id == 1){
              Typekit.getInstance().addNormal(Typekit.createFromAsset(this,"fonts/SangSangTitle"));
          }
 
