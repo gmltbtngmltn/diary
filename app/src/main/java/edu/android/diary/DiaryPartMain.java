@@ -6,23 +6,24 @@ import com.hitomi.cmlibrary.CircleMenu;
 import android.graphics.Color;
 import android.widget.Toast;
 
+
 public class DiaryPartMain extends AppCompatActivity {
 
  CircleMenu circleMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
+        setContentView(R.layout.activity_diary_part_main);
+        circleMenu = findViewById(R.id.circle_menu);
 
         circleMenu.setMainMenu(Color.parseColor("#CDCDCD"), R.mipmap.icon_menu, R.mipmap.icon_cancel);
-        circleMenu.addSubMenu(Color.parseColor("#258CFF"), R.mipmap.icon_home)
+        this.circleMenu.addSubMenu(Color.parseColor("#258CFF"), R.mipmap.icon_home)
                 .addSubMenu(Color.parseColor("#30A400"), R.mipmap.icon_search)
                 .addSubMenu(Color.parseColor("#FF4B32"), R.mipmap.icon_notify)
                 .addSubMenu(Color.parseColor("#8A39FF"), R.mipmap.icon_setting)
                 .addSubMenu(Color.parseColor("#FF6A00"), R.mipmap.icon_gps);
 
-         circleMenu.setOnMenuSelectedListener(new com.hitomi.cmlibrary.OnMenuSelectedListener() {
+         this.circleMenu.setOnMenuSelectedListener(new com.hitomi.cmlibrary.OnMenuSelectedListener() {
 
                                                  @Override
                                                  public void onMenuSelected(int index) {
@@ -46,7 +47,7 @@ public class DiaryPartMain extends AppCompatActivity {
                                                  }
                                              }
                                              );
-         circleMenu.setOnMenuStatusChangeListener(new com.hitomi.cmlibrary.OnMenuStatusChangeListener() {
+         this.circleMenu.setOnMenuStatusChangeListener(new com.hitomi.cmlibrary.OnMenuStatusChangeListener() {
 
                                                      @Override
                                                      public void onMenuOpened() {
