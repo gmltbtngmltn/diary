@@ -1,72 +1,57 @@
 package edu.android.diary;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.usage.UsageEvents;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Calendar;
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 
 public class MonthCalendar extends Activity {
-    //Calendar mCal = Calendar.getInstance();
 
-    GridView mGridView;
-    DataAdapter adapter;
-    ArrayList arrData;
-    Calendar mCal;
+    CompactCalendarView compactCalendar;
+    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_month_calendar);
+        setContentView(R.layout.activity_month_calender);
 
-        // Calendar 객체 생성
-        mCal = Calendar.getInstance();
+        final ActionBar actionbar = getSupporActionBar;
+        actionbar.setDisplayHomeAsUpEnabled(false);
+        actionbar.setTitle(null);
 
-        // 달력 세팅
-        setCalendarData(mCal.get(Calendar.MONTH)+1);
+        compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
+        compactCalendar.setUseThreeLetterAbbreviation(true);
+
+        UsageEvents.Event ev1 = new UsageEvents.Event(Color.RED, 1477054800000L, "Teachers' Professional Day");
+        compactCalendar.addEvent(ev1);
+
+        compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+            @Override
+            public void onDayClick(Date dateClicked) {
+                Context context = getApplicationContext();
+
+                if (dateClicked.toString().compareTo("Fri Oct 21 09:00:00 AST 2016") == 0) {
+                    Toast.makeText(context, "Teacthers; Professional Day", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(context, "No Events Planned for that day", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onMonthScroll(Date firstDayOfNewMonth) {
+                actionbar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
+            }
+        });
+
     }
 
-    public void setCalendarData(int month) {
-        arrData = new ArrayList();
-        // 요일은 +1해야 되기때문에 달력에 요일을 세팅할때에는 -1 해준다
-        mCal.set(Calendar.MONTH, month-1);
-
-        for (int i = 0; i < mCal.getActualMaximum(Calendar.DAY_OF_MONTH); i++) {
-            arrData.add(i + 1);
-        }
-
-        adapter
-    }
-
-}
-
-// GridView와 연결해주기위한 어댑터 구성
-class DataAdapter extends BaseAdapter {
-    private Context context;
-    private
-
-    @Override
-    public int getCount() {
-        return 0;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
-    }
 }
