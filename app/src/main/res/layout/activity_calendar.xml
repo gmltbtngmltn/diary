@@ -7,14 +7,14 @@
     tools:context=".Calendar">
 
     <ListView
-            android:id="@+id/listView"
-            android:layout_width="350dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:background="@color/colorPrimary"
-            android:choiceMode="singleChoice"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="0dp" />
+        android:id="@+id/listView"
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="@color/colorPrimary"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,32 +22,266 @@
         android:orientation="vertical">
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/RoyalBlue">
+            android:background="@color/RoyalBlue"
+            android:orientation="vertical">
 
 
             <TextView
-                android:id="@+id/diaryDate"
+                android:id="@+id/dateDiary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="32dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="38dp" />
 
         </LinearLayout>
 
-        <ScrollView
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
+            <ScrollView
+                android:id="@+id/scrollView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/Month1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="1月"
+                        android:textSize="32dp"
+                        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+                        tools:layout_editor_absoluteX="16dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="16dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="70dp" />
+
+                    <TextView
+                        android:id="@+id/Month2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="2月"
+                        android:textSize="32dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar2"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="16dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="70dp" />
+
+                    <TextView
+                        android:id="@+id/Month3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="3月"
+                        android:textSize="32dp"
+                        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+                        tools:layout_editor_absoluteX="16dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar3"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="16dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="70dp" />
+
+                    <TextView
+                        android:id="@+id/Month4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="4月"
+                        android:textSize="32dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar4"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="16dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="70dp" />
+
+                    <TextView
+                        android:id="@+id/Month5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="5月"
+                        android:textSize="32dp"
+                        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+                        tools:layout_editor_absoluteX="16dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar5"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="16dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="70dp" />
+
+                    <TextView
+                        android:id="@+id/Month6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="6月"
+                        android:textSize="32dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar6"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="16dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="70dp" />
+
+                    <TextView
+                        android:id="@+id/Month7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="7月"
+                        android:textSize="32dp"
+                        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+                        tools:layout_editor_absoluteX="16dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar7"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="16dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="70dp" />
+
+                    <TextView
+                        android:id="@+id/Month8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="8月"
+                        android:textSize="32dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar8"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="16dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="70dp" />
+
+                    <TextView
+                        android:id="@+id/Month9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="9月"
+                        android:textSize="32dp"
+                        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+                        tools:layout_editor_absoluteX="16dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar9"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="16dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="70dp" />
+
+                    <TextView
+                        android:id="@+id/Month10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="10月"
+                        android:textSize="32dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar10"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="16dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="70dp" />
+
+                    <TextView
+                        android:id="@+id/Month11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="11月"
+                        android:textSize="32dp"
+                        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+                        tools:layout_editor_absoluteX="16dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar11"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="16dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="70dp" />
+
+                    <TextView
+                        android:id="@+id/Month12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="12月"
+                        android:textSize="32dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar12"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="16dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="70dp" />
+
+                </LinearLayout>
+            </ScrollView>
+
+        </android.support.constraint.ConstraintLayout>
+
+
     </LinearLayout>
 
 
