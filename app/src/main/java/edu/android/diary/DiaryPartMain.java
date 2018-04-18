@@ -41,8 +41,8 @@ public class DiaryPartMain extends AppCompatActivity {
 
                                           	  break;
                                      case 1:
-                                         Toast.makeText(DiaryPartMain.this, "Search button Clicked", Toast.LENGTH_SHORT).show();
-                                              break;
+                                         intent = new Intent(DiaryPartMain.this, DiaryOnlyText.class);
+                                         startActivity(intent);
                                         case 2:
                                            Toast.makeText(DiaryPartMain.this, "Notify button Clciked", Toast.LENGTH_SHORT).show();
                                              break;

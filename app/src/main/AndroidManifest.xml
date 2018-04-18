@@ -30,6 +30,8 @@
         <activity android:name=".Fonts" />
         <activity android:name=".DiaryShortLine" />
         <activity android:name=".Calendar"></activity>
+        <activity android:name=".DiaryShortLine" />
+        <activity android:name=".DiaryOnlyText"></activity>
     </application>
 
 </manifest>

@@ -10,9 +10,25 @@
     <ImageView
         android:id="@+id/shortDimage"
         android:layout_width="match_parent"
-        android:layout_height="380dp"
-        app:srcCompat="@drawable/giraffe" />
+        android:layout_height="340dp"
+        app:srcCompat="@drawable/giraffe"/>
 
+    <ProgressBar
+        android:id="@+id/prograssBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right"
+        android:max="100"
+        android:maxHeight="20dp"
+        android:minHeight="20dp"
+        android:indeterminateOnly="true"/>
+
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/threeLineText"
@@ -22,12 +38,17 @@
         android:ems="10"
         android:inputType="textMultiLine"
         android:hint="Make Your Memory Recorde"
+        android:maxLength="100"
         android:maxLines="3"/>
+
+
+
 
     <Button
         android:id="@+id/btndone"
         android:layout_width="100dp"
         android:layout_height="50dp"
+        android:layout_gravity="right"
         android:text="DONE"
         android:background="@drawable/roundebutton"
         android:shadowColor="@color/FloralWhite"
