@@ -80,7 +80,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="기능2"
+        android:text="언어 변경(Change Language)"
         android:textSize="24dp"
         android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
-            android:text="기능버튼3" />
+            android:text="한글" />
 
         <RadioButton
             android:id="@+id/btn4"
@@ -114,7 +114,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="false"
-            android:text="기능버튼4" />
+            android:text="English" />
+
     </RadioGroup>
 
     <TextView
@@ -124,7 +125,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="기능3"
+        android:text="레이아웃 변경"
         android:textSize="24dp"
         android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
-            android:text="기능버튼5" />
+            android:text="레이아웃1" />
 
         <RadioButton
             android:id="@+id/btn6"
@@ -158,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="false"
-            android:text="기능버튼6" />
+            android:text="레이아웃2" />
     </RadioGroup>
 
     <TextView
@@ -168,7 +169,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="기능4"
+        android:text="테마 변경"
         android:textSize="24dp"
         android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -223,14 +224,23 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:gravity="center"
         android:text="폰트 테스트"
         android:textSize="24dp"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.036"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintVertical_bias="0.466" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="기타 문의 사항:몬스터밀크@몬스터밀크.COM"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="354dp" />
 
 
 </android.support.constraint.ConstraintLayout>
