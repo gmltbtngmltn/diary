@@ -30,4 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+    public void goToCalendar(View view) {
+        Intent intent = new Intent(MainActivity.this,Calendar.class);
+        startActivity(intent);
+    }
 }

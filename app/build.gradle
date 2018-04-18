@@ -36,4 +36,5 @@ dependencies {
     compile "com.github.katoro:typekit:1.0.1"
     implementation 'com.github.Hitomis:CircleMenu:v1.0.0'
     implementation 'com.github.sundeepk:compact-calendar-view:1.9.1'
+    implementation 'com.android.support:gridlayout-v7:27.1.1'
 }
