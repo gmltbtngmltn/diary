@@ -29,9 +29,9 @@
         <activity android:name=".SSFontsBase" />
         <activity android:name=".Fonts" />
         <activity android:name=".DiaryShortLine" />
-        <activity android:name=".Calendar"></activity>
+        <activity android:name=".Calendar" />
         <activity android:name=".DiaryShortLine" />
-        <activity android:name=".DiaryOnlyText"></activity>
+        <activity android:name=".DiaryOnlyText" />
     </application>
 
 </manifest>
