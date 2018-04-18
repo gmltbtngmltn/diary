@@ -23,11 +23,11 @@ public class DiaryShortLine extends AppCompatActivity {
 //        InputFilter[] filterArray = new InputFilter[1];
 //        filterArray[0] = new InputFilter.LengthFilter(3);
 //        threeLineText.setFilters(filterArray);
-        final ProgressBar progressBar = findViewById(R.id.prograssBar);
+//        final ProgressBar progressBar = findViewById(R.id.prograssBar2);
 
 //        progressBar.setIndeterminate(true);
-        progressBar.setMax(100);
-        progressBar.setProgress(0);
+//        progressBar2.setMax(100);
+//        progressBar2.setProgress(0);
 
         final ProgressBar progressBar2 = findViewById(R.id.progressBar2);
         progressBar2.setMax(100);

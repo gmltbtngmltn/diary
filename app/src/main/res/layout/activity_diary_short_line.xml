@@ -13,22 +13,15 @@
         android:layout_height="340dp"
         app:srcCompat="@drawable/giraffe"/>
 
-    <ProgressBar
-        android:id="@+id/prograssBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="right"
-        android:max="100"
-        android:maxHeight="20dp"
-        android:minHeight="20dp"
-        android:indeterminateOnly="true"/>
-
 
     <ProgressBar
         android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:pointerIcon="arrow"
+        
+        android:background="@color/MistyRose"/>
 
     <EditText
         android:id="@+id/threeLineText"
