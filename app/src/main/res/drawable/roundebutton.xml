@@ -1,0 +1,23 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid
+        android:color="#FFFF0000"/>
+    <stroke
+        android:width="2dp"
+        android:color="@color/Pink"
+        android:dashWidth="4dp"
+        android:dashGap="2dp" />
+    <padding
+        android:left="7dp"
+        android:top="7dp"
+        android:right="7dp"
+        android:bottom="7dp" />
+    <corners android:radius="3dp" />
+    <gradient
+        android:startColor="@color/GhostWhite"
+        android:endColor="@color/LightPink"
+        android:angle="270"/>
+</shape>
+
+
+

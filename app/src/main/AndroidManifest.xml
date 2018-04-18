@@ -23,11 +23,12 @@
             android:label="@string/title_activity_write_diary"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".DiarySetting" />
-        <activity android:name=".MonthListView"/>
-        <activity android:name=".MonthCalendar"/>
+        <activity android:name=".MonthListView" />
+        <activity android:name=".MonthCalendar" />
         <activity android:name=".DiaryPartMain" />
         <activity android:name=".SSFontsBase" />
-        <activity android:name=".Fonts"></activity>
+        <activity android:name=".Fonts" />
+        <activity android:name=".DiaryShortLine"></activity>
     </application>
 
 </manifest>
