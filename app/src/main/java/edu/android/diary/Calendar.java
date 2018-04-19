@@ -36,6 +36,7 @@ public class Calendar extends AppCompatActivity {
                 showPopup(v);
             }
         });
+        //todo: 데이터베이스에서 날짜 카운팅후 갯수만큼 프레그레스바 에 적용때리기.
 
 
     }
@@ -53,6 +54,8 @@ public class Calendar extends AppCompatActivity {
         });
 
         myDialog.show();
+        //todo: 일기를 쓴 날짜에 표시되는 기능 필요. 머테리얼캘린더뷰 이용.
+        //todo: 데이터베이스에 날짜 체크후 조건문 ㄱㄱ.
 
     }
 }
