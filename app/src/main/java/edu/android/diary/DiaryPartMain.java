@@ -33,16 +33,16 @@ public class DiaryPartMain extends AppCompatActivity {
                             switch (index) {
                                   case 0:
 
-//                                      Toast.makeText(DiaryPartMain.this, "Home button Clicked", Toast.LENGTH_SHORT).show();
-
                                       Intent intent = new Intent(DiaryPartMain.this, DiaryShortLine.class);
                                       startActivity(intent);
-
-
                                           	  break;
+
                                      case 1:
-                                         intent = new Intent(DiaryPartMain.this, DiaryOnlyText.class);
-                                         startActivity(intent);
+
+                                         Intent intent2 = new Intent(DiaryPartMain.this, DiaryOnlyText.class);
+                                         startActivity(intent2);
+                                         break;
+
                                         case 2:
                                            Toast.makeText(DiaryPartMain.this, "Notify button Clciked", Toast.LENGTH_SHORT).show();
                                              break;
