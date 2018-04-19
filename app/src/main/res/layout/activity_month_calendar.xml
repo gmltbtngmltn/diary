@@ -11,20 +11,20 @@
     <!-- tools:context=".MonthCalendar" -->
 
     <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/compactcalendar_view"
-        android:layout_width="280dp"
-        android:layout_height="250dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="94dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        app:compactCalendarBackgroundColor="#ffe95451"
-        app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
-        app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
-        app:compactCalendarMultiEventIndicatorColor="#fff"
-        app:compactCalendarTextColor="#fff"
-        app:compactCalendarTextSize="12sp" />
+    android:id="@+id/compactcalendar_view"
+    android:layout_width="280dp"
+    android:layout_height="250dp"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="94dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    app:compactCalendarBackgroundColor="#ffe95451"
+    app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
+    app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
+    app:compactCalendarMultiEventIndicatorColor="#fff"
+    app:compactCalendarTextColor="#fff"
+    app:compactCalendarTextSize="12sp" />
 
     <Button
         android:id="@+id/button"
