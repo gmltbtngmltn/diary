@@ -9,13 +9,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Calendar extends AppCompatActivity {
-    private TextView dateDiary;
+    private TextView dateDiary,script;
+    private ImageView images;
     private Dialog myDialog;
     private Button btnCalendar;
 
@@ -25,6 +27,8 @@ public class Calendar extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
         dateDiary = findViewById(R.id.dateOfDiary);
         btnCalendar = findViewById(R.id.btnCalendar);
+        script = findViewById(R.id.script);
+        images = findViewById(R.id.images);
         Date d = new Date();
         SimpleDateFormat simple = new SimpleDateFormat("yyyy년mm월dd일");
         dateDiary.setText(simple.format(d));
