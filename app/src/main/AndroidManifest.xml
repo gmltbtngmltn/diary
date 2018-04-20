@@ -28,6 +28,10 @@
         <activity android:name=".Calendar" />
         <activity android:name=".DiaryShortLine" />
         <activity android:name=".DiaryOnlyText" />
+        <activity
+            android:name=".DiaryTwo"
+            android:label="@string/title_activity_diary_two"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

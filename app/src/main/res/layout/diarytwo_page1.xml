@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/diarybackground"
+    tools:context=".DiaryTwo$PlaceholderFragment">
+
+
+    <ImageView
+        android:id="@+id/tab1Image"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:src="@drawable/elephants"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="28dp" />
+
+    <ProgressBar
+        android:id="@+id/tab1ProBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tab1Image" />
+
+    <EditText
+        android:id="@+id/editTextTab1"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tab1ProBar"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="일기 쓰는 곳"
+        android:maxLines="150"
+        android:inputType="textMultiLine|textNoSuggestions" />
+</RelativeLayout>
