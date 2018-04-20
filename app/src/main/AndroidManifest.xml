@@ -31,6 +31,10 @@
         <activity
             android:name=".DiaryTwo"
             android:label="@string/title_activity_diary_two"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".DiaryPart"
+            android:label="@string/title_activity_diary_part"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 

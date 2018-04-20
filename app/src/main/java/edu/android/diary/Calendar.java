@@ -21,6 +21,8 @@ public class Calendar extends AppCompatActivity {
     private Dialog myDialog;
     private Button btnCalendar;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,4 +64,6 @@ public class Calendar extends AppCompatActivity {
         //todo: 데이터베이스에 날짜 체크후 조건문 ㄱㄱ.
 
     }
+
+
 }

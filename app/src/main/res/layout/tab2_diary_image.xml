@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DiaryPart$PlaceholderFragment">
+
+
+    <ImageView
+        android:id="@+id/tab2ImageView"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/elephants" />
+
+    <ProgressBar
+        android:id="@+id/tab2Progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tab2ImageView" />
+
+    <EditText
+        android:id="@+id/editTab2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tab2Progress"
+        android:ems="10"
+        android:hint="Write Diary"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:maxLength="100" />
+
+    <Button
+        android:id="@+id/tab3Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="13dp"
+        android:textColor="@color/Violet"
+        android:textSize="20dp"
+        android:text="Button" />
+</RelativeLayout>

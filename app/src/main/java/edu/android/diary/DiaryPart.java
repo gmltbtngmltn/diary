@@ -1,6 +1,9 @@
 package edu.android.diary;
 
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,11 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class DiaryTwo extends AppCompatActivity {
+public class DiaryPart extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -33,34 +34,30 @@ public class DiaryTwo extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-    private ProgressBar progressBar;
-    protected EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diary_two);
+        setContentView(R.layout.activity_diary_part);
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//         Create the adapter that will return a fragment for each of the three
-//         primary sections of the activity.
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        // Create the adapter that will return a fragment for each of the three
+        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
-
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
     }
 
@@ -68,7 +65,7 @@ public class DiaryTwo extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_diary_two, menu);
+        getMenuInflater().inflate(R.menu.menu_diary_part, menu);
         return true;
     }
 
@@ -115,7 +112,7 @@ public class DiaryTwo extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.diarytwo_page3, container, false);
+            View rootView = inflater.inflate(R.layout.tab1_diary_c, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
@@ -136,19 +133,17 @@ public class DiaryTwo extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    Tab3DiaryTwo tab1 = new Tab3DiaryTwo();
+                    Tab1Clock tab1 = new Tab1Clock();
                     return  tab1;
                 case 1:
-
-                    Tab2DiaryTwo tab2 = new Tab2DiaryTwo();
+                    Tab2Image tab2 = new Tab2Image();
                     return tab2;
                 case 2:
-                    Tab1DiaryTwo tab3 = new Tab1DiaryTwo();
+                    Tab3Text tab3 = new Tab3Text();
                     return tab3;
                 default:
                     return  null;
             }
-
         }
 
         @Override

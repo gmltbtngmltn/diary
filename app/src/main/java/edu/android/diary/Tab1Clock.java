@@ -6,13 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Tab1DiaryTwo extends Fragment {
+public class Tab1Clock extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.diarytwo_page1, container, false);
+        View rootView = inflater.inflate(R.layout.tab1_diary_c, container, false);
 
         return rootView;
     }
+
 }

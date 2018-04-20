@@ -5,7 +5,7 @@
         <shape>
             <gradient
                 android:startColor="@color/White"
-                android:centerColor="@color/MistyRose"
+                android:centerColor="@color/Plum"
                 android:centerY="1.0"
                 android:endColor="@color/Pink"
                 android:angle="270"
@@ -18,8 +18,8 @@
         <clip>
             <shape>
                 <gradient
-                    android:startColor="@color/MistyRose"
-                    android:centerColor="@color/Pink"
+                    android:startColor="@color/Violet"
+                    android:centerColor="@color/Violet"
                     android:centerY="1.0"
                     android:endColor="@color/Violet"
                     android:angle="270"

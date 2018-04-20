@@ -5,14 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-public class Tab3DiaryTwo extends Fragment {
+public class Tab3Text extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.diarytwo_page3, container, false);
+        View rootView = inflater.inflate(R.layout.tab3_diary_text, container, false);
 
         return rootView;
     }
