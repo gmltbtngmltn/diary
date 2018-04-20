@@ -1,5 +1,6 @@
 package edu.android.diary;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 import com.tsengvn.typekit.Typekit;
 
 
-public class DiarySetting extends Fonts {
+public class DiarySetting extends AppCompatActivity {
 
 
     private TextView textView1 , textView2 , textView3 ,textView4 , settingTitle;
