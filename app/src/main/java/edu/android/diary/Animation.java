@@ -17,7 +17,7 @@ public class Animation extends AppCompatActivity {
         btnGoWrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Animation.this, DiaryPartMain.class);
+                Intent intent = new Intent(Animation.this, WriteDiary.class);
                 startActivity(intent);
             }
         });
