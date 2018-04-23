@@ -15,11 +15,13 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static edu.android.diary.mot.*;
+
 public class Calendar extends AppCompatActivity {
     private TextView dateDiary,script;
     private ImageView images;
     private Dialog myDialog;
-    private Button btnCalendar;
+    private Button btnCalendar, nextMot;
 
 
 
@@ -36,6 +38,64 @@ public class Calendar extends AppCompatActivity {
         dateDiary.setText(simple.format(d));
         myDialog = new Dialog(this);
 
+        script.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = script.getText().toString();
+                if (text.equals(MESSAGE1)) {
+                    script.setText(MESSAGE2);
+                }else if (text.equals(MESSAGE2)) {
+                    script.setText(MESSAGE3);
+                }else if (text.equals(MESSAGE3)) {
+                    script.setText(MESSAGE4);
+                }else if (text.equals(MESSAGE4)) {
+                    script.setText(MESSAGE5);
+                }else if (text.equals(MESSAGE5)) {
+                    script.setText(MESSAGE6);
+                }else if (text.equals(MESSAGE6)) {
+                    script.setText(MESSAGE7);
+                }else if (text.equals(MESSAGE7)) {
+                    script.setText(MESSAGE8);
+                }else if (text.equals(MESSAGE8)) {
+                    script.setText(MESSAGE9);
+                }else if (text.equals(MESSAGE9)) {
+                    script.setText(MESSAGE10);
+                }else if (text.equals(MESSAGE10)) {
+                    script.setText(MESSAGE11);
+                }else if (text.equals(MESSAGE11)) {
+                    script.setText(MESSAGE12);
+                }else if (text.equals(MESSAGE12)) {
+                    script.setText(MESSAGE13);
+                }else if (text.equals(MESSAGE13)) {
+                    script.setText(MESSAGE14);
+                }else if (text.equals(MESSAGE14)) {
+                    script.setText(MESSAGE15);
+                }else if (text.equals(MESSAGE15)) {
+                    script.setText(MESSAGE16);
+                }else if (text.equals(MESSAGE16)) {
+                    script.setText(MESSAGE17);
+                }else if (text.equals(MESSAGE17)) {
+                    script.setText(MESSAGE18);
+                }else if (text.equals(MESSAGE18)) {
+                    script.setText(MESSAGE19);
+                }else if (text.equals(MESSAGE19)) {
+                    script.setText(MESSAGE20);
+                }else if (text.equals(MESSAGE20)) {
+                    script.setText(MESSAGE21);
+                }else if (text.equals(MESSAGE21)) {
+                    script.setText(MESSAGE22);
+                }else if (text.equals(MESSAGE22)) {
+                    script.setText(MESSAGE23);
+                }else if (text.equals(MESSAGE23)) {
+                    script.setText(MESSAGE24);
+                }else if (text.equals(MESSAGE24)) {
+                    script.setText(MESSAGE25);
+                }else if (text.equals(MESSAGE25)) {
+                    script.setText(MESSAGE1);
+                }
+            }//end onClick
+        });
+
         btnCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,11 +107,11 @@ public class Calendar extends AppCompatActivity {
 
     }
 
-    public void showPopup(View v){
+    public void showPopup(View v) {
         CalendarView calendarView;
         TextView closeView;
         myDialog.setContentView(R.layout.popupcalendar);
-        closeView =  (TextView) myDialog.findViewById(R.id.closeView);
+        closeView = (TextView) myDialog.findViewById(R.id.closeView);
         closeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,5 +125,64 @@ public class Calendar extends AppCompatActivity {
 
     }
 
+    public void nextMot(View view) {
+//         mot m = new mot();
+//         int image = m.mots[1];
+//         images.setImageResource(image);
 
+//        String text = script.getText().toString();
+//        if (text.equals(MESSAGE1)) {
+//            script.setText(MESSAGE2);
+//        }else if (text.equals(MESSAGE2)) {
+//            script.setText(MESSAGE3);
+//        }else if (text.equals(MESSAGE3)) {
+//            script.setText(MESSAGE4);
+//        }else if (text.equals(MESSAGE4)) {
+//            script.setText(MESSAGE5);
+//        }else if (text.equals(MESSAGE5)) {
+//            script.setText(MESSAGE6);
+//        }else if (text.equals(MESSAGE6)) {
+//            script.setText(MESSAGE7);
+//        }else if (text.equals(MESSAGE7)) {
+//            script.setText(MESSAGE8);
+//        }else if (text.equals(MESSAGE8)) {
+//            script.setText(MESSAGE9);
+//        }else if (text.equals(MESSAGE9)) {
+//            script.setText(MESSAGE10);
+//        }else if (text.equals(MESSAGE10)) {
+//            script.setText(MESSAGE11);
+//        }else if (text.equals(MESSAGE11)) {
+//            script.setText(MESSAGE12);
+//        }else if (text.equals(MESSAGE12)) {
+//            script.setText(MESSAGE13);
+//        }else if (text.equals(MESSAGE13)) {
+//            script.setText(MESSAGE14);
+//        }else if (text.equals(MESSAGE14)) {
+//            script.setText(MESSAGE15);
+//        }else if (text.equals(MESSAGE15)) {
+//            script.setText(MESSAGE16);
+//        }else if (text.equals(MESSAGE16)) {
+//            script.setText(MESSAGE17);
+//        }else if (text.equals(MESSAGE17)) {
+//            script.setText(MESSAGE18);
+//        }else if (text.equals(MESSAGE18)) {
+//            script.setText(MESSAGE19);
+//        }else if (text.equals(MESSAGE19)) {
+//            script.setText(MESSAGE20);
+//        }else if (text.equals(MESSAGE20)) {
+//            script.setText(MESSAGE21);
+//        }else if (text.equals(MESSAGE21)) {
+//            script.setText(MESSAGE22);
+//        }else if (text.equals(MESSAGE22)) {
+//            script.setText(MESSAGE23);
+//        }else if (text.equals(MESSAGE23)) {
+//            script.setText(MESSAGE24);
+//        }else if (text.equals(MESSAGE24)) {
+//            script.setText(MESSAGE25);
+//        }else if (text.equals(MESSAGE25)) {
+//            script.setText(MESSAGE1);
+//        }
+
+    }
 }
+

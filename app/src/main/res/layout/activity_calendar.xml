@@ -37,8 +37,13 @@
             android:layout_marginRight="15dp"
             android:textSize="20dp"
             android:textColor="@color/black"
-            android:gravity="center"
-            android:text="잘나오니?" />
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/nextMot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="다른 명언"/>
 
     </RelativeLayout>
 
