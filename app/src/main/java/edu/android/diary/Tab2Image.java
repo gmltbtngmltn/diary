@@ -31,7 +31,7 @@ public class Tab2Image extends Fragment{
     @Override
     public void onStart() {
         super.onStart();
-        progressTab2.setMax(150);
+        progressTab2.setMax(100);
         progressTab2.setProgress(0);
 
     }
