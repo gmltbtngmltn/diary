@@ -37,7 +37,9 @@
             android:layout_marginRight="15dp"
             android:textSize="20dp"
             android:textColor="@color/black"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="사랑받고 싶다면 사랑하라, 그리고 사랑스럽게 행동하라
+            -벤자민 프랭클린-"/>
 
         <Button
             android:id="@+id/nextMot"

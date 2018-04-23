@@ -38,7 +38,8 @@ public class Calendar extends AppCompatActivity {
         dateDiary.setText(simple.format(d));
         myDialog = new Dialog(this);
 
-        script.setOnClickListener(new View.OnClickListener() {
+        nextMot = findViewById(R.id.nextMot);
+        nextMot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String text = script.getText().toString();
