@@ -32,7 +32,7 @@ public class Calendar extends AppCompatActivity {
         script = findViewById(R.id.script);
         images = findViewById(R.id.images);
         Date d = new Date();
-        SimpleDateFormat simple = new SimpleDateFormat("yyyy년mm월dd일");
+        SimpleDateFormat simple = new SimpleDateFormat("yyyy년MM월dd일");
         dateDiary.setText(simple.format(d));
         myDialog = new Dialog(this);
 
@@ -61,7 +61,7 @@ public class Calendar extends AppCompatActivity {
 
         myDialog.show();
         //todo: 일기를 쓴 날짜에 표시되는 기능 필요. 머테리얼캘린더뷰 이용.
-        //todo: 데이터베이스에 날짜 체크후 조건문 ㄱㄱ.
+        //todo: 데이터베이스에서 검색 , 조건문써서 날짜표시
 
     }
 
