@@ -20,7 +20,6 @@
         </activity>
         <activity android:name=".Animation" />
         <activity android:name=".DiarySetting" />
-
         <activity android:name=".MonthListView" />
         <activity android:name=".MonthCalendar" />
         <activity android:name=".Calendar" />
