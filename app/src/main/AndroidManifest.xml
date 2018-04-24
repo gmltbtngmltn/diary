@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.android.diary">
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".SSFontsBase"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -21,20 +21,13 @@
         </activity>
         <activity android:name=".Animation" />
         <activity android:name=".DiarySetting" />
-
-        <activity android:name=".MonthListView" />
-        <activity android:name=".MonthCalendar" />
-        <activity android:name=".Calendar" />
-
-
         <activity android:name=".CalendarActivity" />
-
-
         <activity
             android:name=".DiaryPart"
             android:label="@string/title_activity_diary_part"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".DirayDetailActivity"></activity>
+        <activity android:name=".DirayDetailActivity" />
+        <activity android:name=".SamplePage"></activity>
     </application>
 
 </manifest>

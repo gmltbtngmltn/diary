@@ -100,9 +100,9 @@ public class Calendar extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
         dateDiary = findViewById(R.id.dateOfDiary);
         btnCalendar = findViewById(R.id.btnCalendar);
-        script = findViewById(R.id.script);
+//        script = findViewById(R.id.script);
         images = findViewById(R.id.image);
-        imageViews = findViewById(R.id.imageView);
+//        imageViews = findViewById(R.id.imageView);
         next = findViewById(R.id.next);
         prev = findViewById(R.id.prev);
         Date d = new Date();

@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -26,13 +27,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class Tab2Image extends Fragment{
+public class Tab2Image extends Fragment {
 
     ImageView imageTab2;
     ProgressBar progressTab2;
     EditText editTab2;
-    final int REQ_CODE_SELECT_IMAGE=100;
+    Button btnTab2;
+    final int REQ_CODE_SELECT_IMAGE = 100;
     TextView tvLetter;
+    Uri uri;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +47,7 @@ public class Tab2Image extends Fragment{
         editTab2 = rootView.findViewById(R.id.editTab2);
         tvLetter = rootView.findViewById(R.id.textLetter);
 
+        btnTab2 = rootView.findViewById(R.id.tab2Btn);
 
 
         return rootView;
@@ -53,6 +57,19 @@ public class Tab2Image extends Fragment{
     @Override
     public void onStart() {
         super.onStart();
+
+        btnTab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SamplePage.class);
+
+                String msg = editTab2.getText().toString();
+                intent.putExtra("KEY_MSG", msg); // 입력한 메시지
+                intent.putExtra("KEY_URI", uri); // 이미지 uri
+
+                startActivity(intent);
+            }
+        });
 
         editTab2.addTextChangedListener(new TextWatcher() {
             @Override
@@ -93,6 +110,7 @@ public class Tab2Image extends Fragment{
                 try {
                     //Uri에서 이미지 이름을 얻어온다.
                     //String name_Str = getImageNameToUri(data.getData());
+                    uri = data.getData();
 
                     //이미지 데이터를 비트맵으로 받아온다.
                     Bitmap image_bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), data.getData());
@@ -102,10 +120,10 @@ public class Tab2Image extends Fragment{
                     imageTab2.setImageBitmap(image_bitmap);
 
 
-                    Toast.makeText(getActivity(), "name_Str : " , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "name_Str : ", Toast.LENGTH_SHORT).show();
 
                     Uri uri = data.getData();
-                    String[] projection = { MediaStore.Images.Media.DATA };
+                    String[] projection = {MediaStore.Images.Media.DATA};
 
                     Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
                     cursor.moveToFirst();
@@ -124,7 +142,6 @@ public class Tab2Image extends Fragment{
         }
 
 
-
     }
 
 //    public String getImageNameToUri(Uri data)
@@ -140,7 +157,6 @@ public class Tab2Image extends Fragment{
 //
 //        return imgName;
 //    }
-
 
 
 }
