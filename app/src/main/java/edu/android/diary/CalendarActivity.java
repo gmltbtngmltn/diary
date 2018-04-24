@@ -148,11 +148,11 @@ public class Calendar extends AppCompatActivity {
 
     }
 
-    public void showPopup(View v){
+    public void showPopup(View v) {
         CalendarView calendarView;
         TextView closeView;
         myDialog.setContentView(R.layout.popupcalendar);
-        closeView =  (TextView) myDialog.findViewById(R.id.closeView);
+        closeView = (TextView) myDialog.findViewById(R.id.closeView);
         closeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,33 +171,33 @@ public class Calendar extends AppCompatActivity {
 
     }
 
-    private void init(){
+    private void init() {
 
-        ImageView imageView1 = (ImageView)findViewById( R.id.image1);
-        ImageView imageView2 = (ImageView)findViewById( R.id.image2);
-        ImageView imageView3 = (ImageView)findViewById( R.id.image3);
-        ImageView imageView4 = (ImageView)findViewById( R.id.image4);
-        ImageView imageView5 = (ImageView)findViewById( R.id.image5);
-        ImageView imageView6 = (ImageView)findViewById( R.id.image6);
-        ImageView imageView7 = (ImageView)findViewById( R.id.image7);
-        ImageView imageView8 = (ImageView)findViewById( R.id.image8);
-        ImageView imageView9 = (ImageView)findViewById( R.id.image9);
-        ImageView imageView10 = (ImageView)findViewById( R.id.image10);
-        ImageView imageView11 = (ImageView)findViewById( R.id.image11);
-        ImageView imageView12 = (ImageView)findViewById( R.id.image12);
-        ImageView imageView13 = (ImageView)findViewById( R.id.image13);
-        ImageView imageView14 = (ImageView)findViewById( R.id.image14);
-        ImageView imageView15 = (ImageView)findViewById( R.id.image15);
-        ImageView imageView16 = (ImageView)findViewById( R.id.image16);
-        ImageView imageView17 = (ImageView)findViewById( R.id.image17);
-        ImageView imageView18 = (ImageView)findViewById( R.id.image18);
-        ImageView imageView19 = (ImageView)findViewById( R.id.image19);
-        ImageView imageView20 = (ImageView)findViewById( R.id.image20);
-        ImageView imageView21 = (ImageView)findViewById( R.id.image21);
-        ImageView imageView22 = (ImageView)findViewById( R.id.image22);
-        ImageView imageView23 = (ImageView)findViewById( R.id.image23);
-        ImageView imageView24 = (ImageView)findViewById( R.id.image24);
-        ImageView imageView25 = (ImageView)findViewById( R.id.image25);
+        ImageView imageView1 = (ImageView) findViewById(R.id.image1);
+        ImageView imageView2 = (ImageView) findViewById(R.id.image2);
+        ImageView imageView3 = (ImageView) findViewById(R.id.image3);
+        ImageView imageView4 = (ImageView) findViewById(R.id.image4);
+        ImageView imageView5 = (ImageView) findViewById(R.id.image5);
+        ImageView imageView6 = (ImageView) findViewById(R.id.image6);
+        ImageView imageView7 = (ImageView) findViewById(R.id.image7);
+        ImageView imageView8 = (ImageView) findViewById(R.id.image8);
+        ImageView imageView9 = (ImageView) findViewById(R.id.image9);
+        ImageView imageView10 = (ImageView) findViewById(R.id.image10);
+        ImageView imageView11 = (ImageView) findViewById(R.id.image11);
+        ImageView imageView12 = (ImageView) findViewById(R.id.image12);
+        ImageView imageView13 = (ImageView) findViewById(R.id.image13);
+        ImageView imageView14 = (ImageView) findViewById(R.id.image14);
+        ImageView imageView15 = (ImageView) findViewById(R.id.image15);
+        ImageView imageView16 = (ImageView) findViewById(R.id.image16);
+        ImageView imageView17 = (ImageView) findViewById(R.id.image17);
+        ImageView imageView18 = (ImageView) findViewById(R.id.image18);
+        ImageView imageView19 = (ImageView) findViewById(R.id.image19);
+        ImageView imageView20 = (ImageView) findViewById(R.id.image20);
+        ImageView imageView21 = (ImageView) findViewById(R.id.image21);
+        ImageView imageView22 = (ImageView) findViewById(R.id.image22);
+        ImageView imageView23 = (ImageView) findViewById(R.id.image23);
+        ImageView imageView24 = (ImageView) findViewById(R.id.image24);
+        ImageView imageView25 = (ImageView) findViewById(R.id.image25);
 
         imageViews = new ImageView[]{
                 imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageView8,
@@ -208,97 +208,92 @@ public class Calendar extends AppCompatActivity {
         CURRENT_INDEX = 0;
     }
 
-    public void onClickNext(View view){
+    public void onClickNext(View view) {
 
-        if( ++CURRENT_INDEX > 3) {
-            Toast toast = Toast.makeText(this, "마지막 명언 입니다.", Toast.LENGTH_SHORT );
+        if (++CURRENT_INDEX > 3) {
+            Toast toast = Toast.makeText(this, "마지막 명언 입니다.", Toast.LENGTH_SHORT);
             toast.show();
 
             CURRENT_INDEX--;
-        }
-        else{
-            for( int i = 0; i < imageViews.length; i++){
-                if( i == CURRENT_INDEX){
+        } else {
+            for (int i = 0; i < imageViews.length; i++) {
+                if (i == CURRENT_INDEX) {
                     imageViews[i].setVisibility(View.VISIBLE);
-                }
-                else{
+                } else {
                     imageViews[i].setVisibility(View.INVISIBLE);
                 }
             }
         }
 
-            String text = next.getText().toString();
-            if (text.equals(MESSAGE1)) {
-                next.setText(MESSAGE2);
-            } else if (text.equals(MESSAGE2)) {
-                next.setText(MESSAGE3);
-            } else if (text.equals(MESSAGE3)) {
-                next.setText(MESSAGE4);
-            }else if (text.equals(MESSAGE4)) {
-                next.setText(MESSAGE5);
-            } else if (text.equals(MESSAGE5)) {
-                next.setText(MESSAGE6);
-            } else if (text.equals(MESSAGE6)) {
-                next.setText(MESSAGE7);
-            } else if (text.equals(MESSAGE7)) {
-                next.setText(MESSAGE8);
-            } else if (text.equals(MESSAGE8)) {
-                next.setText(MESSAGE9);
-            } else if (text.equals(MESSAGE9)) {
-                next.setText(MESSAGE10);
-            } else if (text.equals(MESSAGE10)) {
-                next.setText(MESSAGE11);
-            } else if (text.equals(MESSAGE11)) {
-                next.setText(MESSAGE12);
-            } else if (text.equals(MESSAGE12)) {
-                next.setText(MESSAGE13);
-            } else if (text.equals(MESSAGE13)) {
-                next.setText(MESSAGE14);
-            } else if (text.equals(MESSAGE14)) {
-                next.setText(MESSAGE15);
-            } else if (text.equals(MESSAGE15)) {
-                next.setText(MESSAGE16);
-            } else if (text.equals(MESSAGE16)) {
-                next.setText(MESSAGE17);
-            } else if (text.equals(MESSAGE17)) {
-                next.setText(MESSAGE18);
-            } else if (text.equals(MESSAGE18)) {
-                next.setText(MESSAGE19);
-            } else if (text.equals(MESSAGE19)) {
-                next.setText(MESSAGE20);
-            } else if (text.equals(MESSAGE20)) {
-                next.setText(MESSAGE21);
-            } else if (text.equals(MESSAGE21)) {
-                next.setText(MESSAGE22);
-            } else if (text.equals(MESSAGE22)) {
-                next.setText(MESSAGE23);
-            } else if (text.equals(MESSAGE23)) {
-                next.setText(MESSAGE24);
-            } else if (text.equals(MESSAGE24)) {
-                next.setText(MESSAGE25);
-            } else if (text.equals(MESSAGE25)) {
-                next.setText(MESSAGE1);
-            }
+        String text = next.getText().toString();
+        if (text.equals(MESSAGE1)) {
+            next.setText(MESSAGE2);
+        } else if (text.equals(MESSAGE2)) {
+            next.setText(MESSAGE3);
+        } else if (text.equals(MESSAGE3)) {
+            next.setText(MESSAGE4);
+        } else if (text.equals(MESSAGE4)) {
+            next.setText(MESSAGE5);
+        } else if (text.equals(MESSAGE5)) {
+            next.setText(MESSAGE6);
+        } else if (text.equals(MESSAGE6)) {
+            next.setText(MESSAGE7);
+        } else if (text.equals(MESSAGE7)) {
+            next.setText(MESSAGE8);
+        } else if (text.equals(MESSAGE8)) {
+            next.setText(MESSAGE9);
+        } else if (text.equals(MESSAGE9)) {
+            next.setText(MESSAGE10);
+        } else if (text.equals(MESSAGE10)) {
+            next.setText(MESSAGE11);
+        } else if (text.equals(MESSAGE11)) {
+            next.setText(MESSAGE12);
+        } else if (text.equals(MESSAGE12)) {
+            next.setText(MESSAGE13);
+        } else if (text.equals(MESSAGE13)) {
+            next.setText(MESSAGE14);
+        } else if (text.equals(MESSAGE14)) {
+            next.setText(MESSAGE15);
+        } else if (text.equals(MESSAGE15)) {
+            next.setText(MESSAGE16);
+        } else if (text.equals(MESSAGE16)) {
+            next.setText(MESSAGE17);
+        } else if (text.equals(MESSAGE17)) {
+            next.setText(MESSAGE18);
+        } else if (text.equals(MESSAGE18)) {
+            next.setText(MESSAGE19);
+        } else if (text.equals(MESSAGE19)) {
+            next.setText(MESSAGE20);
+        } else if (text.equals(MESSAGE20)) {
+            next.setText(MESSAGE21);
+        } else if (text.equals(MESSAGE21)) {
+            next.setText(MESSAGE22);
+        } else if (text.equals(MESSAGE22)) {
+            next.setText(MESSAGE23);
+        } else if (text.equals(MESSAGE23)) {
+            next.setText(MESSAGE24);
+        } else if (text.equals(MESSAGE24)) {
+            next.setText(MESSAGE25);
+        } else if (text.equals(MESSAGE25)) {
+            next.setText(MESSAGE1);
+        }
 
 
     }
 
-    public void onClickPrev(View view){
+    public void onClickPrev(View view) {
 
 
-
-        if( --CURRENT_INDEX < 0) {
-            Toast toast = Toast.makeText(this, "처음 명언 입니다.", Toast.LENGTH_SHORT );
+        if (--CURRENT_INDEX < 0) {
+            Toast toast = Toast.makeText(this, "처음 명언 입니다.", Toast.LENGTH_SHORT);
             toast.show();
 
             CURRENT_INDEX++;
-        }
-        else{
-            for( int i = 0; i < imageViews.length; i++){
-                if( i == CURRENT_INDEX){
+        } else {
+            for (int i = 0; i < imageViews.length; i++) {
+                if (i == CURRENT_INDEX) {
                     imageViews[i].setVisibility(View.VISIBLE);
-                }
-                else{
+                } else {
                     imageViews[i].setVisibility(View.INVISIBLE);
                 }
             }
@@ -311,7 +306,7 @@ public class Calendar extends AppCompatActivity {
             prev.setText(MESSAGE3);
         } else if (text2.equals(MESSAGE3)) {
             prev.setText(MESSAGE4);
-        }else if (text2.equals(MESSAGE4)) {
+        } else if (text2.equals(MESSAGE4)) {
             prev.setText(MESSAGE5);
         } else if (text2.equals(MESSAGE5)) {
             prev.setText(MESSAGE6);
@@ -358,6 +353,7 @@ public class Calendar extends AppCompatActivity {
         }
 
 
+    }
 }
 
 }//end class Calendar
