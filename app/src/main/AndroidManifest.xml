@@ -27,7 +27,7 @@
         <activity android:name=".Calendar" />
 
 
-        <activity android:name=".CalendarActivity" />
+        <activity android:name=".Calendar" />
 
 
         <activity

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalendarActivity"
+    tools:context=".Calendar"
     android:id="@+id/drawerLayout">
 
     <RelativeLayout
@@ -17,12 +17,42 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp" >
 
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <Button
+            android:text="이전 명언"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/prev"
+            android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:onClick="onClickPrev" />
+
+        <Button
+            android:text="다음 명언"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/next"
+            android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/prev"
+            android:layout_toEndOf="@+id/prev"
+            android:onClick="onClickNext" />
+
+        </LinearLayout>
+
+
         <FrameLayout
             android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/linear"
-            tools:ignore="UnknownId"> <!-- 안되면 ignore다시 지우고 생각 -->
+            android:layout_below="@+id/linear"> <!-- 안되면 ignore다시 지우고 생각 -->
 
             <ImageView
                 android:id="@+id/image1"
@@ -348,27 +378,6 @@
             android:gravity="center"
             android:text="사랑받고 싶다면 사랑하라, 그리고 사랑스럽게 행동하라 -벤자민 프랭클린"/>
 
-        <Button
-            android:text="이전 명언"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/prev"
-            android:layout_weight="1"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:onClick="onClickPrev" />
-
-        <Button
-            android:text="다음 명언"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/next"
-            android:layout_weight="1"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/prev"
-            android:layout_toEndOf="@+id/prev"
-            android:onClick="onClickNext" />
 
     </RelativeLayout>
 

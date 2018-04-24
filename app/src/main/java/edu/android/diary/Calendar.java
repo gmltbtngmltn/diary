@@ -16,8 +16,6 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class CalendarActivity extends AppCompatActivity {
-    private TextView dateDiary,script;
 public class Calendar extends AppCompatActivity {
 
     public static final String MESSAGE1 = "사랑받고 싶다면 사랑하라, 그리고 사랑스럽게 행동하라 -벤자민 프랭클린";
@@ -85,26 +83,26 @@ public class Calendar extends AppCompatActivity {
     public static final String MESSAGE25 = "명확한 목표는 말의 곁눈 가리개처럼 목표를 가진 이의 시야를 좁게 하기 마련이다\n" +
             "-로버트 프로스트";
 
-    private TextView dateDiary;
+    private TextView dateDiary, script, textView;
     private ImageView images;
     private Dialog myDialog;
     private Button btnCalendar, nextMot, next, prev;
     private int CURRENT_INDEX; // 이미지
     private ImageView[] imageViews; // 이미지
-    private TextView[] script;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
         dateDiary = findViewById(R.id.dateOfDiary);
         btnCalendar = findViewById(R.id.btnCalendar);
-        script = findViewById(R.id.script);
         images = findViewById(R.id.image);
         imageViews = findViewById(R.id.imageView);
         next = findViewById(R.id.next);
         prev = findViewById(R.id.prev);
+        textView = findViewById(R.id.script);
         Date d = new Date();
         SimpleDateFormat simple = new SimpleDateFormat("yyyy년MM월dd일");
         dateDiary.setText(simple.format(d));
@@ -133,7 +131,7 @@ public class Calendar extends AppCompatActivity {
 //            }//end onClick
 //        });
 
-        textvView();
+//        textvView();
 
         init(); // 이미지
 
@@ -164,10 +162,6 @@ public class Calendar extends AppCompatActivity {
 
         //todo: 일기를 쓴 날짜에 표시되는 기능 필요. 머테리얼캘린더뷰 이용.
         //todo: 데이터베이스에서 검색 , 조건문써서 날짜표시
-
-    }
-
-    private void textvView() {
 
     }
 
@@ -210,7 +204,7 @@ public class Calendar extends AppCompatActivity {
 
     public void onClickNext(View view) {
 
-        if (++CURRENT_INDEX > 3) {
+        if (++CURRENT_INDEX > 24) {
             Toast toast = Toast.makeText(this, "마지막 명언 입니다.", Toast.LENGTH_SHORT);
             toast.show();
 
@@ -225,57 +219,57 @@ public class Calendar extends AppCompatActivity {
             }
         }
 
-        String text = next.getText().toString();
+        String text = textView.getText().toString();
         if (text.equals(MESSAGE1)) {
-            next.setText(MESSAGE2);
+            textView.setText(MESSAGE2);
         } else if (text.equals(MESSAGE2)) {
-            next.setText(MESSAGE3);
+            textView.setText(MESSAGE3);
         } else if (text.equals(MESSAGE3)) {
-            next.setText(MESSAGE4);
+            textView.setText(MESSAGE4);
         } else if (text.equals(MESSAGE4)) {
-            next.setText(MESSAGE5);
+            textView.setText(MESSAGE5);
         } else if (text.equals(MESSAGE5)) {
-            next.setText(MESSAGE6);
+            textView.setText(MESSAGE6);
         } else if (text.equals(MESSAGE6)) {
-            next.setText(MESSAGE7);
+            textView.setText(MESSAGE7);
         } else if (text.equals(MESSAGE7)) {
-            next.setText(MESSAGE8);
+            textView.setText(MESSAGE8);
         } else if (text.equals(MESSAGE8)) {
-            next.setText(MESSAGE9);
+            textView.setText(MESSAGE9);
         } else if (text.equals(MESSAGE9)) {
-            next.setText(MESSAGE10);
+            textView.setText(MESSAGE10);
         } else if (text.equals(MESSAGE10)) {
-            next.setText(MESSAGE11);
+            textView.setText(MESSAGE11);
         } else if (text.equals(MESSAGE11)) {
-            next.setText(MESSAGE12);
+            textView.setText(MESSAGE12);
         } else if (text.equals(MESSAGE12)) {
-            next.setText(MESSAGE13);
+            textView.setText(MESSAGE13);
         } else if (text.equals(MESSAGE13)) {
-            next.setText(MESSAGE14);
+            textView.setText(MESSAGE14);
         } else if (text.equals(MESSAGE14)) {
-            next.setText(MESSAGE15);
+            textView.setText(MESSAGE15);
         } else if (text.equals(MESSAGE15)) {
-            next.setText(MESSAGE16);
+            textView.setText(MESSAGE16);
         } else if (text.equals(MESSAGE16)) {
-            next.setText(MESSAGE17);
+            textView.setText(MESSAGE17);
         } else if (text.equals(MESSAGE17)) {
-            next.setText(MESSAGE18);
+            textView.setText(MESSAGE18);
         } else if (text.equals(MESSAGE18)) {
-            next.setText(MESSAGE19);
+            textView.setText(MESSAGE19);
         } else if (text.equals(MESSAGE19)) {
-            next.setText(MESSAGE20);
+            textView.setText(MESSAGE20);
         } else if (text.equals(MESSAGE20)) {
-            next.setText(MESSAGE21);
+            textView.setText(MESSAGE21);
         } else if (text.equals(MESSAGE21)) {
-            next.setText(MESSAGE22);
+            textView.setText(MESSAGE22);
         } else if (text.equals(MESSAGE22)) {
-            next.setText(MESSAGE23);
+            textView.setText(MESSAGE23);
         } else if (text.equals(MESSAGE23)) {
-            next.setText(MESSAGE24);
+            textView.setText(MESSAGE24);
         } else if (text.equals(MESSAGE24)) {
-            next.setText(MESSAGE25);
+            textView.setText(MESSAGE25);
         } else if (text.equals(MESSAGE25)) {
-            next.setText(MESSAGE1);
+            textView.setText(MESSAGE1);
         }
 
 
@@ -299,61 +293,60 @@ public class Calendar extends AppCompatActivity {
             }
         }
 
-        String text2 = prev.getText().toString();
+        String text2 = textView.getText().toString();
         if (text2.equals(MESSAGE1)) {
-            prev.setText(MESSAGE2);
+            textView.setText(MESSAGE2);
         } else if (text2.equals(MESSAGE2)) {
-            prev.setText(MESSAGE3);
+            textView.setText(MESSAGE3);
         } else if (text2.equals(MESSAGE3)) {
-            prev.setText(MESSAGE4);
+            textView.setText(MESSAGE4);
         } else if (text2.equals(MESSAGE4)) {
-            prev.setText(MESSAGE5);
+            textView.setText(MESSAGE5);
         } else if (text2.equals(MESSAGE5)) {
-            prev.setText(MESSAGE6);
+            textView.setText(MESSAGE6);
         } else if (text2.equals(MESSAGE6)) {
-            prev.setText(MESSAGE7);
+            textView.setText(MESSAGE7);
         } else if (text2.equals(MESSAGE7)) {
-            prev.setText(MESSAGE8);
+            textView.setText(MESSAGE8);
         } else if (text2.equals(MESSAGE8)) {
-            prev.setText(MESSAGE9);
+            textView.setText(MESSAGE9);
         } else if (text2.equals(MESSAGE9)) {
-            prev.setText(MESSAGE10);
+            textView.setText(MESSAGE10);
         } else if (text2.equals(MESSAGE10)) {
-            prev.setText(MESSAGE11);
+            textView.setText(MESSAGE11);
         } else if (text2.equals(MESSAGE11)) {
-            prev.setText(MESSAGE12);
+            textView.setText(MESSAGE12);
         } else if (text2.equals(MESSAGE12)) {
-            prev.setText(MESSAGE13);
+            textView.setText(MESSAGE13);
         } else if (text2.equals(MESSAGE13)) {
-            prev.setText(MESSAGE14);
+            textView.setText(MESSAGE14);
         } else if (text2.equals(MESSAGE14)) {
-            prev.setText(MESSAGE15);
+            textView.setText(MESSAGE15);
         } else if (text2.equals(MESSAGE15)) {
-            prev.setText(MESSAGE16);
+            textView.setText(MESSAGE16);
         } else if (text2.equals(MESSAGE16)) {
-            prev.setText(MESSAGE17);
+            textView.setText(MESSAGE17);
         } else if (text2.equals(MESSAGE17)) {
-            prev.setText(MESSAGE18);
+            textView.setText(MESSAGE18);
         } else if (text2.equals(MESSAGE18)) {
-            prev.setText(MESSAGE19);
+            textView.setText(MESSAGE19);
         } else if (text2.equals(MESSAGE19)) {
-            prev.setText(MESSAGE20);
+            textView.setText(MESSAGE20);
         } else if (text2.equals(MESSAGE20)) {
-            prev.setText(MESSAGE21);
+            textView.setText(MESSAGE21);
         } else if (text2.equals(MESSAGE21)) {
-            prev.setText(MESSAGE22);
+            textView.setText(MESSAGE22);
         } else if (text2.equals(MESSAGE22)) {
-            prev.setText(MESSAGE23);
+            textView.setText(MESSAGE23);
         } else if (text2.equals(MESSAGE23)) {
-            prev.setText(MESSAGE24);
+            textView.setText(MESSAGE24);
         } else if (text2.equals(MESSAGE24)) {
-            prev.setText(MESSAGE25);
+            textView.setText(MESSAGE25);
         } else if (text2.equals(MESSAGE25)) {
-            prev.setText(MESSAGE1);
+            textView.setText(MESSAGE1);
         }
 
 
     }
-}
 
 }//end class Calendar
