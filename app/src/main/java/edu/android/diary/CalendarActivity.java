@@ -15,11 +15,12 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Calendar extends AppCompatActivity {
+public class CalendarActivity extends AppCompatActivity {
     private TextView dateDiary,script;
     private ImageView images;
     private Dialog myDialog;
     private Button btnCalendar;
+
 
 
 
@@ -60,10 +61,12 @@ public class Calendar extends AppCompatActivity {
         });
 
         myDialog.show();
+
         //todo: 일기를 쓴 날짜에 표시되는 기능 필요. 머테리얼캘린더뷰 이용.
         //todo: 데이터베이스에서 검색 , 조건문써서 날짜표시
 
     }
+
 
 
 }

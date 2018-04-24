@@ -38,6 +38,22 @@
         <item>white</item>
     </string-array>
 
+    <!--일기장 달마다 뜨는 문장-->
+    <string-array name="monthT">
+        <item>"1月 새해의 시작"</item>
+        <item>"2月 너무 짧아 시간이 빨리 가지?"</item>
+        <item>"3月 슬슬 봄이 올 시간"</item>
+        <item>"4月 꽃들이 빼꼼 얼굴을 드러내는 시간"</item>
+        <item>"5月 따스하고 즐거운 TIME"</item>
+        <item>"6月 여름의 시작인지 해가 점점 강해지지?"</item>
+        <item>"7月 앗, 아이스크림 생각이 점점 강해지네"</item>
+        <item>"8月 아이스크림으론 무리 빙수와 바다"</item>
+        <item>"9月 식욕과 잠과 책의 시간이지"</item>
+        <item>"10月 푸르른 색과 붉디 붉은 색이 너무 잘 어울려"</item>
+        <item>"11月 뭐했다고 벌써 시간이 이렇게 되었지?"</item>
+        <item>"12月 마무리의 시간. 후회 없기를 바라"</item>
+    </string-array>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
