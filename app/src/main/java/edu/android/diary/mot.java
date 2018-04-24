@@ -11,8 +11,7 @@ public class mot {
             R.drawable.mot25
     };
 
-    public static final String MESSAGE1 = "사랑받고 싶다면 사랑하라, 그리고 사랑스럽게 행동하라\n" +
-            "-벤자민 프랭클린";
+    public static final String MESSAGE1 = "사랑받고 싶다면 사랑하라, 그리고 사랑스럽게 행동하라 -벤자민 프랭클린";
     public static final String MESSAGE2 = "정성과 마음을 다하고 생각이 깊은 사람일수록 상대방에게 정성과 진실한 마음을 더욱더 발견하게 된다\n" +
             "-톨스토이";
     public static final String MESSAGE3 = "누구도 지신이 받은 것으로 인해 존경받지 않는다\n" +

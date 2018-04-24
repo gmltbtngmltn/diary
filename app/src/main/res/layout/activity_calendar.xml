@@ -17,14 +17,322 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp" >
 
-        <ImageView
-            android:id="@+id/images"
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/linear"
+            tools:ignore="UnknownId"> <!-- 안되면 ignore다시 지우고 생각 -->
+
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot1"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot2"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image3"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot3"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image4"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot4"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"/>
+
+            <ImageView
+                android:id="@+id/image5"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot5"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image6"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot6"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image7"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot7"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image8"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot8"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image9"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot9"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image10"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot10"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image11"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot11"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image12"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot12"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+            <ImageView
+                android:id="@+id/image13"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot13"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image14"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot14"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image15"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot15"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image16"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot16"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"/>
+
+            <ImageView
+                android:id="@+id/image17"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot17"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image18"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot18"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image19"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot19"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image20"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot20"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image21"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot21"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image22"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot22"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image23"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot23"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image24"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot24"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+            <ImageView
+                android:id="@+id/image25"
+                android:layout_width="380dp"
+                android:layout_height="300dp"
+                android:visibility="invisible"
+                android:src="@drawable/mot25"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="@color/DeepPink"
+                />
+
+        </FrameLayout>
+
+
+       <!-- <ImageView
+            android:id="@+id/image"
             android:layout_width="380dp"
             android:layout_height="300dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="45dp"
             android:background="@color/DeepPink" />
+            -->
 
         <TextView
             android:id="@+id/script"
@@ -38,14 +346,29 @@
             android:textSize="20dp"
             android:textColor="@color/black"
             android:gravity="center"
-            android:text="사랑받고 싶다면 사랑하라, 그리고 사랑스럽게 행동하라
-            -벤자민 프랭클린-"/>
+            android:text="사랑받고 싶다면 사랑하라, 그리고 사랑스럽게 행동하라 -벤자민 프랭클린"/>
 
         <Button
-            android:id="@+id/nextMot"
+            android:text="이전 명언"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="다른 명언"/>
+            android:id="@+id/prev"
+            android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:onClick="onClickPrev" />
+
+        <Button
+            android:text="다음 명언"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/next"
+            android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/prev"
+            android:layout_toEndOf="@+id/prev"
+            android:onClick="onClickNext" />
 
     </RelativeLayout>
 
