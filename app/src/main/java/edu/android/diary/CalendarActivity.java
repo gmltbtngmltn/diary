@@ -1,6 +1,9 @@
 package edu.android.diary;
 
 import android.app.Dialog;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +16,8 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+public class CalendarActivity extends AppCompatActivity {
+    private TextView dateDiary,script;
 public class Calendar extends AppCompatActivity {
 
     public static final String MESSAGE1 = "사랑받고 싶다면 사랑하라, 그리고 사랑스럽게 행동하라 -벤자민 프랭클린";
@@ -143,11 +148,11 @@ public class Calendar extends AppCompatActivity {
 
     }
 
-    public void showPopup(View v) {
+    public void showPopup(View v){
         CalendarView calendarView;
         TextView closeView;
         myDialog.setContentView(R.layout.popupcalendar);
-        closeView = (TextView) myDialog.findViewById(R.id.closeView);
+        closeView =  (TextView) myDialog.findViewById(R.id.closeView);
         closeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,6 +161,7 @@ public class Calendar extends AppCompatActivity {
         });
 
         myDialog.show();
+
         //todo: 일기를 쓴 날짜에 표시되는 기능 필요. 머테리얼캘린더뷰 이용.
         //todo: 데이터베이스에서 검색 , 조건문써서 날짜표시
 
@@ -351,6 +357,7 @@ public class Calendar extends AppCompatActivity {
             prev.setText(MESSAGE1);
         }
 
-    }
+
+}
 
 }//end class Calendar
