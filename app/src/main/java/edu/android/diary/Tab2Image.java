@@ -36,6 +36,8 @@ public class Tab2Image extends Fragment {
     final int REQ_CODE_SELECT_IMAGE = 100;
     TextView tvLetter;
     Uri uri;
+    public static final String KEY_URI= "key_uri";
+    public static final String KEY_MSG = "key_meg";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,8 +66,8 @@ public class Tab2Image extends Fragment {
                 Intent intent = new Intent(getActivity(), SamplePage.class);
 
                 String msg = editTab2.getText().toString();
-                intent.putExtra("KEY_MSG", msg); // 입력한 메시지
-                intent.putExtra("KEY_URI", uri); // 이미지 uri
+                intent.putExtra(KEY_MSG, msg); // 입력한 메시지
+                intent.putExtra(KEY_URI, uri); // 이미지 uri
 
                 startActivity(intent);
             }
@@ -107,6 +109,7 @@ public class Tab2Image extends Fragment {
 
         if (requestCode == REQ_CODE_SELECT_IMAGE) {
             if (resultCode == Activity.RESULT_OK) {
+
                 try {
                     //Uri에서 이미지 이름을 얻어온다.
                     //String name_Str = getImageNameToUri(data.getData());
@@ -119,8 +122,6 @@ public class Tab2Image extends Fragment {
                     //배치해놓은 ImageView에 set
                     imageTab2.setImageBitmap(image_bitmap);
 
-
-                    Toast.makeText(getActivity(), "name_Str : ", Toast.LENGTH_SHORT).show();
 
                     Uri uri = data.getData();
                     String[] projection = {MediaStore.Images.Media.DATA};

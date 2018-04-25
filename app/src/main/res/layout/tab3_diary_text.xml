@@ -20,6 +20,7 @@
         android:inputType="text"
         android:hint="Title"
         android:textSize="23dp"
+
         android:background="@drawable/background_tab3"
         android:textColorHint="@color/LightBlue"
         android:textColor="@color/White"
@@ -38,6 +39,7 @@
         android:ems="10"
         android:gravity="top"
         android:hint="일기 쓰기"
+        android:textColor="@color/Aqua"
         android:background="@drawable/background_tab3"
         android:inputType="textMultiLine|textNoSuggestions"
         android:textColorHint="@color/LightBlue"

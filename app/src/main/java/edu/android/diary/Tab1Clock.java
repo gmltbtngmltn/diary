@@ -1,5 +1,6 @@
 package edu.android.diary;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import java.util.Locale;
 
 
 public class Tab1Clock extends Fragment {
+
+    public static final String KEY_CLOCK = "KEY_MSG";
 
      Tab1Clock tab1Clock;
      TextView textTitle, textDay;
@@ -51,6 +54,8 @@ public class Tab1Clock extends Fragment {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd.E", Locale.ENGLISH);
         textDay.setText(format.format(calendar.getTime()));
+
+
 
         /**
          * 각 달마다 다른 문구가 뜨도록 설정

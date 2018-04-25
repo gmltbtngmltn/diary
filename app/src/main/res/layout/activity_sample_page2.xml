@@ -4,73 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SamplePage"
-    android:background="@color/Black">
-
-    <ImageView
-        android:id="@+id/imageSample"
-        android:layout_width="match_parent"
-        android:layout_height="347dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_report_image" />
+    tools:context=".SamplePage2"
+    android:background="@color/black">
 
     <EditText
-        android:id="@+id/editSample"
-        android:layout_width="match_parent"
-        android:layout_height="132dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
+        android:id="@+id/editSample2Title"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="56dp"
         android:background="@drawable/background_tab3"
         android:ems="10"
-        android:gravity="top"
-        android:hint="일기"
-
-        android:inputType="textMultiLine"
-        android:textColor="@color/LightBlue"
+        android:hint="Title"
+        android:textColor="@color/Aqua"
+        android:inputType="text"
         android:textColorHint="@color/Aqua"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageSample" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editSample2Diary"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="일기"
+        android:textColor="@color/Aqua"
+        android:textColorHint="@color/Aqua"
+        android:textSize="20dp"
+        android:gravity="top"
+        android:background="@drawable/background_tab3"
+        android:inputType="textMultiLine|textNoSuggestions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editSample2Title" />
 
     <Button
-        android:id="@+id/btnSampleSave"
+        android:id="@+id/dtnSample2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="15dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="15dp"
-        android:text="Recording"
-        android:textSize="18dp"
-        android:background="@drawable/background_tab3"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="SAVE"
+        android:textSize="20dp"
         android:textColor="@color/Aqua"
+        android:background="@drawable/background_tab3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSample"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editSample2Diary" />
 
     <TextView
-        android:id="@+id/textSampleDate"
+        android:id="@+id/textDateSample2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/Aqua"
+        android:textSize="18dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Date"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:textSize="18dp"
-        android:textColor="@color/Aqua"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSample" />
-
+        app:layout_constraintTop_toBottomOf="@+id/editSample2Diary" />
 </android.support.constraint.ConstraintLayout>
