@@ -4,9 +4,10 @@ public class Diary {
 
     public static final String[] TYPES={"TextOnly","TextImg"};
 
+    private String tile; //일기 제목
     private String photoPath;//사진파일경로를 담는 맴버변수
     private String txt;//일기장의 text내용을 담는 맴버변수
-    private String type;
+    private String type; //일기 유형
 
     private int year;
     private int month;
@@ -30,6 +31,13 @@ public class Diary {
         this.day=day;
     }
 
+    public void setTile(String tile) {
+        this.tile = tile;
+    }
+
+    public String getTile() {
+        return tile;
+    }
 
     public void setType(String type) {
         this.type = type;

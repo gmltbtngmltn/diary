@@ -10,6 +10,7 @@ import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -26,18 +27,26 @@ import android.widget.Toast;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
 public class Tab2Image extends Fragment {
 
+    final int REQ_CODE_SELECT_IMAGE = 100;
+    public static final String KEY_IMG= "key_IMG";
+    public static final String KEY_MSG = "key_meg";
+    public static final String KEY_IMGNAME = "key_NAME";
+
+    private Bitmap bitmap;
+    private String bimapName;
+
     ImageView imageTab2;
-    ProgressBar progressTab2;
+
     EditText editTab2;
     Button btnTab2;
-    final int REQ_CODE_SELECT_IMAGE = 100;
+
     TextView tvLetter;
     Uri uri;
-    public static final String KEY_URI= "key_uri";
-    public static final String KEY_MSG = "key_meg";
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,7 +76,8 @@ public class Tab2Image extends Fragment {
 
                 String msg = editTab2.getText().toString();
                 intent.putExtra(KEY_MSG, msg); // 입력한 메시지
-                intent.putExtra(KEY_URI, uri); // 이미지 uri
+                intent.putExtra(KEY_IMGNAME, bimapName);//이미지 이름
+                intent.putExtra(KEY_IMG, bitmap); // 이미지 uri
 
                 startActivity(intent);
             }
@@ -108,32 +118,19 @@ public class Tab2Image extends Fragment {
 //        Toast.makeText(getBaseContext(), "resultCode : " + resultCode, Toast.LENGTH_SHORT).show();
 
         if (requestCode == REQ_CODE_SELECT_IMAGE) {
-            if (resultCode == Activity.RESULT_OK) {
+            if (resultCode == AppCompatActivity.RESULT_OK) {
 
                 try {
-                    //Uri에서 이미지 이름을 얻어온다.
-                    //String name_Str = getImageNameToUri(data.getData());
-                    uri = data.getData();
 
                     //이미지 데이터를 비트맵으로 받아온다.
-                    Bitmap image_bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), data.getData());
+                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), data.getData());
                     imageTab2.findViewById(R.id.tab2ImageView);
 
                     //배치해놓은 ImageView에 set
-                    imageTab2.setImageBitmap(image_bitmap);
+                    imageTab2.setImageBitmap(bitmap);
 
-
-                    Uri uri = data.getData();
-                    String[] projection = {MediaStore.Images.Media.DATA};
-
-                    Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
-                    cursor.moveToFirst();
-
-//        Log.d(TAG, DatabaseUtils.dumpCursorToString(cursor));
-
-                    int columnIndex = cursor.getColumnIndex(projection[0]);
-                    String picturePath = cursor.getString(columnIndex); // returns null
-                    cursor.close();
+                    //Uri에서 이미지 이름을 얻어온다.
+                    bimapName = getImageNameToUri(data.getData());
 
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
@@ -145,19 +142,14 @@ public class Tab2Image extends Fragment {
 
     }
 
-//    public String getImageNameToUri(Uri data)
-//    {
-//        String[] proj = { MediaStore.Images.Media.DATA };
-//        Cursor cursor = getContentResolver().query(data, proj, null, null, null);
-//        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-//
-//        cursor.moveToFirst();
-//
-//        String imgPath = cursor.getString(column_index);
-//        String imgName = imgPath.substring(imgPath.lastIndexOf("/")+1);
-//
-//        return imgName;
-//    }
+    private String getImageNameToUri(Uri data) {
+            String[] proj = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getActivity().managedQuery(data, proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA); cursor.moveToFirst();
+            String imgPath = cursor.getString(column_index);
+            String imgName = imgPath.substring(imgPath.lastIndexOf("/")+1);
+            return imgName;
+    }
 
 
 }

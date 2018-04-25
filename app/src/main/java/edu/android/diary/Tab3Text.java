@@ -37,10 +37,10 @@ public class Tab3Text extends Fragment{
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SamplePage2.class);
 
-                String msg = editTitle.getText().toString();
-                String msg2 = editText.getText().toString();
-                intent.putExtra(KEY_TITLE, msg); // 입력한 메시지
-                intent.putExtra(KEY_DIARY, msg2); // 이미지 uri
+                String msgt = editTitle.getText().toString();
+                String msgd = editText.getText().toString();
+                intent.putExtra(KEY_TITLE, msgt); // 제목
+                intent.putExtra(KEY_DIARY, msgd); //내용
 
                 startActivity(intent);
             }

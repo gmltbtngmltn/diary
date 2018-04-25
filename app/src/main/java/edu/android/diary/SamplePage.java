@@ -36,8 +36,7 @@ import java.util.Date;
 import java.util.Locale;
 
 
-import static edu.android.diary.Tab2Image.KEY_MSG;
-import static edu.android.diary.Tab2Image.KEY_URI;
+import static edu.android.diary.Tab2Image.*;
 import static edu.android.diary.MainActivity.TAG;
 import static edu.android.diary.MainActivity.DIARY_DIRECTORY;
 
@@ -62,109 +61,35 @@ public class SamplePage extends AppCompatActivity {
         imageView = findViewById(R.id.imageSample);
         textDate = findViewById(R.id.textSampleDate);
         btnSave1 = findViewById(R.id.btnSampleSave);
-//        editText.setFocusable(false);
-//        editText.setClickable(false);
 
-        /*버튼 누르면 더미 데이터에 저장*/
-        btnSave1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 저장 디렉토리
-                File saveDirectory = new File(Environment.getExternalStorageDirectory(), DIARY_DIRECTORY);
-
-                // 저장할 파일
-                SimpleDateFormat sdf = new SimpleDateFormat("_yyyyMMdd_HHmmss");
-                String timestamp = sdf.format(new Date());
-                String fileName = DIARY_FILE_NAME + timestamp;
-
-                File saveFile = new File(saveDirectory, fileName);
-                FileOutputStream out = null;
-                OutputStreamWriter writer = null;
-                BufferedWriter bw = null;
-                try {
-                    out = new FileOutputStream(saveFile);
-                    writer = new OutputStreamWriter(out);
-                    bw = new BufferedWriter(writer);
-
-                    bw.write(editText.getText().toString());
-                    Log.i(TAG, "파일 생성됨");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Log.e(TAG, "파일 생성 실패");
-                } finally {
-                    try {
-                        bw.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-/*
-                String dirPath = getFilesDir().getAbsolutePath();
-                File file = new File(dirPath);
-
-                // 일치하는 폴더가 없으면 생성
-                if (!file.exists()) {
-                    file.mkdirs();
-                    Toast.makeText(SamplePage.this, "Folder Success", Toast.LENGTH_SHORT).show();
-                }
-
-                // txt 파일 생성
-                String testStr = textDate + "txt";
-                File savefile = new File(dirPath + "/test.txt");
-                try {
-                    FileOutputStream fos = new FileOutputStream(savefile);
-                    fos.write(testStr.getBytes());
-                    fos.close();
-                    Toast.makeText(SamplePage.this, "Save Success", Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                }
-
-                // 파일이 1개 이상이면 파일 이름 출력
-                if (file.listFiles().length > 0)
-                    for (File f : file.listFiles()) {
-                        String str = f.getName();
-                        Log.v(null, "fileName : " + str);
-
-                        // 파일 내용 읽어오기
-                        String loadPath = dirPath + "/" + str;
-                        try {
-                            FileInputStream fis = new FileInputStream(loadPath);
-                            BufferedReader bufferReader = new BufferedReader(new InputStreamReader(fis));
-
-                            String content = "", temp = "";
-                            while ((temp = bufferReader.readLine()) != null) {
-                                content += temp;
-                            }
-                            Log.v(null, "" + content);
-                        } catch (Exception e) {
-                        }
-                    }
-*/
-
-            }
-        });
-
-
-
-        /*작성한 일기와 이미지 불러오는 부분*/
+        //Tab2Image에서 불러온 것들
         Intent intent = getIntent();
-        String msg = intent.getStringExtra(KEY_MSG);
-        Uri uri = intent.getParcelableExtra(KEY_URI);
+        final String msg = intent.getStringExtra(KEY_MSG);
+        final String imgname=intent.getStringExtra(KEY_IMGNAME);
+        final Bitmap bitmap = intent.getParcelableExtra(KEY_IMG);
 
+        //Tab2Image에서 불러온 것들을 표시
         editText.setText(msg);
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd.E", Locale.ENGLISH);
         textDate.setText(format.format(calendar.getTime()));
 
-
         try {
-
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
             imageView.setImageBitmap(bitmap);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        //그리고 외부저장소에 저장
+        btnSave1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DiaryDao.getInstance().writeDiary(0,bitmap,imgname,msg);
+            }
+        });
+
+
+
 
     }
 
