@@ -27,7 +27,8 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".DirayDetailActivity" />
         <activity android:name=".SamplePage" />
-        <activity android:name=".SamplePage2"></activity>
+        <activity android:name=".SamplePage2"/>
+        <activity android:name=".daySearch"></activity>
     </application>
 
 </manifest>
