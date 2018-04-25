@@ -54,7 +54,7 @@ public class DiaryListActivity extends AppCompatActivity {
         @Override
         public Diaryholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(DiaryListActivity.this);
-            View view = inflater.inflate(R.layout.diary_list_item, parent, false);
+            View view = inflater.inflate(R.layout.diary_list_item0, parent, false);
 
             Diaryholder holder = new Diaryholder(view);
 
@@ -134,7 +134,7 @@ public class DiaryListActivity extends AppCompatActivity {
             public Diaryholder(View itemView) {
                 super(itemView);
                 this.itemView = itemView;
-                this.imageView = itemView.findViewById(R.id.imageView);
+                this.imageView = itemView.findViewById(R.id.imageView0);
                 this.textView = itemView.findViewById(R.id.textView);
             }
         }
