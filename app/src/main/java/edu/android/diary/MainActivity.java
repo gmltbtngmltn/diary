@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
     public static final String DIARY_DIRECTORY = "MyDiary";
     private static final int REQ_CODE_PERMISSION = 1;
+    private Button button;
 
     private void createDirectory() {
         File saveDirectory = new File(Environment.getExternalStorageDirectory(), DIARY_DIRECTORY);
@@ -36,17 +38,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView textView = findViewById(R.id.textview);
-        textView.setOnClickListener(new View.OnClickListener() {
+        button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Animation.class);
                 startActivity(intent);
-
-
-
             }
         });
+
+
+
 
         //////////초장부터 외부저장소 사용권한 허용하기
         String[] permissions = {
@@ -67,18 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void gotosetting(View view) {
-         Intent intent = new Intent(MainActivity.this, DiarySetting.class);
-         startActivity(intent);
 
 
-    }
-
-
-    public void goToCalendar(View view) {
-        Intent intent = new Intent(MainActivity.this,Calendar.class);
-        startActivity(intent);
-    }
 
 
     ////////////////////////외부저장소 사용권한 허용하기
@@ -115,9 +107,5 @@ public class MainActivity extends AppCompatActivity {
     }
     ///////////////////////////외부저장소 사용권한 허용하기
 
-    public void godaysearch(View view) {
-        Intent intent = new Intent(MainActivity.this, daySearch.class);
-         startActivity(intent);
-    }
 
 }
