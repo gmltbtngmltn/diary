@@ -3,22 +3,39 @@ package edu.android.diary;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
+    public static final String TAG = "MainActivity";
+    public static final String DIARY_DIRECTORY = "MyDiary";
     private static final int REQ_CODE_PERMISSION = 1;
 
+    private void createDirectory() {
+        File saveDirectory = new File(Environment.getExternalStorageDirectory(), DIARY_DIRECTORY);
+        Log.i(TAG, "저장 디렉토리: " + saveDirectory.getPath());
+        if (!saveDirectory.exists()) {
+            saveDirectory.mkdir();
+            Log.i(TAG, "디렉토리 생성됨");
+        } else {
+            Log.i(TAG, "디렉토리 이미 있음");
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         TextView textView = findViewById(R.id.textview);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             // 필요한 권한들이 허용된 경우
             Toast.makeText(this, "권한 허용됨",
                     Toast.LENGTH_LONG).show();
+            createDirectory();
         } else {
 
             ActivityCompat.requestPermissions(this, permissions,
@@ -76,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                     grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "권한 허용됨",
                         Toast.LENGTH_LONG).show();
+                createDirectory();
             } else {
                 Toast.makeText(this, "권한을 허용해주세요...",
                         Toast.LENGTH_SHORT).show();
