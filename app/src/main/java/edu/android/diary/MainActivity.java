@@ -95,4 +95,10 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
     ///////////////////////////외부저장소 사용권한 허용하기
+
+    public void godaysearch(View view) {
+        Intent intent = new Intent(MainActivity.this, daySearch.class);
+         startActivity(intent);
+    }
+
 }
