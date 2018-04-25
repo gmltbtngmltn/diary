@@ -55,9 +55,9 @@
         app:layout_constraintTop_toTopOf="@+id/guideline6"></CalendarView>
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/dayday"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="29dp"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -90,7 +90,7 @@
         app:layout_constraintGuide_percent="0.97" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/monthSearch"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="상세 버튼"
