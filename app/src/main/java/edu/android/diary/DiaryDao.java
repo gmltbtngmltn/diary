@@ -16,6 +16,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 //각 diary 객체를 생성,삭제,수정,열람
@@ -97,7 +98,12 @@ public class DiaryDao {
     public void writeDiary(Bitmap bitmap, String imagename,String diaryTxt) {
         File fileB=new File(childPath,imagename);
 
-        Diary diary = new Diary(imagename,diaryTxt);
+        Calendar cal=Calendar.getInstance();
+        int year=cal.get(Calendar.YEAR);
+        int month=cal.get(Calendar.MONTH) + 1;
+        int day=cal.get(Calendar.DAY_OF_MONTH);
+
+        Diary diary = new Diary(imagename,diaryTxt,year,month,day);
         diaries.add(diary);
 
         OutputStream out = null;
@@ -157,8 +163,10 @@ public class DiaryDao {
     }//diary객체들을 삭제하는 부분
 
     public void updateDiary(int position,String imagename, String diaryTxt){
-        Diary diary=new Diary(imagename,diaryTxt);
-        diaries.set(position,diary);
+        diaries.get(position).setPhotoPath(imagename);
+        diaries.get(position).setTxt(diaryTxt);
+
+        diaries.set(position,diaries.get(position));
 
         //변경된 배열을 파일에 다시 저장
         OutputStream out = null;

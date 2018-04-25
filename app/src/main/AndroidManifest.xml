@@ -20,12 +20,13 @@
         </activity>
         <activity android:name=".Animation" />
         <activity android:name=".DiarySetting" />
-        <activity android:name=".Calendar" />
+        <activity android:name=".CalendarActivity" />
         <activity
             android:name=".DiaryPart"
             android:label="@string/title_activity_diary_part"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".DirayDetailActivity"></activity>
+        <activity android:name=".DirayDetailActivity" />
+        <activity android:name=".SamplePage"></activity>
     </application>
 
 </manifest>

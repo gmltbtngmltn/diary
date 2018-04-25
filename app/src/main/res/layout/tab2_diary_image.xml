@@ -21,7 +21,7 @@
         android:id="@+id/editTab2"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_above="@+id/tab3Btn"
+        android:layout_above="@+id/tab2Btn"
         android:layout_alignParentStart="true"
         android:ems="10"
         android:hint="Write Diary"
@@ -29,7 +29,7 @@
         android:maxLength="100" />
 
     <Button
-        android:id="@+id/tab3Btn"
+        android:id="@+id/tab2Btn"
         android:background="@color/White"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
