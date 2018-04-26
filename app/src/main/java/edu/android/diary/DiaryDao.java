@@ -95,43 +95,78 @@ public class DiaryDao {
     }//diary객체들을 읽는부분(2) (비트맵 이미지를 파일경로에서 읽어온다)
 
 
-    public void writeDiary(Bitmap bitmap, String imagename,String diaryTxt) {
-        File fileB=new File(childPath,imagename);
+    public void writeDiary(int type,Bitmap bitmap, String imagename,String diaryTxt) {
+        if(type==0) {//이미지 텍스트
+            File fileB = new File(childPath, imagename);
 
-        Calendar cal=Calendar.getInstance();
-        int year=cal.get(Calendar.YEAR);
-        int month=cal.get(Calendar.MONTH) + 1;
-        int day=cal.get(Calendar.DAY_OF_MONTH);
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH) + 1;
+            int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        Diary diary = new Diary(imagename,diaryTxt,year,month,day);
-        diaries.add(diary);
+            Diary diary = new Diary(imagename, diaryTxt, year, month, day);
+            diaries.add(diary);
 
-        OutputStream out = null;
-        BufferedOutputStream bout = null;
-        ObjectOutputStream oos = null;
+            OutputStream out = null;
+            BufferedOutputStream bout = null;
+            ObjectOutputStream oos = null;
 
-        OutputStream outB = null;
-        BufferedOutputStream boutB = null;
+            OutputStream outB = null;
+            BufferedOutputStream boutB = null;
 
-        try {
-            out = new FileOutputStream(file,false);
-            bout = new BufferedOutputStream(out);
-            oos = new ObjectOutputStream(bout);
-
-            oos.writeObject(diaries);
-
-            outB = new FileOutputStream(fileB,false);
-            boutB = new BufferedOutputStream(outB);
-
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, boutB);
-        } catch (Exception e) {
-            Log.e(TAG,e.getMessage());
-        } finally {
             try {
-                oos.close();
-                boutB.close();
-            } catch (IOException e) {
-                Log.e(TAG,e.getMessage());
+                out = new FileOutputStream(file, false);
+                bout = new BufferedOutputStream(out);
+                oos = new ObjectOutputStream(bout);
+
+                oos.writeObject(diaries);
+
+                outB = new FileOutputStream(fileB, false);
+                boutB = new BufferedOutputStream(outB);
+
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, boutB);
+            } catch (Exception e) {
+                Log.e(TAG, e.getMessage());
+            } finally {
+                try {
+                    oos.close();
+                    boutB.close();
+                } catch (IOException e) {
+                    Log.e(TAG, e.getMessage());
+                }
+            }
+        }else if(type==1){// 텍스트only
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH) + 1;
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+
+            Diary diary = new Diary(diaryTxt, year, month, day);
+            diaries.add(diary);
+
+            OutputStream out = null;
+            BufferedOutputStream bout = null;
+            ObjectOutputStream oos = null;
+
+            OutputStream outB = null;
+            BufferedOutputStream boutB = null;
+
+            try {
+                out = new FileOutputStream(file, false);
+                bout = new BufferedOutputStream(out);
+                oos = new ObjectOutputStream(bout);
+
+                oos.writeObject(diaries);
+
+            } catch (Exception e) {
+                Log.e(TAG, e.getMessage());
+            } finally {
+                try {
+                    oos.close();
+                    boutB.close();
+                } catch (IOException e) {
+                    Log.e(TAG, e.getMessage());
+                }
             }
         }
     }//diary객체들을 쓰는부분
