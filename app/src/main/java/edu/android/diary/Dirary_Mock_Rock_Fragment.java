@@ -30,10 +30,21 @@ public class Dirary_Mock_Rock_Fragment extends Fragment {
     private List<Diary> dataset;
     private DiaryAdaptor adaptor;
 
+    private int command;
+    private int year,month,day;
+
     public Dirary_Mock_Rock_Fragment() {
-        // Required empty public constructor
+
     }
 
+    public static Dirary_Mock_Rock_Fragment newInstance(int command,int year,int month,int day){
+        Dirary_Mock_Rock_Fragment fragment=new Dirary_Mock_Rock_Fragment();
+        fragment.command=command;
+        fragment.year=year;
+        fragment.day=month;
+        fragment.day=day;
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,61 +89,76 @@ public class Dirary_Mock_Rock_Fragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull DiaryAdaptor.Diaryholder holder, final int position) {
-            final Diary diary = dataset.get(position);
-            Bitmap bitmap=DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
+            Diary diary=null;
 
-            holder.imageView.setImageBitmap(bitmap);holder.textView.setText(diary.getTxt());
+            switch (command){
+                case 0:
+                    diary = dataset.get(position);
+                    break;
+                case 1:
+                     if(dataset.get(position).getYear()==year
+                             &&dataset.get(position).getMonth()==month
+                             &&dataset.get(position).getDay()==day) {
+                         diary = dataset.get(position);
+                     }
+                    break;
+            }
 
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                Bitmap bitmap = DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
 
-                @Override
-                public void onClick(View v) {
-                    Intent intent = DirayDetailActivity.newIntent(getContext(), position);
-                    startActivity(intent);
-                }
+                holder.imageView.setImageBitmap(bitmap);
+                holder.textView.setText(diary.getYear() + "/" + diary.getMonth() + "/" + diary.getDay());
 
-            });
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
 
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                            getContext());
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = DirayDetailActivity.newIntent(getContext(), position);
+                        startActivity(intent);
+                    }
 
-                    // 제목셋팅
-                    alertDialogBuilder.setTitle("데이터 삭제");
+                });
 
-                    // AlertDialog 셋팅
-                    alertDialogBuilder
-                            .setMessage("하지 않겠는가?")
-                            .setCancelable(false)
-                            .setPositiveButton("삭제",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(
-                                                DialogInterface dialog, int id) {
+                holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                getContext());
 
-                                            DiaryDao.getInstance().deleteDiary(position);
+                        // 제목셋팅
+                        alertDialogBuilder.setTitle("데이터 삭제");
 
-                                            Toast.makeText(getContext(), "삭제됨", Toast.LENGTH_SHORT).show();
-                                            dataset = DiaryDao.getInstance().getContactList();
-                                            gangshin();
-                                        }
-                                    })
-                            .setNegativeButton("취소",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(
-                                                DialogInterface dialog, int id) {
-                                            // 다이얼로그를 취소한다
-                                            dialog.cancel();
-                                        }
-                                    });
-                    // 다이얼로그 생성
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    // 다이얼로그 보여주기
-                    alertDialog.show();
-                    return true;
-                }
-            });
+                        // AlertDialog 셋팅
+                        alertDialogBuilder
+                                .setMessage("하지 않겠는가?")
+                                .setCancelable(false)
+                                .setPositiveButton("삭제",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(
+                                                    DialogInterface dialog, int id) {
+
+                                                DiaryDao.getInstance().deleteDiary(position);
+
+                                                Toast.makeText(getContext(), "삭제됨", Toast.LENGTH_SHORT).show();
+                                                dataset = DiaryDao.getInstance().getContactList();
+                                                gangshin();
+                                            }
+                                        })
+                                .setNegativeButton("취소",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(
+                                                    DialogInterface dialog, int id) {
+                                                // 다이얼로그를 취소한다
+                                                dialog.cancel();
+                                            }
+                                        });
+                        // 다이얼로그 생성
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        // 다이얼로그 보여주기
+                        alertDialog.show();
+                        return true;
+                    }
+                });
         }
 
         @Override
