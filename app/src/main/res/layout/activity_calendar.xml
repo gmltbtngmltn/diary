@@ -59,7 +59,7 @@
                 android:layout_width="380dp"
                 android:layout_height="300dp"
                 android:visibility="invisible"
-                android:src="@drawable/mot1"
+                android:src="@drawable/ic_launcher_background"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="45dp"
