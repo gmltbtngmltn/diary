@@ -1,36 +1,21 @@
 package edu.android.diary;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
-import static edu.android.diary.MainActivity.DIARY_DIRECTORY;
-import static edu.android.diary.MainActivity.TAG;
-import static edu.android.diary.Tab2Image.KEY_MSG;
 import static edu.android.diary.Tab3Text.KEY_DIARY;
 import static edu.android.diary.Tab3Text.KEY_TITLE;
 
 public class SamplePage2 extends AppCompatActivity {
-    public static final String DIARY_FILE_NAME_2 = "diary2";
-
     TextView textDate1;
     EditText editTitle2, editText2;
     Button btnSave2;

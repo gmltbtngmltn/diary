@@ -3,11 +3,6 @@ package edu.android.diary;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.net.UrlQuerySanitizer;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,30 +14,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 
 import static edu.android.diary.Tab2Image.*;
-import static edu.android.diary.MainActivity.TAG;
-import static edu.android.diary.MainActivity.DIARY_DIRECTORY;
 
 
 public class SamplePage extends AppCompatActivity {
-    public static final String DIARY_FILE_NAME = "diary";
 
     private TextView textDate;
     private EditText editText;
@@ -84,7 +66,13 @@ public class SamplePage extends AppCompatActivity {
         btnSave1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DiaryDao.getInstance().writeDiary(0,bitmap,imgname,msg);
+                try {
+                    DiaryDao.getInstance().writeDiary(0, bitmap, imgname, msg);
+                }catch (Exception exc){
+                    Log.e("shipsheki", exc.getMessage());
+                }
+                Toast.makeText(SamplePage.this, "saved",
+                        Toast.LENGTH_LONG).show();
             }
         });
 

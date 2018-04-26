@@ -51,17 +51,7 @@ public class Tab2Image extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab2_diary_image, container, false);
-
-        imageTab2 = rootView.findViewById(R.id.tab2ImageView);
-
-        editTab2 = rootView.findViewById(R.id.editTab2);
-        tvLetter = rootView.findViewById(R.id.textLetter);
-
-        btnTab2 = rootView.findViewById(R.id.tab2Btn);
-
-
-        return rootView;
+        return inflater.inflate(R.layout.tab2_diary_image, container, false);
     }
 
 
@@ -69,6 +59,14 @@ public class Tab2Image extends Fragment {
     public void onStart() {
         super.onStart();
 
+        View rootView=getView();
+
+        imageTab2 = rootView.findViewById(R.id.tab2ImageView);
+
+        editTab2 = rootView.findViewById(R.id.editTab2);
+        tvLetter = rootView.findViewById(R.id.textLetter);
+
+        btnTab2 = rootView.findViewById(R.id.tab2Btn);
         btnTab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

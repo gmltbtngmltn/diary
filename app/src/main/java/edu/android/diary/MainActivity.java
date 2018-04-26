@@ -18,19 +18,12 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
-    public static final String DIARY_DIRECTORY = "MyDiary";
+
     private static final int REQ_CODE_PERMISSION = 1;
     private Button button;
 
     private void createDirectory() {
-        File saveDirectory = new File(Environment.getExternalStorageDirectory(), DIARY_DIRECTORY);
-        Log.i(TAG, "저장 디렉토리: " + saveDirectory.getPath());
-        if (!saveDirectory.exists()) {
-            saveDirectory.mkdir();
-            Log.i(TAG, "디렉토리 생성됨");
-        } else {
-            Log.i(TAG, "디렉토리 이미 있음");
-        }
+        DiaryDao.getInstance().createDir();
     }
 
     @Override

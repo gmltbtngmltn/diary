@@ -23,14 +23,26 @@ import java.util.List;
 
 public class DiaryDao {
     private static final String TAG = "tttttt";
+    public static final String DIARY_DIRECTORY = "/MyDiary";
 
     private static final String parentPath= Environment.getExternalStorageDirectory().getPath();
-    private static final String childPath=parentPath+"/custDir";
+    private static final String childPath=parentPath+DIARY_DIRECTORY;
 
     private List<Diary> diaries=new ArrayList<>();
     private static DiaryDao instance=null;
 
     File file=new File(childPath,"diary.dat");
+
+    public void  createDir(){
+        File filedir=new File(childPath);
+        if(!filedir.exists()){
+            filedir.mkdirs();
+            Log.i(TAG,"폴더가 생성");
+        }else{
+            Log.i(TAG,"이미 폴더가 있음");
+            diaries = getContactList();
+        }
+    }
 
     public static DiaryDao getInstance(){
         if(instance==null){
@@ -39,15 +51,7 @@ public class DiaryDao {
         return instance;
     }
 
-    private DiaryDao(){
-        File filedir=new File(childPath);
-        if(!filedir.exists()){
-            filedir.mkdirs();
-        }else{
-            Log.i(TAG,"이미 폴더가 있음");
-            diaries = getContactList();
-        }
-    }
+    private DiaryDao(){}
 
     public List<Diary> getContactList() {
         InputStream in = null;
