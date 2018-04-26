@@ -1,12 +1,13 @@
 package edu.android.diary;
 
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,25 +20,39 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class DiaryListActivity extends AppCompatActivity {
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class Dirary_Mock_Rock_Fragment extends Fragment {
 
     private RecyclerView recycler;
     private List<Diary> dataset;
     private DiaryAdaptor adaptor;
-    private static final String TAG = "tttttt";
+
+    public Dirary_Mock_Rock_Fragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diary_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_dirary__mock__rock_, container, false);
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        View view=getView();
         dataset = DiaryDao.getInstance().getContactList();
-        Log.i(TAG,""+dataset.size());
 
-        recycler = findViewById(R.id.recycle);
+        recycler = view.findViewById(R.id.recycler);
 
         recycler.setHasFixedSize(true);
 
-        recycler.setLayoutManager(new LinearLayoutManager(this));
+        recycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
         adaptor = new DiaryAdaptor();
 
@@ -52,28 +67,27 @@ public class DiaryListActivity extends AppCompatActivity {
 
         @NonNull
         @Override
-        public Diaryholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            LayoutInflater inflater = LayoutInflater.from(DiaryListActivity.this);
+        public DiaryAdaptor.Diaryholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            LayoutInflater inflater = LayoutInflater.from(getContext());
             View view = inflater.inflate(R.layout.diary_list_item0, parent, false);
 
-            Diaryholder holder = new Diaryholder(view);
+            DiaryAdaptor.Diaryholder holder = new DiaryAdaptor.Diaryholder(view);
 
             return holder;
         }
 
         @Override
-        public void onBindViewHolder(@NonNull Diaryholder holder, final int position) {
+        public void onBindViewHolder(@NonNull DiaryAdaptor.Diaryholder holder, final int position) {
             final Diary diary = dataset.get(position);
-
             Bitmap bitmap=DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
-            holder.imageView.setImageBitmap(bitmap);
-            holder.textView.setText(diary.getTxt());
+
+            holder.imageView.setImageBitmap(bitmap);holder.textView.setText(diary.getTxt());
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
-                    Intent intent = DirayDetailActivity.newIntent(DiaryListActivity.this, position);
+                    Intent intent = DirayDetailActivity.newIntent(getContext(), position);
                     startActivity(intent);
                 }
 
@@ -83,7 +97,7 @@ public class DiaryListActivity extends AppCompatActivity {
                 @Override
                 public boolean onLongClick(View v) {
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                            DiaryListActivity.this);
+                            getContext());
 
                     // 제목셋팅
                     alertDialogBuilder.setTitle("데이터 삭제");
@@ -99,7 +113,7 @@ public class DiaryListActivity extends AppCompatActivity {
 
                                             DiaryDao.getInstance().deleteDiary(position);
 
-                                            Toast.makeText(DiaryListActivity.this, "삭제됨", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getContext(), "삭제됨", Toast.LENGTH_SHORT).show();
                                             dataset = DiaryDao.getInstance().getContactList();
                                             gangshin();
                                         }
@@ -135,7 +149,7 @@ public class DiaryListActivity extends AppCompatActivity {
                 super(itemView);
                 this.itemView = itemView;
                 this.imageView = itemView.findViewById(R.id.imageView0);
-                this.textView = itemView.findViewById(R.id.textView);
+                this.textView = itemView.findViewById(R.id.textView0);
             }
         }
     }

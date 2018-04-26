@@ -1,8 +1,10 @@
 package edu.android.diary;
 
-public class Diary {
+import java.io.Serializable;
 
-    public static final String[] TYPES={"TextOnly","TextImg"};
+public class Diary implements Serializable {
+
+    public transient static final String[] TYPES={"TextImg","TextOnly"};
 
     private String tile; //일기 제목
     private String photoPath;//사진파일경로를 담는 맴버변수

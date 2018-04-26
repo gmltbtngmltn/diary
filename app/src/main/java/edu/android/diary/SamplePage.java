@@ -3,6 +3,9 @@ package edu.android.diary;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.net.URI;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -30,9 +34,7 @@ public class SamplePage extends AppCompatActivity {
     private EditText editText;
     private ImageView imageView;
     private Button btnSave1;
-    private File file;
-    private Context context;
-    private URL url;
+    private Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class SamplePage extends AppCompatActivity {
         Intent intent = getIntent();
         final String msg = intent.getStringExtra(KEY_MSG);
         final String imgname=intent.getStringExtra(KEY_IMGNAME);
-        final Bitmap bitmap = intent.getParcelableExtra(KEY_IMG);
+        final Uri uri = intent.getParcelableExtra(KEY_IMG);
 
         //Tab2Image에서 불러온 것들을 표시
         editText.setText(msg);
@@ -57,6 +59,7 @@ public class SamplePage extends AppCompatActivity {
         textDate.setText(format.format(calendar.getTime()));
 
         try {
+            bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
             imageView.setImageBitmap(bitmap);
         } catch (Exception e) {
             e.printStackTrace();

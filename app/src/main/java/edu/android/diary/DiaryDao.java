@@ -100,8 +100,11 @@ public class DiaryDao {
 
 
     public void writeDiary(int type,Bitmap bitmap, String imagename,String diaryTxt) {
+        Log.i(TAG, "type=" + type + ", imagename=" + imagename + ", diaryText" + diaryTxt);
+
         if(type==0) {//이미지 텍스트
             File fileB = new File(childPath, imagename);
+            Log.i(TAG, "fileB path: " + fileB.getPath());
 
             Calendar cal = Calendar.getInstance();
             int year = cal.get(Calendar.YEAR);
@@ -123,20 +126,27 @@ public class DiaryDao {
                 bout = new BufferedOutputStream(out);
                 oos = new ObjectOutputStream(bout);
 
+                Log.i(TAG, "[1]");
                 oos.writeObject(diaries);
+                Log.i(TAG, "[2]");
 
                 outB = new FileOutputStream(fileB, false);
                 boutB = new BufferedOutputStream(outB);
 
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, boutB);
+                Log.i(TAG, "[3]");
+                boolean check=bitmap.compress(Bitmap.CompressFormat.JPEG, 100, boutB);
+                Log.i(TAG, "[4]");
+                Log.i(TAG,""+check);
             } catch (Exception e) {
-                Log.e(TAG, e.getMessage());
+//                Log.e(TAG, e.getMessage());
+                e.printStackTrace();
             } finally {
                 try {
                     oos.close();
                     boutB.close();
                 } catch (IOException e) {
-                    Log.e(TAG, e.getMessage());
+//                    Log.e(TAG, e.getMessage());
+                    e.printStackTrace();
                 }
             }
         }else if(type==1){// 텍스트only
@@ -163,13 +173,15 @@ public class DiaryDao {
                 oos.writeObject(diaries);
 
             } catch (Exception e) {
-                Log.e(TAG, e.getMessage());
+               // Log.e(TAG, e.getMessage());
+               e.printStackTrace();
             } finally {
                 try {
                     oos.close();
                     boutB.close();
                 } catch (IOException e) {
-                    Log.e(TAG, e.getMessage());
+//                    Log.e(TAG, e.getMessage());
+                    e.printStackTrace();
                 }
             }
         }

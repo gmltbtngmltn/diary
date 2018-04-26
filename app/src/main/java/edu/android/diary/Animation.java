@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -33,16 +34,15 @@ public class Animation extends AppCompatActivity {
         circleMenu.setOnMenuSelectedListener(new OnMenuSelectedListener() {
             @Override
             public void onMenuSelected(int index) {
+
                 switch (index) {
                     case 0:
                         Intent intent = new Intent(Animation.this, DiaryPart.class);
                         startActivity(intent);
-
                         break;
                     case 1:
                         Intent intent2 = new Intent(Animation.this, daySearch.class);
                         startActivity(intent2);
-                        
                         break;
                     case 2:
                         Toast.makeText(Animation.this, "Notify button Clciked", Toast.LENGTH_SHORT).show();
@@ -51,9 +51,8 @@ public class Animation extends AppCompatActivity {
                         Toast.makeText(Animation.this, "Settings button Clcked", Toast.LENGTH_SHORT).show();
                         break;
 
-
-
                 }
+
             }
         });
 

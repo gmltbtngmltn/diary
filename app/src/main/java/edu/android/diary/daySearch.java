@@ -3,7 +3,11 @@ package edu.android.diary;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -52,6 +56,13 @@ public class daySearch extends AppCompatActivity {
 
             }//end onClick()
         });
-
+        FragmentManager fm=getSupportFragmentManager();
+        Fragment fragment=fm.findFragmentById(R.id.mock_rock_frag);
+        if(fragment==null){
+            FragmentTransaction transaction=fm.beginTransaction();
+            Dirary_Mock_Rock_Fragment diraryMockRockFragment=new Dirary_Mock_Rock_Fragment();
+            transaction.replace(R.id.mock_rock_frag,diraryMockRockFragment);
+            transaction.commit();
+        }
     }//end onCreate
 }

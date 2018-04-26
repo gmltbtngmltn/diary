@@ -70,14 +70,18 @@ public class Tab2Image extends Fragment {
         btnTab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getActivity(), SamplePage.class);
 
                 String msg = editTab2.getText().toString();
                 intent.putExtra(KEY_MSG, msg); // 입력한 메시지
                 intent.putExtra(KEY_IMGNAME, bimapName);//이미지 이름
-                intent.putExtra(KEY_IMG, bitmap); // 이미지 uri
-
-                startActivity(intent);
+                intent.putExtra(KEY_IMG, uri); // 이미지 uri
+                try {
+                    startActivity(intent);
+                }catch (Exception exc){
+                Log.e("shipsheki", exc.getMessage());
+                }
             }
         });
 
@@ -120,8 +124,9 @@ public class Tab2Image extends Fragment {
 
                 try {
 
+                    uri=data.getData();
                     //이미지 데이터를 비트맵으로 받아온다.
-                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), data.getData());
+                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
                     imageTab2.findViewById(R.id.tab2ImageView);
 
                     //배치해놓은 ImageView에 set
@@ -131,7 +136,6 @@ public class Tab2Image extends Fragment {
                     bimapName = getImageNameToUri(data.getData());
 
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
