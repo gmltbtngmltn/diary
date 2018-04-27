@@ -17,6 +17,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 //각 diary 객체를 생성,삭제,수정,열람
@@ -31,7 +32,13 @@ public class DiaryDao {
     private List<Diary> diaries=new ArrayList<>();
     private static DiaryDao instance=null;
 
-    File file=new File(childPath,"diary.dat");
+    private File file=new File(childPath,"diary.dat");
+
+
+    //test를 위한 임시 날짜(프로젝트가 완성되면 지워질 부분)
+    private int[] im_shi_date={1919,3,1};
+    //test를 위한 임시 날짜
+
 
     public void  createDir(){
         File filedir=new File(childPath);
@@ -99,19 +106,25 @@ public class DiaryDao {
     }//diary객체들을 읽는부분(2) (비트맵 이미지를 파일경로에서 읽어온다)
 
 
-    public void writeDiary(int type,Bitmap bitmap, String imagename,String diaryTxt) {
-        Log.i(TAG, "type=" + type + ", imagename=" + imagename + ", diaryText" + diaryTxt);
+    public void writeDiary(String title,Bitmap bitmap, String imagename, String diaryTxt) {
 
-        if(type==0) {//이미지 텍스트
             File fileB = new File(childPath, imagename);
+
+            //test를 위한 임시 날짜(프로젝트가 완성되면 지워질 부분)
+            File file_im_shi_nal_zza = new File(childPath,"im_shi_date.dat");
+            //test를 위한 임시 날짜
+
             Log.i(TAG, "fileB path: " + fileB.getPath());
 
-            Calendar cal = Calendar.getInstance();
+            Calendar cal = new GregorianCalendar(im_shi_date[0], im_shi_date[1], im_shi_date[2]);
             int year = cal.get(Calendar.YEAR);
             int month = cal.get(Calendar.MONTH) + 1;
             int day = cal.get(Calendar.DAY_OF_MONTH);
+            int hour=cal.get(Calendar.HOUR_OF_DAY);
+            int minute=cal.get(Calendar.MINUTE);
+            int second=cal.get(Calendar.SECOND);
 
-            Diary diary = new Diary(imagename, diaryTxt, year, month, day);
+            Diary diary = new Diary(title,imagename, diaryTxt, year, month, day,hour,minute,second);
             diaries.add(diary);
 
             OutputStream out = null;
@@ -121,22 +134,35 @@ public class DiaryDao {
             OutputStream outB = null;
             BufferedOutputStream boutB = null;
 
+            OutputStream outim = null;
+            BufferedOutputStream boutim = null;
+            ObjectOutputStream oosim = null;
+
             try {
                 out = new FileOutputStream(file, false);
                 bout = new BufferedOutputStream(out);
                 oos = new ObjectOutputStream(bout);
 
-                Log.i(TAG, "[1]");
                 oos.writeObject(diaries);
-                Log.i(TAG, "[2]");
+
 
                 outB = new FileOutputStream(fileB, false);
                 boutB = new BufferedOutputStream(outB);
 
-                Log.i(TAG, "[3]");
-                boolean check=bitmap.compress(Bitmap.CompressFormat.JPEG, 100, boutB);
-                Log.i(TAG, "[4]");
-                Log.i(TAG,""+check);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, boutB);
+
+
+                //test를 위한 임시 날짜(프로젝트가 완성되면 지워질 부분)
+                im_shi_date[2]++;
+
+                outim = new FileOutputStream(file_im_shi_nal_zza, false);
+                boutim = new BufferedOutputStream(outim);
+                oosim=new ObjectOutputStream(boutim);
+
+                oos.writeObject(im_shi_date);
+                //test를 위한 임시 날짜
+
+
             } catch (Exception e) {
 //                Log.e(TAG, e.getMessage());
                 e.printStackTrace();
@@ -144,47 +170,13 @@ public class DiaryDao {
                 try {
                     oos.close();
                     boutB.close();
+                    boutim.close();
                 } catch (IOException e) {
 //                    Log.e(TAG, e.getMessage());
                     e.printStackTrace();
                 }
             }
-        }else if(type==1){// 텍스트only
-            Calendar cal = Calendar.getInstance();
-            int year = cal.get(Calendar.YEAR);
-            int month = cal.get(Calendar.MONTH) + 1;
-            int day = cal.get(Calendar.DAY_OF_MONTH);
 
-            Diary diary = new Diary(diaryTxt, year, month, day);
-            diaries.add(diary);
-
-            OutputStream out = null;
-            BufferedOutputStream bout = null;
-            ObjectOutputStream oos = null;
-
-            OutputStream outB = null;
-            BufferedOutputStream boutB = null;
-
-            try {
-                out = new FileOutputStream(file, false);
-                bout = new BufferedOutputStream(out);
-                oos = new ObjectOutputStream(bout);
-
-                oos.writeObject(diaries);
-
-            } catch (Exception e) {
-               // Log.e(TAG, e.getMessage());
-               e.printStackTrace();
-            } finally {
-                try {
-                    oos.close();
-                    boutB.close();
-                } catch (IOException e) {
-//                    Log.e(TAG, e.getMessage());
-                    e.printStackTrace();
-                }
-            }
-        }
     }//diary객체들을 쓰는부분
 
     public void deleteDiary(int position){

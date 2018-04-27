@@ -56,26 +56,25 @@ public class daySearch extends AppCompatActivity {
 
             }//end onClick()
         });
-//
-//        tranj(0);//기본적으로 전체기간의 일기가보여짐
+       tranj();//기본적으로 전체기간의 일기가보여짐
 
-        bot_ki = (Button)findViewById(R.id.btn_gi_rock_botki);
-        bot_ki.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tranj(1);//검색된 날짜의 일기가보여짐
-            }
-        });
+//        bot_ki = (Button)findViewById(R.id.btn_gi_rock_botki);
+//        bot_ki.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                tranj();//검색된 날짜의 일기가보여짐
+//            }
+//        });
 
     }//end onCreate
 
 
-    public void tranj(int command){
+    public void tranj(){
         FragmentManager fm=getSupportFragmentManager();
         Fragment fragment=fm.findFragmentById(R.id.mock_rock_frag);
         if(fragment==null){
             FragmentTransaction transaction=fm.beginTransaction();
-            Dirary_Mock_Rock_Fragment diraryMockRockFragment=Dirary_Mock_Rock_Fragment.newInstance(command,dia, mes, ano);
+            Dirary_Mock_Rock_Fragment diraryMockRockFragment=Dirary_Mock_Rock_Fragment.newInstance(dia, mes, ano);
             transaction.replace(R.id.mock_rock_frag,diraryMockRockFragment);
             transaction.commit();
         }

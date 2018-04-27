@@ -4,49 +4,37 @@ import java.io.Serializable;
 
 public class Diary implements Serializable {
 
-    public transient static final String[] TYPES={"TextImg","TextOnly"};
-
-    private String tile; //일기 제목
+    private String title;
     private String photoPath;//사진파일경로를 담는 맴버변수
     private String txt;//일기장의 text내용을 담는 맴버변수
-    private String type; //일기 유형
 
     private int year;
     private int month;
     private int day;
+    private int hour;
+    private int minute;
+    private int second;
 
-
-    public Diary(String photoPath, String txt,int year,int month,int day) {
-        this.type=TYPES[0];
+    public Diary(String title,String photoPath, String txt,int year,int month,int day,int hour,int minute,int second) {
+        this.title=title;
         this.photoPath = photoPath;
         this.txt = txt;
+
         this.year=year;
         this.month=month;
         this.day=day;
+        this.hour=hour;
+        this.minute=minute;
+        this.second=second;
+
     }
 
-    public Diary(String txt,int year,int month,int day) {
-        this.type=TYPES[1];
-        this.txt = txt;
-        this.year=year;
-        this.month=month;
-        this.day=day;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setTile(String tile) {
-        this.tile = tile;
-    }
-
-    public String getTile() {
-        return tile;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getType() {
-        return type;
+    public String getTitle() {
+        return title;
     }
 
     public void setYear(int year) {

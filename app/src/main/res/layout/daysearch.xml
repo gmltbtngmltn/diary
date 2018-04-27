@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -29,17 +30,17 @@
 
 
         <EditText
+            android:id="@+id/efecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="date"
+            android:layout_weight="1"
             android:ems="10"
-            android:id="@+id/efecha"
-            android:layout_weight="1"/>
+            android:inputType="date" />
 
         <TextView
+            android:id="@+id/tv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv"/>
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btn_gi_rock_botki"
@@ -57,14 +58,16 @@
 
     <FrameLayout
         android:id="@+id/mock_rock_frag"
-        android:layout_width="368dp"
-        android:layout_height="490dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
     </FrameLayout>
 

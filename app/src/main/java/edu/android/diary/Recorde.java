@@ -66,6 +66,14 @@ public class Recorde extends AppCompatActivity {
         imageView = findViewById(R.id.imageGallCame);
         btnClose = findViewById(R.id.imageBtnClose);
         btnSave = findViewById(R.id.imageBtnSave);
+        btnSave.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String title=editTitle.getText().toString();
+                String main=editMain.getText().toString();
+                DiaryDao.getInstance().writeDiary(title, bitmap, "임시",main);
+            }
+        });
 
         //textDate1에 현재 날짜 출력하기
         Calendar calendar = Calendar.getInstance();
@@ -188,9 +196,5 @@ public class Recorde extends AppCompatActivity {
         }
         return "";
     }
-
-
-
-
 
 }
