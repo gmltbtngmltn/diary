@@ -51,7 +51,7 @@ public class Recorde extends AppCompatActivity {
     private File destination = null;
     private InputStream inputStreamImg;
     private String imgPath = null;
-    private static final String IMAGE_DIRECTORY = "/demonuts";
+    private static final String IMAGE_DIRECTORY = "/myDiary";
     private final int PICK_IMAGE_CAMERA = 1, PICK_IMAGE_GALLERY = 2;
 
     @Override
@@ -72,6 +72,18 @@ public class Recorde extends AppCompatActivity {
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd.E", Locale.KOREA);
         textDate.setText(format.format(calendar.getTime()));
 
+        //버튼 클릭시 Activity 닫기
+        btnClose.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                finish();
+            }
+        });
+
+        //TODO : btnSave 버튼을 누르면 내용이 저장 되도록 기능 설정
+
+
         //카메라, 갤러리에서 이미지 사진 찍고 가져오기
         imageView.setOnClickListener(new OnClickListener() {
             @Override
@@ -85,7 +97,7 @@ public class Recorde extends AppCompatActivity {
     }
     private void showPictureDialog(){
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
-        pictureDialog.setTitle("Select Action");
+        pictureDialog.setTitle("어디서 사진 데려올래?");
         String[] pictureDialogItems = {
                 "갤러리에서 이미지 데려오기",
                 "카메라로 찍어 이미지 입양하기" };
