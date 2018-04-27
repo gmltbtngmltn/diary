@@ -61,15 +61,16 @@ private static int[] IMAGE_IDS={R.drawable.moon00,
 
                 switch (index) {
                     case 0:
-                        Intent intent = new Intent(Animation.this, DiaryPart.class);
-                        startActivity(intent);
+                        Intent goDiary = new Intent(Animation.this, DiaryPart.class);
+                        startActivity(goDiary);
                         break;
                     case 1:
-                        Intent intent2 = new Intent(Animation.this, daySearch.class);
-                        startActivity(intent2);
+                        Intent goCalendar = new Intent(Animation.this, daySearch.class);
+                        startActivity(goCalendar);
                         break;
                     case 2:
-                        Toast.makeText(Animation.this, "Notify button Clciked", Toast.LENGTH_SHORT).show();
+                        Intent goClock = new Intent(Animation.this, TabClockView.class);
+                        startActivity(goClock);
                         break;
                     case 3:
                         Toast.makeText(Animation.this, "Settings button Clcked", Toast.LENGTH_SHORT).show();

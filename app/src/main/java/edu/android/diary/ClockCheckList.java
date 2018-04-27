@@ -12,7 +12,7 @@ import android.view.View;
 
 import java.util.Calendar;
 
-public class Tab1ClockView extends View {
+public class ClockCheckList extends View {
 
     private int height, width = 0;
     private int padding = 0;
@@ -26,15 +26,15 @@ public class Tab1ClockView extends View {
     private Rect rect = new Rect();
 
 
-    public Tab1ClockView(Context context) {
+    public ClockCheckList(Context context) {
         super(context);
     }
 
-    public Tab1ClockView(Context context, AttributeSet attrs) {
+    public ClockCheckList(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public Tab1ClockView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ClockCheckList(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

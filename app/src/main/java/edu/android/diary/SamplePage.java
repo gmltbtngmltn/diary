@@ -1,5 +1,6 @@
 package edu.android.diary;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -69,14 +70,21 @@ public class SamplePage extends AppCompatActivity {
         btnSave1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent goAnimation = new Intent(SamplePage.this, Animation.class);
+                startActivity(goAnimation);
+
                 try {
                     DiaryDao.getInstance().writeDiary(0, bitmap, imgname, msg);
                 }catch (Exception exc){
-                    Log.e("shipsheki", exc.getMessage());
+
                 }
                 Toast.makeText(SamplePage.this, "saved",
                         Toast.LENGTH_LONG).show();
+
             }
+
+
         });
 
 

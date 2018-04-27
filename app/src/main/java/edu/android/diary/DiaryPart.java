@@ -1,9 +1,6 @@
 package edu.android.diary;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,8 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import android.widget.TextView;
 
 public class DiaryPart extends AppCompatActivity {
 
@@ -112,7 +107,7 @@ public class DiaryPart extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.tab1_diary_clock, container, false);
+            View rootView = inflater.inflate(R.layout.tab1_diary_clock_view, container, false);
 
 
 
@@ -150,7 +145,7 @@ public class DiaryPart extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 2;
+            return 1;
         }
     }
 }
