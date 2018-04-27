@@ -28,9 +28,6 @@
             android:name=".DiarySetting"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CalendarActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".DiaryPart"
             android:label="@string/title_activity_diary_part"
             android:screenOrientation="portrait"
@@ -42,7 +39,8 @@
             android:name=".SamplePage"
             android:screenOrientation="portrait" />
         <activity android:name=".daySearch" />
-        <activity android:name=".ClockCheckList"></activity>
+        <activity android:name=".ClockCheckList" />
+        <activity android:name=".Recorde"></activity>
     </application>
 
 </manifest>

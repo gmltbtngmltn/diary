@@ -1,5 +1,6 @@
 package edu.android.diary;
 
+import android.icu.text.AlphabeticIndex;
 import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,7 +62,7 @@ private static int[] IMAGE_IDS={R.drawable.moon00,
 
                 switch (index) {
                     case 0:
-                        Intent goDiary = new Intent(Animation.this, DiaryPart.class);
+                        Intent goDiary = new Intent(Animation.this, Recorde.class);
                         startActivity(goDiary);
                         break;
                     case 1:
@@ -69,8 +70,7 @@ private static int[] IMAGE_IDS={R.drawable.moon00,
                         startActivity(goCalendar);
                         break;
                     case 2:
-                        Intent goClock = new Intent(Animation.this, TabClockView.class);
-                        startActivity(goClock);
+
                         break;
                     case 3:
                         Toast.makeText(Animation.this, "Settings button Clcked", Toast.LENGTH_SHORT).show();

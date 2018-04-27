@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -63,7 +64,7 @@ public class ClockCheckList extends View {
             initClock();
         }
 
-        canvas.drawColor(Color.BLACK);
+        canvas.drawColor(Color.parseColor("#F8F8FF"));
         drawCircle(canvas);
         drawCenter(canvas);
         drawNumeral(canvas);
@@ -118,7 +119,7 @@ public class ClockCheckList extends View {
 
     private void drawCircle(Canvas canvas) {
         paint.reset();
-        paint.setColor(getResources().getColor(android.R.color.holo_blue_light));
+        paint.setColor(getResources().getColor(android.R.color.holo_green_dark));
         paint.setStrokeWidth(5);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);

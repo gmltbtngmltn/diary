@@ -107,7 +107,7 @@ public class DiaryPart extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.tab1_diary_clock_view, container, false);
+            View rootView = inflater.inflate(R.layout.tab2_diary_image, container, false);
 
 
 
