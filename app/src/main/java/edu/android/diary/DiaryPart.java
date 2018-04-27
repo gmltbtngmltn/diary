@@ -139,9 +139,9 @@ public class DiaryPart extends AppCompatActivity {
                 case 0:
                     Tab2Image tab2 = new Tab2Image();
                     return tab2;
-                case 1:
-                    Tab3Text tab3 = new Tab3Text();
-                    return tab3;
+//                case 1:
+//                    Tab3Text tab3 = new Tab3Text();
+//                    return tab3;
                 default:
                     return  null;
             }

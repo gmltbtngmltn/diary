@@ -80,7 +80,7 @@ public class Tab2Image extends Fragment {
                 try {
                     startActivity(intent);
                 }catch (Exception exc){
-                Log.e("shipsheki", exc.getMessage());
+
                 }
             }
         });
