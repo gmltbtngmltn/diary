@@ -24,7 +24,7 @@ import java.util.List;
 
 public class DiaryDao {
     private static final String TAG = "tttttt";
-    public static final String DIARY_DIRECTORY = "/MyDiary";
+    public static final String DIARY_DIRECTORY = "/myDiary";
 
     private static final String parentPath= Environment.getExternalStorageDirectory().getPath();
     private static final String childPath=parentPath+DIARY_DIRECTORY;

@@ -91,7 +91,8 @@ public class Dirary_Mock_Rock_Fragment extends Fragment {
             Bitmap bitmap = DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
 
             holder.imageView.setImageBitmap(bitmap);
-            holder.textView.setText(diary.getYear() + "/" + diary.getMonth() + "/" + diary.getDay());
+            holder.textTitle.setText(diary.getTitle());
+            holder.textdate.setText(diary.getYear() + "/" + diary.getMonth() + "/" + diary.getDay()+"/"+diary.getHour()+"/"+diary.getMinute()+"/"+diary.getSecond());
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -151,13 +152,14 @@ public class Dirary_Mock_Rock_Fragment extends Fragment {
         class Diaryholder extends RecyclerView.ViewHolder {
             private View itemView;
             private ImageView imageView;
-            private TextView textView;
+            private TextView textTitle,textdate;
 
             public Diaryholder(View itemView) {
                 super(itemView);
                 this.itemView = itemView;
                 this.imageView = itemView.findViewById(R.id.imageView0);
-                this.textView = itemView.findViewById(R.id.textView0);
+                this.textdate = itemView.findViewById(R.id.textdate);
+                this.textTitle=itemView.findViewById(R.id.texttitle);
             }
         }
     }
