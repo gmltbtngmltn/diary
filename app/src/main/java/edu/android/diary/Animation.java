@@ -60,6 +60,8 @@ public class Animation extends AppCompatActivity {
                         startActivity(goCalendar);
                         break;
                     case 2:
+                        Intent goDetail = new Intent(Animation.this, DetailText.class);
+                        startActivity(goDetail);
 
                         break;
                     case 3:

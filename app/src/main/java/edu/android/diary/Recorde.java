@@ -1,5 +1,6 @@
 package edu.android.diary;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.app.Activity;
@@ -39,6 +40,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.tsengvn.typekit.TypekitContextWrapper;
+
 public class Recorde extends AppCompatActivity {
 
     Uri selectedImageUri;
@@ -77,7 +80,7 @@ public class Recorde extends AppCompatActivity {
 
         //textDate1에 현재 날짜 출력하기
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd.E", Locale.KOREA);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd.E  HH:mm:ss", Locale.KOREA);
         textDate.setText(format.format(calendar.getTime()));
 
         //버튼 클릭시 Activity 닫기
@@ -106,6 +109,7 @@ public class Recorde extends AppCompatActivity {
     private void showPictureDialog(){
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
         pictureDialog.setTitle("어디서 사진 데려올래?");
+
         String[] pictureDialogItems = {
                 "갤러리에서 이미지 데려오기",
                 "카메라로 찍어 이미지 입양하기" };
@@ -196,5 +200,6 @@ public class Recorde extends AppCompatActivity {
         }
         return "";
     }
+
 
 }

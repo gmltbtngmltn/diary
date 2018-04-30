@@ -13,7 +13,7 @@ import android.view.View;
 
 import java.util.Calendar;
 
-public class ClockCheckList extends View {
+public class ClockView extends View {
 
     private int height, width = 0;
     private int padding = 0;
@@ -27,15 +27,15 @@ public class ClockCheckList extends View {
     private Rect rect = new Rect();
 
 
-    public ClockCheckList(Context context) {
+    public ClockView(Context context) {
         super(context);
     }
 
-    public ClockCheckList(Context context, AttributeSet attrs) {
+    public ClockView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public ClockCheckList(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ClockView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
