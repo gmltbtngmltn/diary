@@ -16,6 +16,7 @@ public class DetailText extends AppCompatActivity {
     Button btnDone, btnPrev;
     EditText editText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,6 @@ public class DetailText extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DetailText.this, Recorde.class);
-
                 //TODO : 기록보는 페이지에서 일기를 누르면 이미지값과 텍스트값 받아오기
 
 
