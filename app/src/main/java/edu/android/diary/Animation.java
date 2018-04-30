@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -35,7 +36,7 @@ public class Animation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
 
-        imggggg =findViewById(R.id.imageView);
+        imggggg = findViewById(R.id.imageView);
         java.util.Calendar cal = java.util.Calendar.getInstance();
         int year = cal.get(java.util.Calendar.YEAR);
         int month = cal.get(java.util.Calendar.MONTH) + 1;
@@ -51,15 +52,6 @@ public class Animation extends AppCompatActivity {
                 startActivity(intGoDiary);
             }
         });
-
-                                                     @Override
-                                                     public void onMenuClosed() {
-                                                         Toast.makeText(Animation.this, "Menu Closed", Toast.LENGTH_SHORT).show();
-                                                     }
-                                                 }
-        );
-
-
     }
 
     @Override
