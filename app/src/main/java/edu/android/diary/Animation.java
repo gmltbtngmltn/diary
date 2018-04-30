@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
 import com.hitomi.cmlibrary.OnMenuStatusChangeListener;
 
+import java.io.BufferedWriter;
 import java.util.Calendar;
 import java.util.List;
 
@@ -26,6 +28,9 @@ public class Animation extends AppCompatActivity {
             R.drawable.moon03, R.drawable.moon04,
             R.drawable.moon05, R.drawable.moon06, R.drawable.moon07};
 
+    Button btnDiary,btnRecord,btnThem;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,55 +42,17 @@ public class Animation extends AppCompatActivity {
         int month = cal.get(java.util.Calendar.MONTH) + 1;
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
+        btnDiary = findViewById(R.id.btnGoDiary);
+        btnRecord = findViewById(R.id.btnRecord);
 
-        circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
-
-        circleMenu.setMainMenu(Color.parseColor("#00BFFF"), R.mipmap.open_book, R.mipmap.book);
-        circleMenu.addSubMenu(Color.parseColor("#7FFFD4"), R.mipmap.film)
-                .addSubMenu(Color.parseColor("#1E90FF"), R.mipmap.letter)
-                .addSubMenu(Color.parseColor("#4169E1"), R.mipmap.movie)
-                .addSubMenu(Color.parseColor("#87CEEB"), R.mipmap.text);
-
-        circleMenu.setOnMenuSelectedListener(new OnMenuSelectedListener() {
+        btnDiary.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onMenuSelected(int index) {
-
-                switch (index) {
-                    case 0:
-                        Intent goDiary = new Intent(Animation.this, Recorde.class);
-                        startActivity(goDiary);
-                        break;
-                    case 1:
-                        Intent goCalendar = new Intent(Animation.this, daySearch.class);
-                        startActivity(goCalendar);
-                        break;
-                    case 2:
-                        Intent goDetail = new Intent(Animation.this, DetailText.class);
-                        startActivity(goDetail);
-
-                        break;
-                    case 3:
-                        Toast.makeText(Animation.this, "Settings button Clcked", Toast.LENGTH_SHORT).show();
-                        break;
-
-                }
-
+            public void onClick(View v) {
+                Intent intGoDiary = new Intent(Animation.this, Recorde.class);
+                startActivity(intGoDiary);
             }
         });
 
-        circleMenu.setOnMenuStatusChangeListener(new OnMenuStatusChangeListener() {
-
-                                                     @Override
-                                                     public void onMenuOpened() {
-                                                         Toast.makeText(Animation.this, "Menu Opend", Toast.LENGTH_SHORT).show();
-                                                     }
-
-                                                     @Override
-                                                     public void onMenuClosed() {
-                                                         Toast.makeText(Animation.this, "Menu Closed", Toast.LENGTH_SHORT).show();
-                                                     }
-                                                 }
-        );
 
 
     }

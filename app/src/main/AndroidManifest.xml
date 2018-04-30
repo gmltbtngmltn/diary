@@ -21,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Animation"
             android:screenOrientation="portrait" />
@@ -32,8 +33,10 @@
             android:name=".DirayDetailActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".daySearch" />
-        <activity android:name=".Recorde" />
-        <activity android:name=".DetailText" />
+        <activity android:name=".Recorde"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".DetailText"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
 
     </application>
 

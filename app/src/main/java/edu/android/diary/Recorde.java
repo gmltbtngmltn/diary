@@ -82,15 +82,14 @@ public class Recorde extends AppCompatActivity {
                     Log.i("aaaa",exc.getMessage());
                 }
 
-                Toast.makeText(Recorde.this, "앙 기모띠", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Recorde.this, "", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
 
-        //textDate1에 현재 날짜 출력하기
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd.E  HH:mm:ss", Locale.KOREA);
-        textDate.setText(format.format(calendar.getTime()));
+
+
+
 
         //버튼 클릭시 Activity 닫기
         btnClose.setOnClickListener(new OnClickListener() {
@@ -115,6 +114,10 @@ public class Recorde extends AppCompatActivity {
 
 
     }
+
+
+
+
     private void showPictureDialog(){
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
         pictureDialog.setTitle("어디서 사진 데려올래?");
@@ -174,17 +177,23 @@ public class Recorde extends AppCompatActivity {
             }
 
         } else if (requestCode == 1) {
-            bitmap = (Bitmap) data.getExtras().get("data");
-            imageView.setImageBitmap(bitmap);
+            if (data != null) {
+                bitmap = (Bitmap) data.getExtras().get("data");
+                if (bitmap == null) {
+                    Toast.makeText(this, "No camera result", Toast.LENGTH_SHORT).show();
+                }
 
-            try{
-                bimapName = DiaryDao.getInstance().saveCameraImg(bitmap, Recorde.this);
-            }catch (Exception exc){
-                Log.i("aaaa",exc.getMessage());
-                return;
+                imageView.setImageBitmap(bitmap);
+
+                try {
+                    bimapName = DiaryDao.getInstance().saveCameraImg(bitmap, Recorde.this);
+                } catch (Exception exc) {
+                    Log.i("aaaa", exc.getMessage());
+                    return;
+                }
+                Log.i("aaaa", bimapName);
+                Toast.makeText(Recorde.this, "Image Saved!", Toast.LENGTH_SHORT).show();
             }
-            Log.i("aaaa",bimapName);
-            Toast.makeText(Recorde.this, "Image Saved!", Toast.LENGTH_SHORT).show();
         }
     }
 
