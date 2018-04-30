@@ -71,6 +71,9 @@ public class Recorde extends AppCompatActivity {
         imageView = findViewById(R.id.imageGallCame);
         btnClose = findViewById(R.id.imageBtnClose);
         btnSave = findViewById(R.id.imageBtnSave);
+
+
+
         btnSave.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +119,14 @@ public class Recorde extends AppCompatActivity {
     }
 
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat smf = new SimpleDateFormat("yyyy.MM.dd.E  HH:m:ss");
+        String data = smf.format(calendar.getTime());
+        textDate.setText(data);
+    }
 
     private void showPictureDialog(){
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);

@@ -1,5 +1,26 @@
 package edu.android.diary;
 
+import android.app.Activity;
+
+public class MonthCalendar extends Activity {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //public class MonthCalendar extends Activity {
 //
 //    CompactCalendarView compactCalendar;
