@@ -51,6 +51,14 @@ public class Animation extends AppCompatActivity {
                 startActivity(intGoDiary);
             }
         });
+
+        btnRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intGoRecord = new Intent(Animation.this, daySearch.class);
+                startActivity(intGoRecord);
+            }
+        });
     }
 
     @Override
