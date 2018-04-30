@@ -87,6 +87,7 @@ public class DiaryList_FragmentRecycler extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull DiaryAdaptor.Diaryholder holder, final int position) {
             Diary diary = dataset.get(position);
+
             Bitmap bitmap = DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
 
             holder.imageView.setImageBitmap(bitmap);

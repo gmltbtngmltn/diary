@@ -43,11 +43,12 @@ public class Animation extends AppCompatActivity {
 
         btnDiary = findViewById(R.id.btnGoDiary);
         btnRecord = findViewById(R.id.btnRecord);
-        btnRecord.setOnClickListener(new View.OnClickListener() {
+
+        btnThem = findViewById(R.id.btnThem);
+
+        btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goCalendar = new Intent(Animation.this, daySearch.class);
-                startActivity(goCalendar);
             }
         });
 

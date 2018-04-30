@@ -91,15 +91,17 @@ public class DiaryDao {
     }//diary객체들을 읽는부분(1)
 
     public Bitmap LoadImage(String imagename){
-        File fileB=new File(imagename);
+        Log.i("aaaa",imagename);
+        File fileB=new File(childPath,imagename);
 
         InputStream InB = null;
         BufferedInputStream binB = null;
+        Bitmap bitmap=null;
         try {
             InB = new FileInputStream(fileB);
             binB = new BufferedInputStream(InB);
 
-            return BitmapFactory.decodeStream(binB);
+            bitmap= BitmapFactory.decodeStream(binB);
         } catch (Exception e) {
             Log.e(TAG,e.getMessage());
         } finally {
@@ -109,7 +111,7 @@ public class DiaryDao {
                 Log.e(TAG,e.getMessage());
             }
         }
-        return null;
+        return bitmap;
     }//diary객체들을 읽는부분(2) (비트맵 이미지를 파일경로에서 읽어온다)
 
     public List<Diary> getContactList(int day){
@@ -238,7 +240,7 @@ public class DiaryDao {
 
             boutf.close();
 
-            return f.getAbsolutePath();
+            return f.getName();
         } catch (Exception e1) {
             Log.i("aaaa",e1.getMessage());
         }
