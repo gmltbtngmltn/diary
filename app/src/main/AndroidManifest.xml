@@ -27,21 +27,19 @@
         <activity
             android:name=".DiarySetting"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".DiaryPart"
-            android:label="@string/title_activity_diary_part"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!--<activity-->
+            <!--android:name=".DiaryPart"-->
+            <!--android:label="@string/title_activity_diary_part"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar" />-->
         <activity
             android:name=".DirayDetailActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".SamplePage"
-            android:screenOrientation="portrait" />
         <activity android:name=".daySearch" />
-        <activity android:name=".ClockCheckList" />
+        <!--<activity android:name=".ClockCheckList" />--> <!-- 임시로 주석 -->
         <activity android:name=".Recorde" />
-        <activity android:name=".DetailText"></activity>
+        <activity android:name=".DetailText" />
+        <activity android:name=".DirayListActivity"></activity>
     </application>
 
 </manifest>

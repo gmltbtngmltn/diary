@@ -47,8 +47,9 @@ public class Recorde extends AppCompatActivity {
     EditText editTitle, editMain;
     ImageButton btnClose, btnSave;
     ImageView imageView;
-
     private Bitmap bitmap;
+    private String bimapName;
+
     private File destination = null;
     private InputStream inputStreamImg;
     private String imgPath = null;
@@ -72,7 +73,12 @@ public class Recorde extends AppCompatActivity {
             public void onClick(View v) {
                 String title=editTitle.getText().toString();
                 String main=editMain.getText().toString();
-                DiaryDao.getInstance().writeDiary(title, imgPath,main);
+                try {
+                    DiaryDao.getInstance().writeDiary(title, bitmap, bimapName,main);
+                }catch (Exception exc){
+                    Log.i("aaaa",exc.getMessage());
+                }
+
                 Toast.makeText(Recorde.this, "앙 기모띠", Toast.LENGTH_SHORT).show();
                 finish();
             }
@@ -152,11 +158,11 @@ public class Recorde extends AppCompatActivity {
             if (data != null) {
                 Uri contentURI = data.getData();
                 try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
-                    imgPath = saveImage(bitmap);
+                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
                     Toast.makeText(Recorde.this, "Image Saved!", Toast.LENGTH_SHORT).show();
                     imageView.setImageBitmap(bitmap);
 
+                    bimapName = DiaryDao.getInstance().getImageNameToUri(data.getData(),Recorde.this);
                 } catch (Exception e) {
                     e.printStackTrace();
                     Toast.makeText(Recorde.this, "Failed!", Toast.LENGTH_SHORT).show();
@@ -164,40 +170,19 @@ public class Recorde extends AppCompatActivity {
             }
 
         } else if (requestCode == 1) {
-            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            imageView.setImageBitmap(thumbnail);
-            imgPath=saveImage(thumbnail);
+            bitmap = (Bitmap) data.getExtras().get("data");
+            imageView.setImageBitmap(bitmap);
+
+            try{
+                bimapName = DiaryDao.getInstance().saveCameraImg(bitmap, Recorde.this);
+            }catch (Exception exc){
+                Log.i("aaaa",exc.getMessage());
+                return;
+            }
+            Log.i("aaaa",bimapName);
             Toast.makeText(Recorde.this, "Image Saved!", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public String saveImage(Bitmap myBitmap) {
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        myBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
-        File wallpaperDirectory = new File(
-                Environment.getExternalStorageDirectory() + IMAGE_DIRECTORY);
-        // have the object build the directory structure, if needed.
-        if (!wallpaperDirectory.exists()) {
-            wallpaperDirectory.mkdirs();
-        }
-
-        try {
-            File f = new File(wallpaperDirectory, Calendar.getInstance()
-                    .getTimeInMillis() + ".jpg");
-            f.createNewFile();
-            FileOutputStream fo = new FileOutputStream(f);
-            fo.write(bytes.toByteArray());
-            MediaScannerConnection.scanFile(this,
-                    new String[]{f.getPath()},
-                    new String[]{"image/jpeg"}, null);
-            fo.close();
-            Log.d("TAG", "File Saved::--->" + f.getAbsolutePath());
-
-            return f.getAbsolutePath();
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
-        return "";
-    }
 
 }
