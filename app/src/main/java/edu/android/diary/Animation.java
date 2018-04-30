@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -15,7 +14,6 @@ import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
 import com.hitomi.cmlibrary.OnMenuStatusChangeListener;
 
-import java.io.BufferedWriter;
 import java.util.Calendar;
 import java.util.List;
 
@@ -29,6 +27,7 @@ public class Animation extends AppCompatActivity {
             R.drawable.moon05, R.drawable.moon06, R.drawable.moon07};
 
     Button btnDiary,btnRecord,btnThem;
+
 
 
     @Override
@@ -53,6 +52,12 @@ public class Animation extends AppCompatActivity {
             }
         });
 
+                                                     @Override
+                                                     public void onMenuClosed() {
+                                                         Toast.makeText(Animation.this, "Menu Closed", Toast.LENGTH_SHORT).show();
+                                                     }
+                                                 }
+        );
 
 
     }
@@ -63,7 +68,8 @@ public class Animation extends AppCompatActivity {
 
         List<Diary> list = DiaryDao.getInstance().getContactList();
         int size = list.size();
-        imggggg.setImageResource(IMAGE_IDS[size]);
+        imggggg.setImageResource(IMAGE_IDS[size%7]);
+
 
         Log.i(MainActivity.TAG, "list size = " + list.size());
     }
