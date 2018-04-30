@@ -77,7 +77,7 @@ public class DiaryList_FragmentRecycler extends Fragment {
         @Override
         public DiaryAdaptor.Diaryholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            View view = inflater.inflate(R.layout.diary_list_item0, parent, false);
+            View view = inflater.inflate(R.layout.diary_list_item_recrycler, parent, false);
 
             DiaryAdaptor.Diaryholder holder = new DiaryAdaptor.Diaryholder(view);
 
