@@ -40,7 +40,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".daySearch" />
         <activity android:name=".ClockCheckList" />
-        <activity android:name=".Recorde"></activity>
+        <activity android:name=".Recorde" />
+        <activity android:name=".DetailText"></activity>
     </application>
 
 </manifest>
