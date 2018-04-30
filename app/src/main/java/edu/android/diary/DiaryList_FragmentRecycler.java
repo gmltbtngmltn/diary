@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Dirary_Mock_Rock_Fragment extends Fragment {
+public class DiaryList_FragmentRecycler extends Fragment {
 
     private RecyclerView recycler;
     private List<Diary> dataset;
@@ -32,12 +31,12 @@ public class Dirary_Mock_Rock_Fragment extends Fragment {
 
     private int year,month,day;
 
-    public Dirary_Mock_Rock_Fragment() {
+    public DiaryList_FragmentRecycler() {
 
     }
 
-    public static Dirary_Mock_Rock_Fragment newInstance(int year,int month,int day){
-        Dirary_Mock_Rock_Fragment fragment=new Dirary_Mock_Rock_Fragment();
+    public static DiaryList_FragmentRecycler newInstance(int year, int month, int day){
+        DiaryList_FragmentRecycler fragment=new DiaryList_FragmentRecycler();
         fragment.year=year;
         fragment.day=month;
         fragment.day=day;
@@ -48,7 +47,7 @@ public class Dirary_Mock_Rock_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dirary__mock__rock_, container, false);
+        return inflater.inflate(R.layout.fragment_dirary_list_recyler, container, false);
     }
 
     @Override
