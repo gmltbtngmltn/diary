@@ -97,7 +97,7 @@ public class DiaryList_FragmentRecycler extends Fragment {
 
                 @Override
                 public void onClick(View v) {
-                    Intent intent = DirayDetailActivity.newIntent(getContext(), position);
+                    Intent intent = DetailText.newIntent(getContext(), position);
                     startActivity(intent);
                 }
 
