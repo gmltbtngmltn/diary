@@ -83,8 +83,8 @@ public class DiaryDao {
         return diaries;
     }//diary객체들을 읽는부분(1)
 
-    public Bitmap LoadImage(String imagename){
-        File fileB=new File(childPath,imagename);
+    public Bitmap LoadImage(String imagepath){
+        File fileB=new File(imagepath);
 
         InputStream InB = null;
         BufferedInputStream binB = null;
@@ -106,15 +106,11 @@ public class DiaryDao {
     }//diary객체들을 읽는부분(2) (비트맵 이미지를 파일경로에서 읽어온다)
 
 
-    public void writeDiary(String title,Bitmap bitmap, String imagename, String diaryTxt) {
-
-            File fileB = new File(childPath, imagename);
+    public void writeDiary(String title, String imagename, String diaryTxt) {
 
             //test를 위한 임시 날짜(프로젝트가 완성되면 지워질 부분)
             File file_im_shi_nal_zza = new File(childPath,"im_shi_date.dat");
             //test를 위한 임시 날짜
-
-            Log.i(TAG, "fileB path: " + fileB.getPath());
 
             Calendar cal = new GregorianCalendar(im_shi_date[0], im_shi_date[1], im_shi_date[2]);
             int year = cal.get(Calendar.YEAR);
@@ -131,9 +127,6 @@ public class DiaryDao {
             BufferedOutputStream bout = null;
             ObjectOutputStream oos = null;
 
-            OutputStream outB = null;
-            BufferedOutputStream boutB = null;
-
             OutputStream outim = null;
             BufferedOutputStream boutim = null;
             ObjectOutputStream oosim = null;
@@ -144,13 +137,6 @@ public class DiaryDao {
                 oos = new ObjectOutputStream(bout);
 
                 oos.writeObject(diaries);
-
-
-                outB = new FileOutputStream(fileB, false);
-                boutB = new BufferedOutputStream(outB);
-
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, boutB);
-
 
                 //test를 위한 임시 날짜(프로젝트가 완성되면 지워질 부분)
                 im_shi_date[2]++;
@@ -169,8 +155,7 @@ public class DiaryDao {
             } finally {
                 try {
                     oos.close();
-                    boutB.close();
-                    boutim.close();
+                    oosim.close();
                 } catch (IOException e) {
 //                    Log.e(TAG, e.getMessage());
                     e.printStackTrace();

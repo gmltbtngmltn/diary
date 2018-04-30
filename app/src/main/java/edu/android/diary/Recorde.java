@@ -47,6 +47,7 @@ public class Recorde extends AppCompatActivity {
     EditText editTitle, editMain;
     ImageButton btnClose, btnSave;
     ImageView imageView;
+
     private Bitmap bitmap;
     private File destination = null;
     private InputStream inputStreamImg;
@@ -71,7 +72,9 @@ public class Recorde extends AppCompatActivity {
             public void onClick(View v) {
                 String title=editTitle.getText().toString();
                 String main=editMain.getText().toString();
-                DiaryDao.getInstance().writeDiary(title, bitmap, "임시",main);
+                DiaryDao.getInstance().writeDiary(title, imgPath,main);
+                Toast.makeText(Recorde.this, "앙 기모띠", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 
@@ -150,7 +153,7 @@ public class Recorde extends AppCompatActivity {
                 Uri contentURI = data.getData();
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
-                    String path = saveImage(bitmap);
+                    imgPath = saveImage(bitmap);
                     Toast.makeText(Recorde.this, "Image Saved!", Toast.LENGTH_SHORT).show();
                     imageView.setImageBitmap(bitmap);
 
@@ -163,7 +166,7 @@ public class Recorde extends AppCompatActivity {
         } else if (requestCode == 1) {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(thumbnail);
-            saveImage(thumbnail);
+            imgPath=saveImage(thumbnail);
             Toast.makeText(Recorde.this, "Image Saved!", Toast.LENGTH_SHORT).show();
         }
     }
