@@ -14,9 +14,9 @@ public class daySearch extends AppCompatActivity {
     private DatePicker datePicker;
     private Button check;
 
-    private int curYear;
-    private int curMonth;
-    private int curDay;
+    public int curYear;
+    public int curMonth;
+    public int curDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

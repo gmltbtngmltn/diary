@@ -3,7 +3,7 @@ package edu.android.diary;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 public class DirayListActivity extends AppCompatActivity {
@@ -26,7 +26,6 @@ public class DirayListActivity extends AppCompatActivity {
 
         textView.setText(year + "년 " + month + "월 " + day + "일");
 
-        //textView.setText();
 
 //        onDateTimeChanged();
     }
