@@ -1,11 +1,18 @@
 package edu.android.diary;
 
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.List;
 
 
 /**
@@ -13,6 +20,9 @@ import android.view.ViewGroup;
  */
 public class DiaryList_FragmentViewfliper extends Fragment {
 
+    private ViewPager pager;
+    private List<Diary> dataset;
+    private CustomAdapter adapter;
 
     public DiaryList_FragmentViewfliper() {
         // Required empty public constructor
@@ -25,5 +35,155 @@ public class DiaryList_FragmentViewfliper extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_diary_list__fragment_viewfliper, container, false);
     }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        View view=getView();
+
+        pager= (ViewPager)view.findViewById(R.id.pager);
+
+
+
+        //ViewPager에 설정할 Adapter 객체 생성
+
+        //ListView에서 사용하는 Adapter와 같은 역할.
+
+        //다만. ViewPager로 스크롤 될 수 있도록 되어 있다는 것이 다름
+
+        //PagerAdapter를 상속받은 CustomAdapter 객체 생성
+
+        //CustomAdapter에게 LayoutInflater 객체 전달
+
+        dataset = DiaryDao.getInstance().getContactList();
+
+        adapter= new CustomAdapter(getLayoutInflater());
+
+        //ViewPager에 Adapter 설정
+
+        pager.setAdapter(adapter);
+
+    }
+
+    class CustomAdapter extends PagerAdapter {
+
+
+
+        LayoutInflater inflater;
+
+
+
+        public CustomAdapter(LayoutInflater inflater) {
+
+            // TODO Auto-generated constructor stub
+
+
+
+            //전달 받은 LayoutInflater를 멤버변수로 전달
+
+            this.inflater=inflater;
+
+        }
+
+
+
+
+        //PagerAdapter가 가지고 잇는 View의 개수를 리턴
+
+        //보통 보여줘야하는 이미지 배열 데이터의 길이를 리턴
+
+        @Override
+
+        public int getCount() {
+
+            // TODO Auto-generated method stub
+
+            return dataset.size();
+
+        }
+
+
+
+        @Override
+
+        public Object instantiateItem(ViewGroup container, int position) {
+
+            // TODO Auto-generated method stub
+
+
+
+            View view=null;
+
+
+
+            //새로운 View 객체를 Layoutinflater를 이용해서 생성
+
+            //만들어질 View의 설계는 res폴더>>layout폴더>>viewpater_childview.xml 레이아웃 파일 사용
+
+            view= inflater.inflate(R.layout.diary_list_item_veiwpager, null);
+
+
+
+            //만들어진 View안에 있는 ImageView 객체 참조
+
+            //위에서 inflated 되어 만들어진 view로부터 findViewById()를 해야 하는 것에 주의.
+
+            ImageView imageView= (ImageView)view.findViewById(R.id.imageView1);
+            TextView textTitle=view.findViewById(R.id.texttitle1);
+            TextView textDate=view.findViewById(R.id.textdate1);
+
+            Diary diary = dataset.get(position);
+            Bitmap bitmap = DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
+            imageView.setImageBitmap(bitmap);
+            textTitle.setText(diary.getTitle());
+            textDate.setText(diary.getYear() + "/" + diary.getMonth() + "/" + diary.getDay()+"/"+diary.getHour()+"/"+diary.getMinute()+"/"+diary.getSecond());
+
+            //ViewPager에 만들어 낸 View 추가
+
+            container.addView(view);
+
+            return view;
+
+        }
+
+
+        @Override
+
+        public void destroyItem(ViewGroup container, int position, Object object) {
+
+            // TODO Auto-generated method stub
+
+
+
+            //ViewPager에서 보이지 않는 View는 제거
+
+            //세번째 파라미터가 View 객체 이지만 데이터 타입이 Object여서 형변환 실시
+
+            container.removeView((View)object);
+
+
+
+        }
+
+
+
+        //instantiateItem() 메소드에서 리턴된 Ojbect가 View가  맞는지 확인하는 메소드
+
+        @Override
+
+        public boolean isViewFromObject(View v, Object obj) {
+
+            // TODO Auto-generated method stub
+
+            return v==obj;
+
+        }
+
+
+
+
+    }
+
 
 }

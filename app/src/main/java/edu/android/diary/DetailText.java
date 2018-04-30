@@ -2,6 +2,7 @@ package edu.android.diary;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import static android.provider.Contacts.SettingsColumns.KEY;
 
 public class DetailText extends AppCompatActivity {
     public static final String KEY_URI = "key_img";
@@ -18,6 +22,11 @@ public class DetailText extends AppCompatActivity {
     Button btnDone, btnPrev;
     EditText editText;
 
+    public static Intent newIntent(Context context, int positoin){
+        Intent intent=new Intent(context,DetailText.class);
+        intent.putExtra(KEY,positoin);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +35,23 @@ public class DetailText extends AppCompatActivity {
 
         imageView = findViewById(R.id.imageDetail);
         editText = findViewById(R.id.editTextDetail);
-        btnPrev = findViewById(R.id.btnDetailRe);
+        btnPrev = findViewById(R.id.btnDetailRe);//수정
         btnDone = findViewById(R.id.btnDetailDone);
 
         editText.setFocusable(false);
         editText.setClickable(false);
 
+        Intent intent=getIntent();
+
+        int index=intent.getIntExtra(KEY,0);
+
+        Diary diary=DiaryDao.getInstance().getContactList().get(index);
+
+
+        Bitmap bitmap=DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
+        imageView.setImageBitmap(bitmap);
+
+        editText.setText(diary.getTxt());
 
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override

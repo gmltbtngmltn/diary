@@ -85,7 +85,7 @@ public class Recorde extends AppCompatActivity {
                     Log.i("aaaa",exc.getMessage());
                 }
 
-                Toast.makeText(Recorde.this, "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Recorde.this, "diary saved", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
