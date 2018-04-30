@@ -21,7 +21,6 @@ import java.util.List;
 public class Animation extends AppCompatActivity {
     private int currentIndex;
     private ImageView imggggg;
-    private CircleMenu circleMenu;
     private static int[] IMAGE_IDS = {R.drawable.moon00,
             R.drawable.moon01, R.drawable.moon02,
             R.drawable.moon03, R.drawable.moon04,
