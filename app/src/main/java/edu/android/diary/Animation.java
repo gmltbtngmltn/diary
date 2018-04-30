@@ -21,10 +21,12 @@ public class Animation extends AppCompatActivity {
     private int currentIndex;
     private ImageView imggggg;
     private CircleMenu circleMenu;
+
     private static int[] IMAGE_IDS = {R.drawable.moon00,
             R.drawable.moon01, R.drawable.moon02,
             R.drawable.moon03, R.drawable.moon04,
             R.drawable.moon05, R.drawable.moon06, R.drawable.moon07};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +98,8 @@ public class Animation extends AppCompatActivity {
 
         List<Diary> list = DiaryDao.getInstance().getContactList();
         int size = list.size();
-        imggggg.setImageResource(IMAGE_IDS[size]);
+        imggggg.setImageResource(IMAGE_IDS[size%7]);
+
 
         Log.i(MainActivity.TAG, "list size = " + list.size());
     }
