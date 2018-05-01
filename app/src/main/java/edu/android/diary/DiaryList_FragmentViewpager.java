@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,11 +29,22 @@ public class DiaryList_FragmentViewpager extends Fragment {
     private List<Diary> dataset;
     private CustomAdapter adapter;
 
+    private int comm;
+    private int year,month,day;
+
     public DiaryList_FragmentViewpager() {
         // Required empty public constructor
     }
 
-
+    public static  DiaryList_FragmentViewpager newInstance(int comm,int year, int month, int day){
+        DiaryList_FragmentViewpager fragment=new  DiaryList_FragmentViewpager();
+        fragment.comm=comm;
+        fragment.year=year;
+        fragment.month=month;
+        fragment.day=day;
+        Log.i("aaaa","year="+year+"month="+month+"day="+day);
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,8 +71,15 @@ public class DiaryList_FragmentViewpager extends Fragment {
         //PagerAdapter를 상속받은 CustomAdapter 객체 생성
 
         //CustomAdapter에게 LayoutInflater 객체 전달
+        Log.i("aaaa","ffff comm = "+comm);
+        if(comm==0) {
+            dataset = DiaryDao.getInstance().getContactList();
+        }else if(comm==1){
+            dataset = DiaryDao.getInstance().getContactList(year,month,day);
+            Log.i("aaaa","year="+year+"month="+month+"day="+day);
+        }
 
-        dataset = DiaryDao.getInstance().getContactList();
+        Log.i("aaaa","array = "+dataset.size());
 
         adapter= new CustomAdapter(getLayoutInflater());
 

@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,17 +30,21 @@ public class DiaryList_FragmentRecycler extends Fragment {
     private List<Diary> dataset;
     private DiaryAdaptor adaptor;
 
+    private int comm;
     private int year,month,day;
 
     public DiaryList_FragmentRecycler() {
 
     }
 
-    public static DiaryList_FragmentRecycler newInstance(int year, int month, int day){
+
+    public static DiaryList_FragmentRecycler newInstance(int comm,int year, int month, int day){
         DiaryList_FragmentRecycler fragment=new DiaryList_FragmentRecycler();
+        fragment.comm=comm;
         fragment.year=year;
-        fragment.day=month;
+        fragment.month=month;
         fragment.day=day;
+        Log.i("aaaa","year="+year+"month="+month+"day="+day);
         return fragment;
     }
 
@@ -54,7 +59,15 @@ public class DiaryList_FragmentRecycler extends Fragment {
     public void onStart() {
         super.onStart();
         View view=getView();
-        dataset = DiaryDao.getInstance().getContactList();
+        Log.i("aaaa","ffff comm = "+comm);
+        if(comm==0) {
+            dataset = DiaryDao.getInstance().getContactList();
+        }else if(comm==1){
+            dataset = DiaryDao.getInstance().getContactList(year,month,day);
+            Log.i("aaaa","year="+year+"month="+month+"day="+day);
+        }
+
+        Log.i("aaaa","array = "+dataset.size());
 
         recycler = view.findViewById(R.id.recycler);
 

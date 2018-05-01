@@ -7,10 +7,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
+
+import static edu.android.diary.DaySearch.*;
 
 public class DirayListActivity extends AppCompatActivity {
 
@@ -18,10 +21,16 @@ public class DirayListActivity extends AppCompatActivity {
     public SearchView searchView;
     private Button button;
 
+
     private FragmentManager fm;
     private FragmentTransaction transaction;
 
-    private int aa;
+    private int show;
+    private int comm;
+
+    private int year;
+    private int month;
+    private int day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +42,12 @@ public class DirayListActivity extends AppCompatActivity {
         button=findViewById(R.id.modechange);
 
         Intent intent = getIntent();
-        int year = intent.getIntExtra("SELECTED_YEAR", 1);
-        int month = intent.getIntExtra("SELECTED_MONTH", 1);
-        int day = intent.getIntExtra("SELECTED_DAY", 1);
+        year = intent.getIntExtra(SELECTED_YEAR, 1);
+        month = intent.getIntExtra(SELECTED_MONTH, 1);
+        day = intent.getIntExtra(SELECTED_DAY, 1);
+        comm=intent.getIntExtra(COMM,0);
 //        String searchDay = year + "년 " + month + "월 " + day + "일";
-
+        Log.i("aaaa","comm = "+comm);
         textView.setText(year + "년 " + month + "월 " + day + "일");
 
         //textView.setText();
@@ -45,7 +55,7 @@ public class DirayListActivity extends AppCompatActivity {
         Fragment fragment=fm.findFragmentById(R.id.container);
         if(fragment==null){
             transaction=fm.beginTransaction();
-            DiaryList_FragmentViewpager diaryList_fragmentViewpager =new DiaryList_FragmentViewpager();
+            DiaryList_FragmentViewpager diaryList_fragmentViewpager = DiaryList_FragmentViewpager.newInstance(comm,year,month,day);
             transaction.replace(R.id.container, diaryList_fragmentViewpager);
             transaction.commit();
         }
@@ -53,20 +63,19 @@ public class DirayListActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(aa==0){
+                if(show==0){
                     transaction=fm.beginTransaction();
-                    DiaryList_FragmentRecycler diaryList_fragmentRecycler=new DiaryList_FragmentRecycler();
+                    DiaryList_FragmentRecycler diaryList_fragmentRecycler = DiaryList_FragmentRecycler.newInstance(comm,year,month,day);
                     transaction.replace(R.id.container,diaryList_fragmentRecycler);
                     transaction.commit();
-                    aa=1;
-                }else if(aa==1){
+                    show=1;
+                }else if(show==1){
                     transaction=fm.beginTransaction();
-                    DiaryList_FragmentViewpager diaryList_fragmentViewpager =new DiaryList_FragmentViewpager();
+                    DiaryList_FragmentViewpager diaryList_fragmentViewpager = DiaryList_FragmentViewpager.newInstance(comm,year,month,day);
                     transaction.replace(R.id.container, diaryList_fragmentViewpager);
                     transaction.commit();
-                    aa=0;
+                    show=0;
                 }
-
             }
         });
 

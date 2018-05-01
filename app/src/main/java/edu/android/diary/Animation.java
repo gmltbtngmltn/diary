@@ -1,19 +1,12 @@
 package edu.android.diary;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.hitomi.cmlibrary.CircleMenu;
-import com.hitomi.cmlibrary.OnMenuSelectedListener;
-import com.hitomi.cmlibrary.OnMenuStatusChangeListener;
 
 import java.util.Calendar;
 import java.util.List;
@@ -63,7 +56,7 @@ public class Animation extends AppCompatActivity {
         btnRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intGoRecord = new Intent(Animation.this, daySearch.class);
+                Intent intGoRecord = new Intent(Animation.this, DaySearch.class);
                 startActivity(intGoRecord);
             }
         });

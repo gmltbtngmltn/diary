@@ -114,17 +114,25 @@ public class DiaryDao {
         return bitmap;
     }//diary객체들을 읽는부분(2) (비트맵 이미지를 파일경로에서 읽어온다)
 
-    public List<Diary> getContactList(int day){
+    public List<Diary> getContactList(int year,int month){
         InputStream in = null;
         BufferedInputStream bin = null;
         ObjectInputStream ois = null;
+        List<Diary> diariesBydate=null;
+
         try {
             in = new FileInputStream(file);
             bin = new BufferedInputStream(in);
             ois = new ObjectInputStream(bin);
 
             diaries = (ArrayList<Diary>) ois.readObject();
+            diariesBydate=new ArrayList<>();
 
+            for(int i=0;i<diaries.size();i++){
+                if(diaries.get(i).getYear()==year&&diaries.get(i).getMonth()==month){
+                    diariesBydate.add(diaries.get(i));
+                }
+            }
         } catch (Exception e) {
             Log.e(TAG,e.getMessage());
         } finally {
@@ -134,8 +142,69 @@ public class DiaryDao {
                 Log.e(TAG,e.getMessage());
             }
         }
-        return diaries;
-    }//diary객체들을 읽는부분(3)(특정 날짜의 diary객체를 읽어온다)
+        return diariesBydate;
+    }//diary객체들을 읽는부분(3)(특정 날짜의 diary객체를 읽어온다 (년, 월,))
+
+    public List<Diary> getContactList(int year,int month,int day){
+        InputStream in = null;
+        BufferedInputStream bin = null;
+        ObjectInputStream ois = null;
+        List<Diary> diariesBydate=new ArrayList<>();;
+
+        try {
+            in = new FileInputStream(file);
+            bin = new BufferedInputStream(in);
+            ois = new ObjectInputStream(bin);
+
+            diaries = (ArrayList<Diary>) ois.readObject();
+
+            for(int i=0;i<diaries.size();i++){
+                if(diaries.get(i).getYear()==year&&diaries.get(i).getMonth()==month&&diaries.get(i).getMonth()==day){
+                    diariesBydate.add(diaries.get(i));
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG,e.getMessage());
+        } finally {
+            try {
+                ois.close();
+            } catch (Exception e) {
+                Log.e(TAG,e.getMessage());
+            }
+        }
+        return diariesBydate;
+    }//diary객체들을 읽는부분(4)(특정 날짜의 diary객체를 읽어온다 (년, 월, 일))
+
+    public List<Diary> getContactList(String text_Or_title){
+        InputStream in = null;
+        BufferedInputStream bin = null;
+        ObjectInputStream ois = null;
+        List<Diary> diariesBydate=null;
+
+        try {
+            in = new FileInputStream(file);
+            bin = new BufferedInputStream(in);
+            ois = new ObjectInputStream(bin);
+
+            diaries = (ArrayList<Diary>) ois.readObject();
+            diariesBydate=new ArrayList<>();
+
+            for(int i=0;i<diaries.size();i++){
+                if(diaries.get(i).getTxt()==text_Or_title){
+                    diariesBydate.add(diaries.get(i));
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG,e.getMessage());
+        } finally {
+            try {
+                ois.close();
+            } catch (Exception e) {
+                Log.e(TAG,e.getMessage());
+            }
+        }
+        return diariesBydate;
+    }//diary객체들을 읽는부분(4)(특정 내용 혹은 제목의 diary객체를 읽어온다 (년, 월, 일))
 
     public String getImageNameToUri(Uri data, Context context) {
         String[] proj = {MediaStore.Images.Media.DATA};

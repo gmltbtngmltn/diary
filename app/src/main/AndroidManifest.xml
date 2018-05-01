@@ -31,7 +31,7 @@
         <activity
             android:name=".DirayDetailActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".daySearch" />
+        <activity android:name=".DaySearch" />
         <activity android:name=".DirayListActivity"/>
         <activity
             android:name=".Recorde"
