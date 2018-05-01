@@ -131,7 +131,8 @@ public class DiaryDao {
             for(int i=0;i<diaries.size();i++){
                 if(diaries.get(i).getYear()==year&&diaries.get(i).getMonth()==month){
                     diariesBydate.add(diaries.get(i));
-                }
+
+                }Log.i("aaaa","ddddddddddd array = "+diariesBydate.size());
             }
         } catch (Exception e) {
             Log.e(TAG,e.getMessage());
@@ -149,7 +150,7 @@ public class DiaryDao {
         InputStream in = null;
         BufferedInputStream bin = null;
         ObjectInputStream ois = null;
-        List<Diary> diariesBydate=new ArrayList<>();;
+        List<Diary> diariesBydate=new ArrayList<>();
 
         try {
             in = new FileInputStream(file);
@@ -159,9 +160,10 @@ public class DiaryDao {
             diaries = (ArrayList<Diary>) ois.readObject();
 
             for(int i=0;i<diaries.size();i++){
-                if(diaries.get(i).getYear()==year&&diaries.get(i).getMonth()==month&&diaries.get(i).getMonth()==day){
+                if(diaries.get(i).getYear()==year && diaries.get(i).getMonth()==month && diaries.get(i).getDay()==day){
                     diariesBydate.add(diaries.get(i));
-                }
+
+                }Log.i("aaaa","ddddddddddd array = "+diariesBydate.size());
             }
         } catch (Exception e) {
             Log.e(TAG,e.getMessage());
