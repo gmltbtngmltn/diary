@@ -91,9 +91,6 @@ public class Recorde extends AppCompatActivity {
         });
 
 
-
-
-
         //버튼 클릭시 Activity 닫기
         btnClose.setOnClickListener(new OnClickListener() {
             @Override

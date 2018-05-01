@@ -48,7 +48,7 @@ public class DaySearch extends AppCompatActivity {
     }
 
     public void next(View v) {
-        Intent intent = new Intent(DaySearch.this, DirayListActivity.class);
+        Intent intent = new Intent(DaySearch.this, MainSampleActivity.class);
         intent.putExtra(SELECTED_YEAR, curYear);
         intent.putExtra(SELECTED_MONTH, curMonth);
         intent.putExtra(SELECTED_DAY, curDay);
@@ -58,7 +58,7 @@ public class DaySearch extends AppCompatActivity {
     }
 
     public void bot_ki(View view) {
-        Intent intent = new Intent(DaySearch.this, DirayListActivity.class);
+        Intent intent = new Intent(DaySearch.this, MainSampleActivity.class);
         intent.putExtra(SELECTED_YEAR, curYear);
         intent.putExtra(SELECTED_MONTH, curMonth);
         intent.putExtra(SELECTED_DAY, curDay);

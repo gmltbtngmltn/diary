@@ -32,13 +32,18 @@
             android:name=".DirayDetailActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".DaySearch" />
-        <activity android:name=".DirayListActivity"/>
+        <activity android:name=".DirayListActivity" />
         <activity
             android:name=".Recorde"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".DetailText"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".ScrollingDetailDiary"
+            android:label="@string/title_activity_scrolling_detail_diary"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".MainSampleActivity" />
     </application>
 
 </manifest>

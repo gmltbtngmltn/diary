@@ -1,15 +1,20 @@
 package edu.android.diary;
 
 import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.util.Pair;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.transition.Fade;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -36,6 +41,61 @@ public class DirayListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diray_list);
+
+
+        /**/
+        //TODO: 일기 내용 보러 가기 위한 페이지 준비
+
+
+//        Fade fade = new Fade();
+//        View decor = getWindow().getDecorView();
+//        fade.excludeTarget(decor.findViewById(R.id.action_bar_container),true);
+//        fade.excludeTarget(android.R.id.statusBarBackground,true);
+//        fade.excludeTarget(android.R.id.navigationBarBackground,true);
+//
+//        getWindow().setEnterTransition(fade);
+//        getWindow().setExitTransition(fade);
+//
+//
+//        final ImageView imageView = findViewById(R.id.imageSampleD);
+//        TextView textView = findViewById(R.id.textSampleD);
+//
+//        textView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(DirayListActivity.this,ScrollingDetailDiary.class);
+//                ActivityOptionsCompat optionsCompat =
+//                        ActivityOptionsCompat.makeSceneTransitionAnimation(DirayListActivity.this,
+//                                imageView,
+//                                ViewCompat.getTransitionName(imageView));
+//
+//                startActivity(intent,optionsCompat.toBundle());
+//            }
+//        });
+//
+//
+//        /*-------------------------------------------*/
+//        findViewById(R.id.imageSampleD).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(DirayListActivity.this, ScrollingDetailDiary.class);
+//
+//                Pair<View, String> pair =
+//                        Pair.create(findViewById(R.id.imageSampleD),"myImage");
+//
+//                Pair<View, String> pair2 =
+//                        Pair.create(findViewById(R.id.textSampleD),"myText");
+//
+//
+//                ActivityOptionsCompat aoc =
+//                        ActivityOptionsCompat.makeSceneTransitionAnimation(DirayListActivity.this, pair, pair2);
+//
+//                startActivity(intent, aoc.toBundle());
+//            }
+//        });
+
+
+        /**/
 
         textView = findViewById(R.id.textView7); //x
         searchView = findViewById(R.id.searchView);
@@ -79,6 +139,9 @@ public class DirayListActivity extends AppCompatActivity {
             }
         });
 
-//        onDateTimeChanged();
+        onDateTimeChanged();
+    }
+
+    private void onDateTimeChanged() {
     }
 }

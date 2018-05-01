@@ -34,10 +34,10 @@ public class DetailText extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_text);
 
-        imageView = findViewById(R.id.imageDetail);
-        editText = findViewById(R.id.editTextDetail);
-        btnPrev = findViewById(R.id.btnDetailRe);//수정
-        btnDone = findViewById(R.id.btnDetailDone);
+//        imageView = findViewById(R.id.imageDetail);
+//        editText = findViewById(R.id.editTextDetail);
+//        btnPrev = findViewById(R.id.btnDetailRe);//수정
+//        btnDone = findViewById(R.id.btnDetailDone);
 
         editText.setFocusable(false);
         editText.setClickable(false);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,37 +8,50 @@
 
     <ImageButton
         android:id="@+id/imageBtnClose"
-        android:background="@color/white"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/icon_close" />
 
     <ImageButton
         android:id="@+id/imageBtnSave"
-        android:background="@color/white"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/icon_save" />
 
     <TextView
         android:id="@+id/textDate1"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:background="@drawable/background_rec1"
-        android:textSize="18dp"
-        android:gravity="center"
-        android:fontFamily="@font/regular"
-        android:textColor="@color/DimGray"
-
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="14dp"
-        android:layout_marginStart="16dp"
-        android:text="yyyy.MM.dd" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="48dp"
+
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_rec1"
+        android:fontFamily="@font/regular"
+        android:gravity="center"
+        android:text="yyyy.MM.dd"
+        android:textColor="@color/DimGray"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintVertical_bias="0.652" />
 
     <EditText
         android:id="@+id/editMainTitle"
@@ -46,37 +59,61 @@
         android:layout_height="40dp"
         android:layout_below="@+id/imageBtnClose"
         android:layout_centerHorizontal="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/background_rec1"
         android:ems="10"
         android:fontFamily="@font/regular"
-        android:inputType="text"
         android:hint="기록의 이름은?"
+        android:inputType="text"
         android:textColor="@color/DimGray"
-        android:textSize="18dp" />
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editMainText"
-        android:layout_width="match_parent"
-        android:layout_height="433dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="78dp"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/background_rec1"
         android:ems="10"
         android:fontFamily="@font/regular"
+        android:gravity="top"
+        android:hint="당신의 소중한 일상을 기록 하세요"
+        android:inputType="textMultiLine|textNoSuggestions"
         android:textColor="@color/DimGray"
         android:textSize="16dp"
-        android:hint="당신의 소중한 일상을 기록 하세요"
-        android:background="@drawable/background_rec1"
-        android:gravity="top"
-        android:inputType="textMultiLine|textNoSuggestions" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editMainTitle" />
 
     <ImageView
         android:id="@+id/imageGallCame"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
+        android:layout_width="75dp"
+        android:layout_height="58dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/editMainTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:srcCompat="@drawable/puzzle" />
-</RelativeLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.86" />
+</android.support.constraint.ConstraintLayout>
