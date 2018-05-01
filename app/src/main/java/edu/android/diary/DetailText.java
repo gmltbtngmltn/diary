@@ -16,12 +16,13 @@ import static android.provider.Contacts.SettingsColumns.KEY;
 
 public class DetailText extends AppCompatActivity {
     public static final String KEY_URI = "key_img";
+    public static final String KEY_TIT = "key_tit";
     public static final String KEY_MSG = "key_msg";
 
     ImageView imageView;
     Button btnDone, btnPrev;
     EditText editText;
-
+    Diary diary;
     public static Intent newIntent(Context context, int positoin){
         Intent intent=new Intent(context,DetailText.class);
         intent.putExtra(KEY,positoin);
@@ -43,9 +44,9 @@ public class DetailText extends AppCompatActivity {
 
         Intent intent=getIntent();
 
-        int index=intent.getIntExtra(KEY,0);
+        final int index=intent.getIntExtra(KEY,0);
 
-        Diary diary=DiaryDao.getInstance().getContactList().get(index);
+        diary=DiaryDao.getInstance().getContactList().get(index);
 
 
         Bitmap bitmap=DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
@@ -65,8 +66,11 @@ public class DetailText extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DetailText.this, Recorde.class);
                 //TODO : 기록보는 페이지에서 일기를 누르면 이미지값과 텍스트값 받아오기
-
-
+                intent.putExtra(KEY_URI,diary.getPhotoPath());
+                intent.putExtra(KEY_TIT,diary.getTitle());
+                intent.putExtra(KEY_MSG,diary.getTxt());
+                startActivity(intent);
+                finish();
             }
         });
 

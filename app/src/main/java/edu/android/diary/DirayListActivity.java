@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.view.View;
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -14,6 +16,13 @@ public class DirayListActivity extends AppCompatActivity {
 
     public TextView textView; // x
     public SearchView searchView;
+    private Button button;
+
+    private FragmentManager fm;
+    private FragmentTransaction transaction;
+
+    private int aa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +30,7 @@ public class DirayListActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.textView7); //x
         searchView = findViewById(R.id.searchView);
+        button=findViewById(R.id.modechange);
 
         Intent intent = getIntent();
         int year = intent.getIntExtra("SELECTED_YEAR", 1);
@@ -31,16 +41,35 @@ public class DirayListActivity extends AppCompatActivity {
         textView.setText(year + "년 " + month + "월 " + day + "일");
 
         //textView.setText();
-
-
-        FragmentManager fm=getSupportFragmentManager();
+        fm=getSupportFragmentManager();
         Fragment fragment=fm.findFragmentById(R.id.container);
         if(fragment==null){
-            FragmentTransaction transaction=fm.beginTransaction();
-            DiaryList_FragmentViewfliper diaryList_fragmentViewfliper=new DiaryList_FragmentViewfliper();
-            transaction.replace(R.id.container,diaryList_fragmentViewfliper);
+            transaction=fm.beginTransaction();
+            DiaryList_FragmentViewpager diaryList_fragmentViewpager =new DiaryList_FragmentViewpager();
+            transaction.replace(R.id.container, diaryList_fragmentViewpager);
             transaction.commit();
         }
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(aa==0){
+                    transaction=fm.beginTransaction();
+                    DiaryList_FragmentRecycler diaryList_fragmentRecycler=new DiaryList_FragmentRecycler();
+                    transaction.replace(R.id.container,diaryList_fragmentRecycler);
+                    transaction.commit();
+                    aa=1;
+                }else if(aa==1){
+                    transaction=fm.beginTransaction();
+                    DiaryList_FragmentViewpager diaryList_fragmentViewpager =new DiaryList_FragmentViewpager();
+                    transaction.replace(R.id.container, diaryList_fragmentViewpager);
+                    transaction.commit();
+                    aa=0;
+                }
+
+            }
+        });
+
 //        onDateTimeChanged();
     }
 }
