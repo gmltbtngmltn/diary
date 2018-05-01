@@ -115,13 +115,15 @@ public class DiaryList_FragmentViewpager extends Fragment {
 
             ImageView imageView= (ImageView)view.findViewById(R.id.imageView1);
             TextView textTitle=view.findViewById(R.id.texttitle1);
-            TextView textDate=view.findViewById(R.id.textdate1);
+            TextView text=view.findViewById(R.id.text1);
 
             Diary diary = dataset.get(position);
             Bitmap bitmap = DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
             imageView.setImageBitmap(bitmap);
-            textTitle.setText(diary.getTitle());
-            textDate.setText(diary.getYear() + "/" + diary.getMonth() + "/" + diary.getDay()+"/"+diary.getHour()+"/"+diary.getMinute()+"/"+diary.getSecond());
+
+            String date=diary.getYear() + "/" + diary.getMonth() + "/" + diary.getDay()+"/"+diary.getHour()+"/"+diary.getMinute()+"/"+diary.getSecond();
+            textTitle.setText("Title : "+diary.getTitle()+"   ("+date+")");
+            text.setText(diary.getTxt());
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
