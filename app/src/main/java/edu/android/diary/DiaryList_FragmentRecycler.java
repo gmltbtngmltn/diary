@@ -78,6 +78,10 @@ public class DiaryList_FragmentRecycler extends Fragment {
         adaptor = new DiaryAdaptor();
 
         recycler.setAdapter(adaptor);
+
+        /**/
+
+
     }
 
     private void gangshin(){

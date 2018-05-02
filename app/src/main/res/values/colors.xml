@@ -163,6 +163,9 @@
     <color name="DarkBlue">#00008B</color>
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
+    <color name="Rest">#81d4fa</color>
+    <color name="RestLight">#b6ffff</color>
+    <color name="RestDark">#4ba3c7</color>
 
 
 

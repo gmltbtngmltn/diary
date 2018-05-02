@@ -43,57 +43,10 @@ public class DirayListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_diray_list);
 
 
+
+
         /**/
         //TODO: 일기 내용 보러 가기 위한 페이지 준비
-
-
-//        Fade fade = new Fade();
-//        View decor = getWindow().getDecorView();
-//        fade.excludeTarget(decor.findViewById(R.id.action_bar_container),true);
-//        fade.excludeTarget(android.R.id.statusBarBackground,true);
-//        fade.excludeTarget(android.R.id.navigationBarBackground,true);
-//
-//        getWindow().setEnterTransition(fade);
-//        getWindow().setExitTransition(fade);
-//
-//
-//        final ImageView imageView = findViewById(R.id.imageSampleD);
-//        TextView textView = findViewById(R.id.textSampleD);
-//
-//        textView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(DirayListActivity.this,ScrollingDetailDiary.class);
-//                ActivityOptionsCompat optionsCompat =
-//                        ActivityOptionsCompat.makeSceneTransitionAnimation(DirayListActivity.this,
-//                                imageView,
-//                                ViewCompat.getTransitionName(imageView));
-//
-//                startActivity(intent,optionsCompat.toBundle());
-//            }
-//        });
-//
-//
-//        /*-------------------------------------------*/
-//        findViewById(R.id.imageSampleD).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(DirayListActivity.this, ScrollingDetailDiary.class);
-//
-//                Pair<View, String> pair =
-//                        Pair.create(findViewById(R.id.imageSampleD),"myImage");
-//
-//                Pair<View, String> pair2 =
-//                        Pair.create(findViewById(R.id.textSampleD),"myText");
-//
-//
-//                ActivityOptionsCompat aoc =
-//                        ActivityOptionsCompat.makeSceneTransitionAnimation(DirayListActivity.this, pair, pair2);
-//
-//                startActivity(intent, aoc.toBundle());
-//            }
-//        });
-
 
         /**/
 
