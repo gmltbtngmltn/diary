@@ -40,7 +40,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import static android.provider.Contacts.SettingsColumns.KEY;
+import static edu.android.diary.Animation.*;
 import com.tsengvn.typekit.TypekitContextWrapper;
+import static edu.android.diary.DetailText.*;
 
 public class Recorde extends AppCompatActivity {
 
@@ -59,6 +62,8 @@ public class Recorde extends AppCompatActivity {
     private static final String IMAGE_DIRECTORY = "/myDiary";
     private final int PICK_IMAGE_CAMERA = 1, PICK_IMAGE_GALLERY = 2;
 
+    private int que;//쓰는것 or 수정하는 것 여부 판별하기
+    private int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +77,22 @@ public class Recorde extends AppCompatActivity {
         btnClose = findViewById(R.id.imageBtnClose);
         btnSave = findViewById(R.id.imageBtnSave);
 
+        Intent modify=getIntent();
+        que=modify.getIntExtra(QUE,0);
+        if(que==1) {
+            String photo = modify.getStringExtra(KEY_URI);
+            bimapName=photo;
+            bitmap=DiaryDao.getInstance().LoadImage(photo);
+            imageView.setImageBitmap(bitmap);
 
+            String title = modify.getStringExtra(KEY_TIT);
+            editTitle.setText(title);
+
+            String msg = modify.getStringExtra(KEY_MSG);
+            editMain.setText(msg);
+
+            position=modify.getIntExtra(KEY,0);
+        }
 
         btnSave.setOnClickListener(new OnClickListener() {
             @Override
@@ -80,7 +100,11 @@ public class Recorde extends AppCompatActivity {
                 String title=editTitle.getText().toString();
                 String main=editMain.getText().toString();
                 try {
-                    DiaryDao.getInstance().writeDiary(title, bitmap, bimapName,main);
+                    if(que==0) {
+                        DiaryDao.getInstance().writeDiary(title, bitmap, bimapName, main);
+                    }else if(que==1){
+                        DiaryDao.getInstance().updateDiary(position,bimapName,main);
+                    }
                 }catch (Exception exc){
                     Log.i("aaaa",exc.getMessage());
                 }

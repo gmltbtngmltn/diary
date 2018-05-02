@@ -31,9 +31,6 @@
         <activity
             android:name=".DiarySetting"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".DirayDetailActivity"
-            android:screenOrientation="portrait" />
         <activity android:name=".DaySearch" />
         <activity android:name=".DirayListActivity" />
         <activity
