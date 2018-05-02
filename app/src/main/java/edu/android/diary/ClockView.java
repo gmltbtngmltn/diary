@@ -64,7 +64,7 @@ public class ClockView extends View {
             initClock();
         }
 
-        canvas.drawColor(Color.parseColor("#F8F8FF"));
+        canvas.drawColor(Color.parseColor("#00000000"));
         drawCircle(canvas);
         drawCenter(canvas);
         drawNumeral(canvas);
@@ -119,7 +119,7 @@ public class ClockView extends View {
 
     private void drawCircle(Canvas canvas) {
         paint.reset();
-        paint.setColor(getResources().getColor(android.R.color.holo_green_dark));
+        paint.setColor(getResources().getColor(android.R.color.white));
         paint.setStrokeWidth(5);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);

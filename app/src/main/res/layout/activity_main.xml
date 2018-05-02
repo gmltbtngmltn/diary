@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:background="@drawable/starrynight_cat"
     android:id="@+id/mainActivityConstraintLayout">
 
 
@@ -15,6 +16,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:text="NEXT"
+        android:fontFamily="@font/regular"
         android:textColor="@color/LightBlue"
         android:textSize="30dp"
         android:background="@null"
@@ -23,8 +25,8 @@
 
     <edu.android.diary.ClockView
         android:id="@+id/clockView"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
+        android:layout_width="325dp"
+        android:layout_height="296dp"
         android:layout_gravity="center"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -32,7 +34,9 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.356" />
 
 </android.support.constraint.ConstraintLayout>
