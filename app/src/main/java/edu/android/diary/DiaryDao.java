@@ -15,7 +15,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,14 +36,20 @@ public class DiaryDao {
     private static final String childPath=parentPath+DIARY_DIRECTORY;
 
     private List<Diary> diaries=new ArrayList<>();
+    private List<NoteSI> noteSIS=new ArrayList<>();
+
     private static DiaryDao instance=null;
 
     private File filedir=new File(childPath);
-    private File file=new File(childPath,"diary.dat");
+
 
     File themnumf = new File(childPath,"themenum.dat");
 
     private int themeNum;
+
+    private File file = new File(childPath,"diary.dat");//diart객체파일
+    private File filenote=new File(childPath,"note.dat");//note객체파일
+
 
     //test를 위한 임시 날짜(프로젝트가 완성되면 지워질 부분)
 //    private int[] im_shi_date={1919,3,1};
@@ -59,6 +64,7 @@ public class DiaryDao {
         }else{
             Log.i(TAG,"이미 폴더가 있음");
             diaries = getContactList();
+            noteSIS = getNoteSISList();
         }
     }
 
@@ -181,6 +187,7 @@ public class DiaryDao {
         return diariesBydate;
     }//diary객체들을 읽는부분(4)(특정 날짜의 diary객체를 읽어온다 (년, 월, 일))
 
+    // 검색기능에 사용
     public List<Diary> getContactList(String text_Or_title){
         InputStream in = null;
         BufferedInputStream bin = null;
@@ -423,4 +430,113 @@ public class DiaryDao {
         return themeNum;
     }
 
+
+
+
+    public List<NoteSI> getNoteSISList() {
+        InputStream in = null;
+        BufferedInputStream bin = null;
+        ObjectInputStream ois = null;
+        try {
+            in = new FileInputStream(filenote);
+            bin = new BufferedInputStream(in);
+            ois = new ObjectInputStream(bin);
+
+            noteSIS = (ArrayList<NoteSI>) ois.readObject();
+
+        } catch (Exception e) {
+            Log.e(TAG,e.getMessage());
+        } finally {
+            try {
+                ois.close();
+            } catch (Exception e) {
+                Log.e(TAG,e.getMessage());
+            }
+        }
+        return noteSIS;
+    }//note객체들을 읽는부분(1)
+
+
+    public void writeNote(String content,int year, int month, int day) {
+
+
+        NoteSI noteSI = new NoteSI(content,year, month, day);
+        noteSIS.add(noteSI);
+
+        OutputStream out = null;
+        BufferedOutputStream bout = null;
+        ObjectOutputStream oos = null;
+
+
+        try {
+            out = new FileOutputStream(filenote, false);
+            bout = new BufferedOutputStream(out);
+            oos = new ObjectOutputStream(bout);
+
+            oos.writeObject(noteSIS);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                oos.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }//note객체들을 쓰는부분(1)
+
+    public void deleteNote(int position){
+        //배열에서 삭제
+        noteSIS.remove(position);
+
+        //변경된 배열을 파일에 다시 저장
+        OutputStream out = null;
+        BufferedOutputStream bout = null;
+        ObjectOutputStream oos = null;
+        try {
+            out = new FileOutputStream(filenote,false);
+            bout = new BufferedOutputStream(out);
+            oos = new ObjectOutputStream(bout);
+
+            oos.writeObject(noteSIS);
+        } catch (Exception e) {
+            Log.e(TAG,e.getMessage());
+        } finally {
+            try {
+                oos.close();
+            }catch (IOException e) {
+                Log.e(TAG,e.getMessage());
+            }
+        }
+
+    }//note객체들을 삭제하는 부분
+
+    public void updateNote(int position,String content,int year, int month, int day){
+        noteSIS.get(position).setContent(content);
+        noteSIS.get(position).setYear(year);
+        noteSIS.get(position).setMonth(month);
+        noteSIS.get(position).setDay(day);
+
+        //변경된 배열을 파일에 다시 저장
+        OutputStream out = null;
+        BufferedOutputStream bout = null;
+        ObjectOutputStream oos = null;
+        try {
+            out = new FileOutputStream(filenote,false);
+            bout = new BufferedOutputStream(out);
+            oos = new ObjectOutputStream(bout);
+
+            oos.writeObject(noteSIS);
+        } catch (Exception e) {
+            Log.e(TAG,e.getMessage());
+        } finally {
+            try {
+                oos.close();
+            }catch (IOException e) {
+                Log.e(TAG,e.getMessage());
+            }
+        }
+    }//note객체들을 수정하는 부분
 }

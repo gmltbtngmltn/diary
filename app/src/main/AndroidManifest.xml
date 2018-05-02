@@ -42,6 +42,13 @@
         <activity
             android:name=".DetailText"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".ScrollingDetailDiary"
+            android:label="@string/title_activity_scrolling_detail_diary"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".MainSampleActivity" />
+        <activity android:name=".Note" />
+        <activity android:name=".NoteSlist" />
     </application>
 
 </manifest>

@@ -17,7 +17,7 @@ public class DaySearch extends AppCompatActivity {
     public static final String COMM="comm";
 
     private DatePicker datePicker;
-    private Button check;
+    private Button check, note;
 
     public int curYear;
     public int curMonth;
@@ -66,5 +66,11 @@ public class DaySearch extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+    public void note(View v) {
+        Intent intent = new Intent(DaySearch.this, Note.class);
+        startActivity(intent);
+    }
+
 }
 
