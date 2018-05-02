@@ -26,6 +26,9 @@
             android:name=".Animation"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".SetThema"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".DiarySetting"
             android:screenOrientation="portrait" />
         <activity

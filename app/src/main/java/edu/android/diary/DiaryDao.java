@@ -15,6 +15,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,6 +42,9 @@ public class DiaryDao {
     private File filedir=new File(childPath);
     private File file=new File(childPath,"diary.dat");
 
+    File themnumf = new File(childPath,"themenum.dat");
+
+    private int themeNum;
 
     //test를 위한 임시 날짜(프로젝트가 완성되면 지워질 부분)
 //    private int[] im_shi_date={1919,3,1};
@@ -370,5 +374,53 @@ public class DiaryDao {
             }
         }
     }//diary객체들을 수정하는 부분
+
+    public void saveThemeNum(int num){
+        themeNum=num;
+
+        OutputStream outn = null;
+        BufferedOutputStream boutn = null;
+        ObjectOutputStream oosn = null;
+
+        try {
+            outn = new FileOutputStream(themnumf, false);
+            boutn = new BufferedOutputStream(outn);
+            oosn=new ObjectOutputStream(boutn);
+
+            oosn.writeObject(themeNum);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                oosn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+    public int getThemeNum(){
+
+        InputStream inn = null;
+        BufferedInputStream binn = null;
+        ObjectInputStream oisn = null;
+
+        try {
+            inn = new FileInputStream(themnumf);
+            binn = new BufferedInputStream(inn);
+            oisn=new ObjectInputStream(binn);
+
+            themeNum= (int) oisn.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                oisn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return themeNum;
+    }
 
 }
