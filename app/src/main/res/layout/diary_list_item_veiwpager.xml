@@ -17,8 +17,12 @@ android:orientation="vertical">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:textColor="@color/RestBlue"
+    android:textSize="25dp"
+    android:background="@drawable/background_rec1"
     android:layout_margin="8dp"
-    android:text="title" />
+    android:fontFamily="@font/regular"
+    android:text="Title" />
 
     <TextView
         android:id="@+id/text1"
@@ -27,5 +31,9 @@ android:orientation="vertical">
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
-        android:text="text" />
+        android:textSize="20dp"
+        android:textColor="@color/RestBlueD"
+        android:background="@drawable/background_rec1"
+        android:fontFamily="@font/regular"
+        android:text="Text" />
 </LinearLayout>

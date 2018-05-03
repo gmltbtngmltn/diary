@@ -24,14 +24,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="@color/RestBlueD"
+            android:background="@drawable/background_rec4"
+            android:textSize="15dp"
+            android:fontFamily="@font/regular"
+            android:gravity="center"
             android:layout_margin="8dp"
-            android:text="title" />
+            android:text="Title" />
 
         <TextView
             android:id="@+id/textdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@drawable/background_rec4"
+            android:textSize="15dp"
+            android:textColor="@color/RestBlue"
             android:layout_margin="8dp"
             android:text="date" />
 

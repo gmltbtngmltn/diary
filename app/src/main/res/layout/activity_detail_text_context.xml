@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="Title 입력"
-            android:textColor="@color/colorAccent"
+            android:fontFamily="@font/regular"
+            android:textColor="@color/CornflowerBlue"
             android:textSize="25dp"
             />
         <TextView
@@ -27,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="18dp"
+            android:textColor="@color/DimGray"
             android:text="@string/large_text"/>
 
 

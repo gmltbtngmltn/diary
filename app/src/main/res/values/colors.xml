@@ -166,6 +166,12 @@
     <color name="Rest">#81d4fa</color>
     <color name="RestLight">#b6ffff</color>
     <color name="RestDark">#4ba3c7</color>
+    <color name="RestGreen">#00796b</color>
+    <color name="RestGreenL">#48a999</color>
+    <color name="RestGreenD">#004c40</color>
+    <color name="RestBlue">#1e88e5</color>
+    <color name="RestBlueL">#6ab7ff</color>
+    <color name="RestBlueD">#005cb2</color>
 
 
 
