@@ -123,37 +123,6 @@ public class DiaryDao {
         return bitmap;
     }//diary객체들을 읽는부분(2) (비트맵 이미지를 파일경로에서 읽어온다)
 
-    public List<Diary> getContactList(int year,int month){
-        InputStream in = null;
-        BufferedInputStream bin = null;
-        ObjectInputStream ois = null;
-        List<Diary> diariesBydate=null;
-
-        try {
-            in = new FileInputStream(file);
-            bin = new BufferedInputStream(in);
-            ois = new ObjectInputStream(bin);
-
-            diaries = (ArrayList<Diary>) ois.readObject();
-            diariesBydate=new ArrayList<>();
-
-            for(int i=0;i<diaries.size();i++){
-                if(diaries.get(i).getYear()==year&&diaries.get(i).getMonth()==month){
-                    diariesBydate.add(diaries.get(i));
-
-                }Log.i("aaaa","ddddddddddd array = "+diariesBydate.size());
-            }
-        } catch (Exception e) {
-            Log.e(TAG,e.getMessage());
-        } finally {
-            try {
-                ois.close();
-            } catch (Exception e) {
-                Log.e(TAG,e.getMessage());
-            }
-        }
-        return diariesBydate;
-    }//diary객체들을 읽는부분(3)(특정 날짜의 diary객체를 읽어온다 (년, 월,))
 
     public List<Diary> getContactList(int year,int month,int day){
         InputStream in = null;
@@ -256,9 +225,9 @@ public class DiaryDao {
         OutputStream outB = null;
         BufferedOutputStream boutB = null;
 
-        OutputStream outim = null;
-        BufferedOutputStream boutim = null;
-        ObjectOutputStream oosim = null;
+//        OutputStream outim = null;
+//        BufferedOutputStream boutim = null;
+//        ObjectOutputStream oosim = null;
 
         try {
             out = new FileOutputStream(file, false);
@@ -354,7 +323,10 @@ public class DiaryDao {
 
     }//diary객체들을 삭제하는 부분
 
-    public void updateDiary(int position,String imagename, String diaryTxt){
+    public void updateDiary(int position,Bitmap bitmap,String imagename, String diaryTxt){
+
+        File fileB = new File(childPath, imagename);
+
         diaries.get(position).setPhotoPath(imagename);
         diaries.get(position).setTxt(diaryTxt);
 
@@ -364,12 +336,22 @@ public class DiaryDao {
         OutputStream out = null;
         BufferedOutputStream bout = null;
         ObjectOutputStream oos = null;
+
+        OutputStream outB = null;
+        BufferedOutputStream boutB = null;
+
         try {
             out = new FileOutputStream(file,false);
             bout = new BufferedOutputStream(out);
             oos = new ObjectOutputStream(bout);
 
             oos.writeObject(diaries);
+
+
+            outB = new FileOutputStream(fileB, false);
+            boutB = new BufferedOutputStream(outB);
+
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, boutB);
         } catch (Exception e) {
             Log.e(TAG,e.getMessage());
         } finally {

@@ -15,8 +15,12 @@ import android.widget.TextView;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.clans.fab.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static edu.android.diary.Animation.*;
 import static android.provider.Contacts.SettingsColumns.KEY;
+import static edu.android.diary.DiaryList_FragmentViewpager.KEY_ARR;
 
 public class DetailText extends AppCompatActivity {
     public static final String KEY_URI = "key_img";
@@ -26,11 +30,12 @@ public class DetailText extends AppCompatActivity {
 
     FloatingActionMenu fam;
     FloatingActionButton fabPrev, fabDone;
-    ImageView imageView;
-    TextView textTitle, textText;
-    int position;
+    private ImageView imageView;
+    private TextView textTitle, textText;
+    private int position;
 
-    Diary diary;
+    private List<Diary> dataset;
+    private Diary diary;
     public static Intent newIntent(Context context, int positoin){
         Intent intent=new Intent(context,DetailText.class);
         intent.putExtra(KEY,positoin);
@@ -59,7 +64,8 @@ public class DetailText extends AppCompatActivity {
                             intent.putExtra(KEY_TIT,diary.getTitle());
                             intent.putExtra(KEY_MSG,diary.getTxt());
                             intent.putExtra(QUE,1);//수정하러갈때 명령값은 1으로한다
-                intent.putExtra(KEY,position);
+
+                            intent.putExtra(KEY,position);
                             startActivity(intent);
                             finish();
             }
@@ -78,9 +84,11 @@ public class DetailText extends AppCompatActivity {
 
         position=intent.getIntExtra(KEY,0);
 
-        diary=DiaryDao.getInstance().getContactList().get(position);
+        dataset = (ArrayList<Diary>) getIntent().getSerializableExtra(KEY_ARR);
 
+        diary=dataset.get(position);
 
+        
         Bitmap bitmap=DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
         imageView.setImageBitmap(bitmap);
 

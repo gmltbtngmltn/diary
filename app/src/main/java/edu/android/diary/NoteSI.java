@@ -1,6 +1,8 @@
 package edu.android.diary;
 
-public class NoteSI {
+import java.io.Serializable;
+
+public class NoteSI implements Serializable{
 
     private String content;
 

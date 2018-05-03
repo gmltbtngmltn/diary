@@ -103,7 +103,7 @@ public class Recorde extends AppCompatActivity {
                     if(que==0) {
                         DiaryDao.getInstance().writeDiary(title, bitmap, bimapName, main);
                     }else if(que==1){
-                        DiaryDao.getInstance().updateDiary(position,bimapName,main);
+                        DiaryDao.getInstance().updateDiary(position,bitmap,bimapName,main);
                     }
                 }catch (Exception exc){
                     Log.i("aaaa",exc.getMessage());

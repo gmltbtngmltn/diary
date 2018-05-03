@@ -27,8 +27,8 @@ public class Animation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
-
-        comm=loadthemenum();
+//DiaryDao.getInstance().deleteDiary(9);
+        comm=loadthemenum();//테마 번호
 
         if(comm==0){
             comm=1;

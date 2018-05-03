@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -17,13 +18,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+
+import static android.provider.Contacts.SettingsColumns.KEY;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class DiaryList_FragmentViewpager extends Fragment {
+    public static final String KEY_ARR = "key_arr";
 
     private ViewPager pager;
     private List<Diary> dataset;
@@ -148,6 +154,7 @@ public class DiaryList_FragmentViewpager extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Intent intent = DetailText.newIntent(getContext(), position);
+                    intent.putExtra(KEY_ARR, (Serializable) dataset);
                     startActivity(intent);
                 }
             });

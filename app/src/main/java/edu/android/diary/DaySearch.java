@@ -30,11 +30,11 @@ public class DaySearch extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
         curYear = calendar.get(Calendar.YEAR);
-        curMonth = calendar.get(Calendar.MONTH);
+        curMonth = calendar.get(Calendar.MONTH)+1;
         curDay = calendar.get(Calendar.DAY_OF_MONTH);
 
         datePicker = findViewById(R.id.datePicker);
-        datePicker.init(curYear, curMonth, curDay, new DatePicker.OnDateChangedListener() {
+        datePicker.init(curYear, curMonth-1, curDay, new DatePicker.OnDateChangedListener() {
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 // 새로 정의한 리스너로 이벤트 전달
                 // getHour(), getMinute() 메소드는 API 23부터 지원함

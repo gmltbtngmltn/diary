@@ -32,7 +32,7 @@ public class DirayListActivity extends AppCompatActivity {
     private FragmentTransaction transaction;
 
     private int show;
-    private int comm;
+    private int comm;//'전체보기 or 특정 날짜 것 보기'의 여부
 
     private int year;
     private int month;
