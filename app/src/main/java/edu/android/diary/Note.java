@@ -99,8 +99,11 @@ public class Note extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(Note.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
-                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                finalDayInput.setText(year + "/" + (month +1) + "/" + dayOfMonth);
+                            public void onDateSet(DatePicker view, int fyear, int fmonth, int fdayOfMonth) {
+                                finalDayInput.setText(fyear + "/" + (fmonth +1) + "/" + fdayOfMonth);
+                                year=fyear;
+                                month=fmonth;
+                                day=fdayOfMonth;
                             }
                         }, year, month, day);
                 datePickerDialog.show();
