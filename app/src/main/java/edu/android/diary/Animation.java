@@ -65,7 +65,7 @@ public class Animation extends AppCompatActivity {
         btnRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intGoRecord = new Intent(Animation.this, DaySearch.class);
+                Intent intGoRecord = new Intent(Animation.this, DaySearchPage.class);
                 startActivity(intGoRecord);
             }
         });

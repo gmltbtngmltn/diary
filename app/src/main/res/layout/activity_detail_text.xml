@@ -47,13 +47,15 @@
         app:menu_labels_colorPressed="@color/Rest"
         app:menu_labels_textColor="@color/RestDark"
         app:menu_openDirection="down"
-        app:menu_showShadow="true">
+        app:menu_showShadow="true"
+
+        >
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/btnPrevFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/fab1"
+            android:src="@drawable/btnprev"
             app:fab_label="수정 하러 가기"
             app:fab_size="mini"
 
@@ -63,7 +65,7 @@
             android:id="@+id/btnDoneFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/fab1"
+            android:src="@drawable/btndone"
             app:fab_label="끝끝"
             app:fab_size="mini"
 
