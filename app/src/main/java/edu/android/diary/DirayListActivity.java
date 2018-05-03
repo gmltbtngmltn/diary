@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import static edu.android.diary.DaySearchPage.*;
+import static edu.android.diary.DaySearch.*;
 
 public class DirayListActivity extends AppCompatActivity {
 

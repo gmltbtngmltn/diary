@@ -40,15 +40,14 @@ public class DiaryDao {
 
     private static DiaryDao instance=null;
 
-    private File filedir=new File(childPath);
-
+    private File filedir = new File(childPath);
 
     File themnumf = new File(childPath,"themenum.dat");
 
     private int themeNum;
 
     private File file = new File(childPath,"diary.dat");//diart객체파일
-    private File filenote=new File(childPath,"note.dat");//note객체파일
+    private File filenote = new File(childPath,"Note.dat");//note객체파일
 
 
     //test를 위한 임시 날짜(프로젝트가 완성되면 지워질 부분)

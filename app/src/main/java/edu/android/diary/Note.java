@@ -1,13 +1,14 @@
 package edu.android.diary;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +20,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.Calendar;
 import java.util.List;
 
-class Note extends AppCompatActivity {
+public class Note extends AppCompatActivity {
 
     public static final String TAG = "Note";
 
@@ -67,40 +66,47 @@ class Note extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void delete(View view) {
+
     }
 
     public void add(View view) {
+//        NoteNewSeve noteNewSeve = new NoteNewSeve();
+//        noteNewSeve.show(getSupportFragmentManager(), "noteNewSave");
+
+
+
+
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(Note.this);
         View mView = getLayoutInflater().inflate(R.layout.activity_note_new_save, null);
         final EditText mContentInput = (EditText) mView.findViewById(R.id.contentInput);
         final TextView mfinalDayInput = (TextView) mView.findViewById(R.id.finalDayInput);
         final Button btnsave = (Button) mView.findViewById(R.id.btnsave);
         final Button btnCalendar = mView.findViewById(R.id.btnCalendar);
-        final Button btnClose = mView.findViewById(R.id.btnClose);
-
-
-
+        //final Button btnClose = mView.findViewById(R.id.btnClose);
         final TextView finalDayInput = mView.findViewById(R.id.finalDayInput);
+
         btnCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cal = Calendar.getInstance();
                 year = cal.get(Calendar.YEAR);
-                month = cal.get(Calendar.MONTH)+1;
+                month = cal.get(Calendar.MONTH);
                 day = cal.get(Calendar.DAY_OF_MONTH);
+                Log.i(TAG, "year: " + year + " month: " + month + " day: " + day);
 
                 datePickerDialog = new DatePickerDialog(Note.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                finalDayInput.setText(year + "/" + month + "/" + dayOfMonth);
+                                finalDayInput.setText(year + "/" + (month +1) + "/" + dayOfMonth);
                             }
                         }, year, month, day);
                 datePickerDialog.show();
             }
         });
-
+        Log.i(TAG, "year: " + year + " month: " + month + " day: " + day);
 
         mBuilder.setView(mView);
         final AlertDialog dialog = mBuilder.create();
@@ -113,6 +119,7 @@ class Note extends AppCompatActivity {
 
                 DiaryDao.getInstance().writeNote(naeyong,year,month,day); //파일경로에 note객체를 쓴다
                 Toast.makeText(Note.this, "저장됨 = "+notedata.size(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Note.this, "저장 했으면 backButton을 눌러 주세요", Toast.LENGTH_SHORT).show();
 
 //                if (!mContentInput.getText().toString().isEmpty() && !mfinalDayInput.getText().toString().isEmpty()) {
 //                    Toast.makeText(Note.this, "할 일과 마감일이 써있음", Toast.LENGTH_SHORT).show();
@@ -125,6 +132,13 @@ class Note extends AppCompatActivity {
             }
         });
 
+//        btnClose.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
+
         dialog.show();
     }
 
@@ -135,7 +149,7 @@ class Note extends AppCompatActivity {
         public SingerAdapter(@NonNull Context context, @NonNull List<NoteSI> objects) {
             super(context, -1, objects);
             this.context = context;
-            this.notedata =notedata;
+            this.notedata =objects;
         }
 
 
@@ -152,7 +166,7 @@ class Note extends AppCompatActivity {
             contentSee.setText(notedata.get(position).getContent());
 
             TextView finalDaySee = view.findViewById(R.id.finalDaySee);
-            finalDaySee.setText(notedata.get(position).getYear()+"/"+notedata.get(position).getMonth()+"/"+notedata.get(position).getDay());
+            finalDaySee.setText(notedata.get(position).getYear()+"/"+ (notedata.get(position).getMonth() +1) +"/"+notedata.get(position).getDay());
 
             return view;
         }

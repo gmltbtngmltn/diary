@@ -27,12 +27,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".SetThema"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".DiarySetting"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".DaySearchPage" />
 
         <activity android:name=".DirayListActivity" />
         <activity
@@ -41,13 +39,16 @@
         <activity
             android:name=".DetailText"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--
         <activity
             android:name=".ScrollingDetailDiary"
             android:label="@string/title_activity_scrolling_detail_diary"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".MainSampleActivity" />
-        <activity android:name=".Note" />
+        -->
         <activity android:name=".NoteSlist" />
+        <activity android:name=".Note"/>
+        <activity android:name=".DaySearch"/>
     </application>
 
 </manifest>
