@@ -18,15 +18,15 @@ import java.util.List;
  */
 public class ThemaFragment extends Fragment {
 
-private static int[] IMAGE_IDS1 = {R.drawable.mooon00,
-            R.drawable.mooon01, R.drawable.mooon02,
-            R.drawable.mooon03, R.drawable.mooon04,
-            R.drawable.mooon05, R.drawable.mooon06, R.drawable.mooon07};
+private static int[] IMAGE_IDS1 = {R.drawable.moon00,
+            R.drawable.moon01, R.drawable.moon02,
+            R.drawable.moon03, R.drawable.moon04,
+            R.drawable.moon05, R.drawable.moon06, R.drawable.moon07};
 
-private static int[] IMAGE_IDS2 = {R.drawable.um00,
-            R.drawable.um01, R.drawable.um02,
-            R.drawable.um03, R.drawable.um04,
-            R.drawable.um05, R.drawable.um06, R.drawable.um07};
+private static int[] IMAGE_IDS2 = {R.drawable.umbrella00,
+            R.drawable.umbrella01, R.drawable.umbrella02,
+            R.drawable.umbrella03, R.drawable.umbrella04,
+            R.drawable.umbrella05, R.drawable.umbrella06, R.drawable.umbrella07};
 
 
 private static int[] IMAGE_IDS3 = {R.drawable.coconut00,

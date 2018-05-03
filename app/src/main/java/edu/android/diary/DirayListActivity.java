@@ -14,17 +14,18 @@ import android.transition.Fade;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import static edu.android.diary.DaySearch.*;
+import static edu.android.diary.DaySearchPage.*;
 
 public class DirayListActivity extends AppCompatActivity {
 
     public TextView textView; // x
     public SearchView searchView;
-    private Button button;
+    private ImageButton button;
 
 
     private FragmentManager fm;

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.clans.fab.FloatingActionButton;
 
+import static edu.android.diary.Animation.*;
 import static android.provider.Contacts.SettingsColumns.KEY;
 
 public class DetailText extends AppCompatActivity {
@@ -27,8 +28,7 @@ public class DetailText extends AppCompatActivity {
     FloatingActionButton fabPrev, fabDone;
     ImageView imageView;
     TextView textTitle, textText;
-
-
+    int position;
 
     Diary diary;
     public static Intent newIntent(Context context, int positoin){
@@ -44,8 +44,8 @@ public class DetailText extends AppCompatActivity {
 
         //findViewById
         imageView = findViewById(R.id.imageDetail);
-        textText = findViewById(R.id.textDetailText);
         textTitle = findViewById(R.id.textDetailTitle);
+        textText = findViewById(R.id.textDetailText);
         fam =  findViewById(R.id.floatingActionMenu);
         fabDone =findViewById(R.id.btnDoneFab);
         fabPrev =  findViewById(R.id.btnPrevFab);
@@ -58,6 +58,8 @@ public class DetailText extends AppCompatActivity {
                             intent.putExtra(KEY_URI,diary.getPhotoPath());
                             intent.putExtra(KEY_TIT,diary.getTitle());
                             intent.putExtra(KEY_MSG,diary.getTxt());
+                            intent.putExtra(QUE,1);//수정하러갈때 명령값은 1으로한다
+                intent.putExtra(KEY,position);
                             startActivity(intent);
                             finish();
             }
@@ -74,15 +76,16 @@ public class DetailText extends AppCompatActivity {
 
         Intent intent=getIntent();
 
-        final int index=intent.getIntExtra(KEY,0);
+        position=intent.getIntExtra(KEY,0);
 
-        diary=DiaryDao.getInstance().getContactList().get(index);
+        diary=DiaryDao.getInstance().getContactList().get(position);
 
 
         Bitmap bitmap=DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
         imageView.setImageBitmap(bitmap);
 
         //TODO:제목과 내용 따로 불러 올 수 있게 바꿔주세요
+        textTitle.setText(diary.getTitle());
         textText.setText(diary.getTxt());
 
 

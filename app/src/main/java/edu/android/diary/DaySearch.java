@@ -71,6 +71,5 @@ public class DaySearch extends AppCompatActivity {
         Intent intent = new Intent(DaySearch.this, Note.class);
         startActivity(intent);
     }
-
 }
 

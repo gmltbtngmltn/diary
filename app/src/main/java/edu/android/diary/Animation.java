@@ -15,8 +15,7 @@ import java.util.List;
 import static edu.android.diary.SetThema.*;
 
 public class Animation extends AppCompatActivity {
-    private int currentIndex;
-    private ImageView imggggg;
+    public static final String QUE="qqqq";
     public static final int REQ_CODE = 100;
 
     Button btnDiary,btnRecord,btnThem;
@@ -58,6 +57,7 @@ public class Animation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intGoDiary = new Intent(Animation.this, Recorde.class);
+                intGoDiary.putExtra(QUE,0);//쓰러갈때 명령값은 0으로한다
                 startActivity(intGoDiary);
             }
         });
@@ -65,7 +65,7 @@ public class Animation extends AppCompatActivity {
         btnRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intGoRecord = new Intent(Animation.this, DaySearch.class);
+                Intent intGoRecord = new Intent(Animation.this, DaySearchPage.class);
                 startActivity(intGoRecord);
             }
         });
