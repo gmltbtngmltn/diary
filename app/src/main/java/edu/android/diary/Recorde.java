@@ -139,7 +139,7 @@ public class Recorde extends AppCompatActivity {
                     Log.i("aaaa",exc.getMessage());
                 }
 
-                Toast.makeText(Recorde.this, "diary saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Recorde.this, "앙 기모띠", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
