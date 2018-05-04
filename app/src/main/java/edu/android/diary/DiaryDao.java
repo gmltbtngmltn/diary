@@ -176,8 +176,9 @@ public class DiaryDao {
             diaries = (ArrayList<Diary>) ois.readObject();
             diariesBydate=new ArrayList<>();
 
+
             for(int i=0;i<diaries.size();i++){
-                if(diaries.get(i).getTitle().equals(text_Or_title)||diaries.get(i).getTxt().equals(text_Or_title)){
+                if(diaries.get(i).getTitle().contains(text_Or_title)||diaries.get(i).getTxt().contains(text_Or_title)){
                     diariesBydate.add(diaries.get(i));
                     integers.add(i);
                 }
