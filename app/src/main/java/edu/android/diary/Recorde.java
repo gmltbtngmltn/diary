@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Environment;
@@ -88,8 +90,14 @@ public class Recorde extends AppCompatActivity {
 
             String photo = modify.getStringExtra(KEY_URI);
             bimapName=photo;
-            bitmap=DiaryDao.getInstance().LoadImage(photo);
-            imageView.setImageBitmap(bitmap);
+
+            try {
+                bitmap=DiaryDao.getInstance().LoadImage(photo);
+
+                imageView.setImageBitmap(bitmap);
+            }catch (Exception exc){
+                imageView.setImageResource(R.drawable.defaultimg);
+            }
 
             String title = modify.getStringExtra(KEY_TIT);
             editTitle.setText(title);
@@ -107,7 +115,19 @@ public class Recorde extends AppCompatActivity {
                 String main=editMain.getText().toString();
                 try {
                     if(que==0) {
-                        DiaryDao.getInstance().writeDiary(title, bitmap, bimapName, main);
+                        try {
+                            DiaryDao.getInstance().writeDiary(title, bitmap, bimapName, main);
+
+                            imageView.setImageBitmap(bitmap);
+
+                        }catch (Exception exc){
+
+                            imageView.setImageResource(R.drawable.defaultimg);
+                            bitmap= ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                            bimapName="defaultimg.jpg";
+                            DiaryDao.getInstance().writeDiary(title, bitmap, bimapName, main);
+                        }
+
                     }else if(que==1){List<Diary> dataset = (ArrayList<Diary>) modify.getSerializableExtra(KEY_ARR);
                         if(comm==0) {
                             DiaryDao.getInstance().updateDiary(position, bitmap, bimapName, main);

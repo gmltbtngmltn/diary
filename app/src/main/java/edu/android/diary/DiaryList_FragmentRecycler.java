@@ -18,7 +18,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.List;
+
+import static edu.android.diary.DiaryList_FragmentViewpager.KEY_ARR;
 
 
 /**
@@ -105,9 +108,14 @@ public class DiaryList_FragmentRecycler extends Fragment {
         public void onBindViewHolder(@NonNull DiaryAdaptor.Diaryholder holder, final int position) {
             Diary diary = dataset.get(position);
 
-            Bitmap bitmap = DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
+            try {
+                Bitmap bitmap = DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
 
-            holder.imageView.setImageBitmap(bitmap);
+                holder.imageView.setImageBitmap(bitmap);
+            }catch (Exception exc){
+                holder.imageView.setImageResource(R.drawable.defaultimg);
+            }
+
             holder.textTitle.setText(diary.getTitle());
             holder.textdate.setText(diary.getYear() + "/" + diary.getMonth() + "/" + diary.getDay()+"/"+diary.getHour()+"/"+diary.getMinute()+"/"+diary.getSecond());
 
@@ -116,6 +124,7 @@ public class DiaryList_FragmentRecycler extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Intent intent = DetailText.newIntent(getContext(), position,comm);
+                    intent.putExtra(KEY_ARR, (Serializable) dataset);
                     startActivity(intent);
                 }
 

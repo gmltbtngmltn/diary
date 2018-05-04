@@ -143,8 +143,14 @@ public class DiaryList_FragmentViewpager extends Fragment {
             TextView text=view.findViewById(R.id.text1);
 
             Diary diary = dataset.get(position);
-            Bitmap bitmap = DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
-            imageView.setImageBitmap(bitmap);
+
+            try {
+                Bitmap bitmap = DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
+
+                imageView.setImageBitmap(bitmap);
+            }catch (Exception exc){
+                imageView.setImageResource(R.drawable.defaultimg);
+            }
 
             String date=diary.getYear() + "/" + diary.getMonth() + "/" + diary.getDay()+"/"+diary.getHour()+"/"+diary.getMinute()+"/"+diary.getSecond();
             textTitle.setText("Title : "+diary.getTitle()+"   ("+date+")");

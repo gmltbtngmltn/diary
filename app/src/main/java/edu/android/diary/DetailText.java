@@ -94,10 +94,13 @@ public class DetailText extends AppCompatActivity {
         diary=dataset.get(position);
 
 
+        try {
+            Bitmap bitmap = DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
 
-        Bitmap bitmap=DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
-        imageView.setImageBitmap(bitmap);
-
+            imageView.setImageBitmap(bitmap);
+        }catch (Exception exc){
+            imageView.setImageResource(R.drawable.defaultimg);
+        }
         //TODO:제목과 내용 따로 불러 올 수 있게 바꿔주세요
         textTitle.setText(diary.getTitle());
         textText.setText(diary.getTxt());

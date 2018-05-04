@@ -306,9 +306,9 @@ public class DiaryDao {
 
 
         //배열에서 삭제
-        String imagename=diaries.get(position).getPhotoPath();
-        File fileB = new File(childPath, imagename);
-        fileB.delete();
+//        String imagename=diaries.get(position).getPhotoPath();
+//        File fileB = new File(childPath, imagename);
+//        fileB.delete();
 
         diaries.remove(position);
 
@@ -337,9 +337,9 @@ public class DiaryDao {
     public void deleteDiary(List<Diary> list,int position){
 
         //배열에서 삭제
-        String imagename=list.get(position).getPhotoPath();
-        File fileB = new File(childPath, imagename);
-        fileB.delete();
+//        String imagename=list.get(position).getPhotoPath();
+//        File fileB = new File(childPath, imagename);
+//        fileB.delete();
         
         list.remove(position);
         diaries.remove(realindex.get(0)+position);
