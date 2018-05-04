@@ -181,7 +181,6 @@ public class DiaryList_FragmentViewpager extends Fragment {
                                             }else if(comm==1){
                                                 DiaryDao.getInstance().deleteDiary(dataset,position);
                                                 dataset = DiaryDao.getInstance().getContactList(year,month,day);
-                                                
                                             }
                                             Toast.makeText(getContext(), "삭제됨", Toast.LENGTH_SHORT).show();
 
