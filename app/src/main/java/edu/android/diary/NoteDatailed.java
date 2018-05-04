@@ -13,9 +13,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
+
 public class NoteDatailed extends AppCompatDialogFragment {
 
-    private TextView contentSees, finalDaySeess;
+    private TextView contentSees, finalDaySees;
 
     private static final String EXTRA_CONTACT_INDEX = "contact_index";
     private int index;
@@ -33,8 +34,11 @@ public class NoteDatailed extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.activity_note_detailed, null);
 
-        contentSees = view.findViewById(R.id.contentSees);
-        finalDaySeess = view.findViewById(R.id.finalDaySees);
+        contentSees = view.findViewById(R.id.finalDaySees);
+        finalDaySees = view.findViewById(R.id.finalDaySeess);
+
+        contentSees.setText(Note.getNotedata().get(index).getContent());
+        finalDaySees.setText(Note.getNotedata().get(index).getYear()+"/"+ (Note.getNotedata().get(index).getMonth() +1) +"/"+Note.getNotedata().get(index).getDay());
 
         builder.setView(view).setTitle("상세보기")
                 .setNegativeButton("닫기", new DialogInterface.OnClickListener() {
