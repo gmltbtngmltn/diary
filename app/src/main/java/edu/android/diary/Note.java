@@ -35,7 +35,7 @@ public class Note extends AppCompatActivity {
 
     private SingerAdapter adapterd;
     private SingerAdapter adapter;
-    public List<NoteSI> notedata;
+    private static List<NoteSI> notedata;
 
     Calendar cal;
     DatePickerDialog datePickerDialog;
@@ -43,6 +43,10 @@ public class Note extends AppCompatActivity {
     private int year;
     private int month;
     private int day;
+
+    public static List<NoteSI> getNotedata() {
+        return notedata;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +78,6 @@ public class Note extends AppCompatActivity {
     private void detailed() {
         NoteDatailed noteDatailed = new NoteDatailed();
         noteDatailed.show(getSupportFragmentManager(), "noteDatailed");
-        notedata=DiaryDao.getInstance().getNoteSISList();
     }
 
 
