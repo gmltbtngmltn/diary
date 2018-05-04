@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.clans.fab.FloatingActionButton;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class DetailText extends AppCompatActivity {
     public static final String KEY_URI = "key_img";
     public static final String KEY_TIT = "key_tit";
     public static final String KEY_MSG = "key_msg";
+    public static final String COMM = "COMMM";
 
 
     FloatingActionMenu fam;
@@ -33,12 +35,14 @@ public class DetailText extends AppCompatActivity {
     private ImageView imageView;
     private TextView textTitle, textText;
     private int position;
+    private int comm;//'전체보기 or 특정 날짜 것 보기'의 여부
 
     private List<Diary> dataset;
     private Diary diary;
-    public static Intent newIntent(Context context, int positoin){
+    public static Intent newIntent(Context context, int positoin,int comm){
         Intent intent=new Intent(context,DetailText.class);
         intent.putExtra(KEY,positoin);
+        intent.putExtra(COMM,comm);
         return intent;
     }
 
@@ -59,13 +63,14 @@ public class DetailText extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DetailText.this, Recorde.class);
-                            //TODO : 기록보는 페이지에서 일기를 누르면 이미지값과 텍스트값 받아오기
                             intent.putExtra(KEY_URI,diary.getPhotoPath());
                             intent.putExtra(KEY_TIT,diary.getTitle());
                             intent.putExtra(KEY_MSG,diary.getTxt());
                             intent.putExtra(QUE,1);//수정하러갈때 명령값은 1으로한다
 
                             intent.putExtra(KEY,position);
+                            intent.putExtra(KEY_ARR, (Serializable) dataset);
+                            intent.putExtra(COMM,comm);
                             startActivity(intent);
                             finish();
             }
@@ -83,12 +88,13 @@ public class DetailText extends AppCompatActivity {
         Intent intent=getIntent();
 
         position=intent.getIntExtra(KEY,0);
-
-        dataset = (ArrayList<Diary>) getIntent().getSerializableExtra(KEY_ARR);
+        comm=intent.getIntExtra(COMM,0);
+        dataset = (ArrayList<Diary>) intent.getSerializableExtra(KEY_ARR);
 
         diary=dataset.get(position);
 
-        
+
+
         Bitmap bitmap=DiaryDao.getInstance().LoadImage(diary.getPhotoPath());
         imageView.setImageBitmap(bitmap);
 

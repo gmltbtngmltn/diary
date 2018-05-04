@@ -30,7 +30,7 @@ public class DiaryList_FragmentRecycler extends Fragment {
     private List<Diary> dataset;
     private DiaryAdaptor adaptor;
 
-    private int comm;
+    private int comm;//'전체보기 or 특정 날짜 것 보기'의 여부
     private int year,month,day;
 
     public DiaryList_FragmentRecycler() {
@@ -115,7 +115,7 @@ public class DiaryList_FragmentRecycler extends Fragment {
 
                 @Override
                 public void onClick(View v) {
-                    Intent intent = DetailText.newIntent(getContext(), position);
+                    Intent intent = DetailText.newIntent(getContext(), position,comm);
                     startActivity(intent);
                 }
 
@@ -137,8 +137,11 @@ public class DiaryList_FragmentRecycler extends Fragment {
                                 public void onClick(
                                         DialogInterface dialog, int id) {
 
-                                    DiaryDao.getInstance().deleteDiary(position);
-
+                                    if(comm==0) {
+                                        DiaryDao.getInstance().deleteDiary(position);
+                                    }else if(comm==1){
+                                        DiaryDao.getInstance().deleteDiary(dataset,position);
+                                    }
                                     Toast.makeText(getContext(), "삭제됨", Toast.LENGTH_SHORT).show();
                                     dataset = DiaryDao.getInstance().getContactList();
                                     gangshin();

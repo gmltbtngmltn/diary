@@ -29,7 +29,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import android.util.Log;
 import android.view.DragEvent;
@@ -44,6 +46,7 @@ import static android.provider.Contacts.SettingsColumns.KEY;
 import static edu.android.diary.Animation.*;
 import com.tsengvn.typekit.TypekitContextWrapper;
 import static edu.android.diary.DetailText.*;
+import static edu.android.diary.DiaryList_FragmentViewpager.KEY_ARR;
 
 public class Recorde extends AppCompatActivity {
 
@@ -63,6 +66,7 @@ public class Recorde extends AppCompatActivity {
     private final int PICK_IMAGE_CAMERA = 1, PICK_IMAGE_GALLERY = 2;
 
     private int que;//쓰는것 or 수정하는 것 여부 판별하기
+    private int comm;//'전체보기 or 특정 날짜 것 보기'의 여부
     private int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,9 +81,11 @@ public class Recorde extends AppCompatActivity {
         btnClose = findViewById(R.id.imageBtnClose);
         btnSave = findViewById(R.id.imageBtnSave);
 
-        Intent modify=getIntent();
+        final Intent modify=getIntent();
         que=modify.getIntExtra(QUE,0);
         if(que==1) {
+            comm=modify.getIntExtra(COMM,0);
+
             String photo = modify.getStringExtra(KEY_URI);
             bimapName=photo;
             bitmap=DiaryDao.getInstance().LoadImage(photo);
@@ -102,8 +108,12 @@ public class Recorde extends AppCompatActivity {
                 try {
                     if(que==0) {
                         DiaryDao.getInstance().writeDiary(title, bitmap, bimapName, main);
-                    }else if(que==1){
-                        DiaryDao.getInstance().updateDiary(position,bitmap,bimapName,main);
+                    }else if(que==1){List<Diary> dataset = (ArrayList<Diary>) modify.getSerializableExtra(KEY_ARR);
+                        if(comm==0) {
+                            DiaryDao.getInstance().updateDiary(position, bitmap, bimapName, main);
+                        }else if(comm==1){
+                            DiaryDao.getInstance().updateDiary(dataset, position, bitmap, bimapName, main);
+                        }
                     }
                 }catch (Exception exc){
                     Log.i("aaaa",exc.getMessage());

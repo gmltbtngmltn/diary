@@ -35,6 +35,8 @@ public class DiaryDao {
     private static final String parentPath= Environment.getExternalStorageDirectory().getPath();
     private static final String childPath=parentPath+DIARY_DIRECTORY;
 
+    private List<Integer> realindex=new ArrayList<>();
+
     private List<Diary> diaries=new ArrayList<>();
     private List<NoteSI> noteSIS=new ArrayList<>();
 
@@ -129,6 +131,7 @@ public class DiaryDao {
         BufferedInputStream bin = null;
         ObjectInputStream ois = null;
         List<Diary> diariesBydate=new ArrayList<>();
+        List<Integer> integers=new ArrayList<>();
 
         try {
             in = new FileInputStream(file);
@@ -136,13 +139,14 @@ public class DiaryDao {
             ois = new ObjectInputStream(bin);
 
             diaries = (ArrayList<Diary>) ois.readObject();
-
             for(int i=0;i<diaries.size();i++){
                 if(diaries.get(i).getYear()==year && diaries.get(i).getMonth()==month && diaries.get(i).getDay()==day){
                     diariesBydate.add(diaries.get(i));
-
-                }Log.i("aaaa","ddddddddddd array = "+diariesBydate.size());
+                    integers.add(i);
+                }
             }
+            realindex=integers;
+
         } catch (Exception e) {
             Log.e(TAG,e.getMessage());
         } finally {
@@ -154,6 +158,7 @@ public class DiaryDao {
         }
         return diariesBydate;
     }//diary객체들을 읽는부분(4)(특정 날짜의 diary객체를 읽어온다 (년, 월, 일))
+
 
     // 검색기능에 사용
     public List<Diary> getContactList(String text_Or_title){
@@ -323,6 +328,34 @@ public class DiaryDao {
 
     }//diary객체들을 삭제하는 부분
 
+    public void deleteDiary(List<Diary> list,int position){
+
+        //배열에서 삭제
+        list.remove(position);
+        diaries.remove(realindex.get(0)+position);
+
+        //변경된 배열을 파일에 다시 저장
+        OutputStream out = null;
+        BufferedOutputStream bout = null;
+        ObjectOutputStream oos = null;
+        try {
+            out = new FileOutputStream(file,false);
+            bout = new BufferedOutputStream(out);
+            oos = new ObjectOutputStream(bout);
+
+            oos.writeObject(diaries);
+        } catch (Exception e) {
+            Log.e(TAG,e.getMessage());
+        } finally {
+            try {
+                oos.close();
+            }catch (IOException e) {
+                Log.e(TAG,e.getMessage());
+            }
+        }
+
+    }//diary객체들을 삭제하는 부분(오버로딩)
+
     public void updateDiary(int position,Bitmap bitmap,String imagename, String diaryTxt){
 
         File fileB = new File(childPath, imagename);
@@ -362,6 +395,46 @@ public class DiaryDao {
             }
         }
     }//diary객체들을 수정하는 부분
+
+    public void updateDiary(List<Diary> list, int position,Bitmap bitmap,String imagename, String diaryTxt){
+
+        File fileB = new File(childPath, imagename);
+
+        list.get(position).setPhotoPath(imagename);
+        list.get(position).setTxt(diaryTxt);
+
+        diaries.set(realindex.get(0)+position,list.get(position));
+
+        //변경된 배열을 파일에 다시 저장
+        OutputStream out = null;
+        BufferedOutputStream bout = null;
+        ObjectOutputStream oos = null;
+
+        OutputStream outB = null;
+        BufferedOutputStream boutB = null;
+
+        try {
+            out = new FileOutputStream(file,false);
+            bout = new BufferedOutputStream(out);
+            oos = new ObjectOutputStream(bout);
+
+            oos.writeObject(diaries);
+
+
+            outB = new FileOutputStream(fileB, false);
+            boutB = new BufferedOutputStream(outB);
+
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, boutB);
+        } catch (Exception e) {
+            Log.e(TAG,e.getMessage());
+        } finally {
+            try {
+                oos.close();
+            }catch (IOException e) {
+                Log.e(TAG,e.getMessage());
+            }
+        }
+    }//diary객체들을 수정하는 부분(오버로딩)
 
     public void saveThemeNum(int num){
         themeNum=num;

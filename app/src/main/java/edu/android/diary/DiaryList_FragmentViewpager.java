@@ -35,7 +35,7 @@ public class DiaryList_FragmentViewpager extends Fragment {
     private List<Diary> dataset;
     private CustomAdapter adapter;
 
-    private int comm;
+    private int comm;//'전체보기 or 특정 날짜 것 보기'의 여부
     private int year,month,day;
 
     public DiaryList_FragmentViewpager() {
@@ -153,7 +153,7 @@ public class DiaryList_FragmentViewpager extends Fragment {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = DetailText.newIntent(getContext(), position);
+                    Intent intent = DetailText.newIntent(getContext(), position, comm);
                     intent.putExtra(KEY_ARR, (Serializable) dataset);
                     startActivity(intent);
                 }
@@ -175,9 +175,11 @@ public class DiaryList_FragmentViewpager extends Fragment {
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(
                                                 DialogInterface dialog, int id) {
-
-                                            DiaryDao.getInstance().deleteDiary(position);
-
+                                            if(comm==0) {
+                                                DiaryDao.getInstance().deleteDiary(position);
+                                            }else if(comm==1){
+                                                DiaryDao.getInstance().deleteDiary(dataset,position);
+                                            }
                                             Toast.makeText(getContext(), "삭제됨", Toast.LENGTH_SHORT).show();
                                             dataset = DiaryDao.getInstance().getContactList();
                                             gangshin();
