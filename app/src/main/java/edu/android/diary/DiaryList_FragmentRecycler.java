@@ -36,6 +36,8 @@ public class DiaryList_FragmentRecycler extends Fragment {
     private int comm;//'전체보기 or 특정 날짜 것 보기'의 여부
     private int year,month,day;
 
+    private String searchtxt;
+
     public DiaryList_FragmentRecycler() {
 
     }
@@ -50,6 +52,17 @@ public class DiaryList_FragmentRecycler extends Fragment {
         Log.i("aaaa","year="+year+"month="+month+"day="+day);
         return fragment;
     }
+
+    public static DiaryList_FragmentRecycler newInstance(int comm,int year, int month, int day, String searchtxt){
+        DiaryList_FragmentRecycler fragment=new DiaryList_FragmentRecycler();
+        fragment.searchtxt=searchtxt;
+        fragment.comm=comm;
+        fragment.year=year;
+        fragment.month=month;
+        fragment.day=day;
+        Log.i("aaaa","year="+year+"month="+month+"day="+day);
+        return fragment;
+    }//오버로딩(내용별)
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,6 +81,8 @@ public class DiaryList_FragmentRecycler extends Fragment {
         }else if(comm==1){
             dataset = DiaryDao.getInstance().getContactList(year,month,day);
             Log.i("aaaa","year="+year+"month="+month+"day="+day);
+        }else if(comm==2){
+            dataset = DiaryDao.getInstance().getContactList(searchtxt);
         }
 
         Log.i("aaaa","array = "+dataset.size());
@@ -149,7 +164,7 @@ public class DiaryList_FragmentRecycler extends Fragment {
                                     if(comm==0) {
                                         DiaryDao.getInstance().deleteDiary(position);
                                         dataset = DiaryDao.getInstance().getContactList();
-                                    }else if(comm==1){
+                                    }else if(comm==1 || comm==2){
                                         DiaryDao.getInstance().deleteDiary(dataset,position);
                                         dataset = DiaryDao.getInstance().getContactList(year,month,day);
                                     }

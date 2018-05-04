@@ -131,7 +131,7 @@ public class Recorde extends AppCompatActivity {
                     }else if(que==1){List<Diary> dataset = (ArrayList<Diary>) modify.getSerializableExtra(KEY_ARR);
                         if(comm==0) {
                             DiaryDao.getInstance().updateDiary(position, bitmap, bimapName, main);
-                        }else if(comm==1){
+                        }else if(comm==1 || comm==2){
                             DiaryDao.getInstance().updateDiary(dataset, position, bitmap, bimapName, main);
                         }
                     }
@@ -139,7 +139,7 @@ public class Recorde extends AppCompatActivity {
                     Log.i("aaaa",exc.getMessage());
                 }
 
-                Toast.makeText(Recorde.this, "앙 기모띠", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Recorde.this, "Diary Saved!", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

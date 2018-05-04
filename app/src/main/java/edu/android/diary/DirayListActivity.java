@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import static edu.android.diary.DaySearch.*;
 
 public class DirayListActivity extends AppCompatActivity {
@@ -32,23 +34,22 @@ public class DirayListActivity extends AppCompatActivity {
     private FragmentTransaction transaction;
 
     private int show;
-    private int comm;//'전체보기 or 특정 날짜 것 보기'의 여부
+    private int comm;//'전체보기 or 특정 날짜 것 보기'의 여부 (0 = 전체보기, 1 = 특정날짜 보기, 2 = 특정내용 보기)
 
     private int year;
     private int month;
     private int day;
+
+    private List<Diary> dataset;
+    private String searchtxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diray_list);
 
-
-
-
         /**/
         //TODO: 일기 내용 보러 가기 위한 페이지 준비
-
         /**/
 
         textView = findViewById(R.id.textView7); //x
@@ -60,8 +61,24 @@ public class DirayListActivity extends AppCompatActivity {
         month = intent.getIntExtra(SELECTED_MONTH, 1);
         day = intent.getIntExtra(SELECTED_DAY, 1);
         comm=intent.getIntExtra(COMM,0);
-//        String searchDay = year + "년 " + month + "월 " + day + "일";
-        Log.i("aaaa","comm = "+comm);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                comm=2;
+                onFragChanged(query);
+                searchtxt=query;
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+
+
         textView.setText(year + "년 " + month + "월 " + day + "일");
 
         //textView.setText();
@@ -77,25 +94,45 @@ public class DirayListActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(show==0){
-                    transaction=fm.beginTransaction();
-                    DiaryList_FragmentRecycler diaryList_fragmentRecycler = DiaryList_FragmentRecycler.newInstance(comm,year,month,day);
-                    transaction.replace(R.id.container,diaryList_fragmentRecycler);
-                    transaction.commit();
-                    show=1;
-                }else if(show==1){
-                    transaction=fm.beginTransaction();
-                    DiaryList_FragmentViewpager diaryList_fragmentViewpager = DiaryList_FragmentViewpager.newInstance(comm,year,month,day);
-                    transaction.replace(R.id.container, diaryList_fragmentViewpager);
-                    transaction.commit();
-                    show=0;
+                if(comm==2){
+                    onFragChanged(searchtxt);
+                }else {
+                    onFragChanged();
                 }
             }
         });
 
-        onDateTimeChanged();
     }
 
-    private void onDateTimeChanged() {
+    private void onFragChanged() {
+        if(show==0){
+            transaction=fm.beginTransaction();
+            DiaryList_FragmentRecycler diaryList_fragmentRecycler = DiaryList_FragmentRecycler.newInstance(comm,year,month,day);
+            transaction.replace(R.id.container,diaryList_fragmentRecycler);
+            transaction.commit();
+            show=1;
+        }else if(show==1){
+            transaction=fm.beginTransaction();
+            DiaryList_FragmentViewpager diaryList_fragmentViewpager = DiaryList_FragmentViewpager.newInstance(comm,year,month,day);
+            transaction.replace(R.id.container, diaryList_fragmentViewpager);
+            transaction.commit();
+            show=0;
+        }
     }
+
+    private void onFragChanged(String searchtxt) {
+        if(show==0){
+            transaction=fm.beginTransaction();
+            DiaryList_FragmentRecycler diaryList_fragmentRecycler = DiaryList_FragmentRecycler.newInstance(comm,year,month,day,searchtxt);
+            transaction.replace(R.id.container,diaryList_fragmentRecycler);
+            transaction.commit();
+            show=1;
+        }else if(show==1){
+            transaction=fm.beginTransaction();
+            DiaryList_FragmentViewpager diaryList_fragmentViewpager = DiaryList_FragmentViewpager.newInstance(comm,year,month,day,searchtxt);
+            transaction.replace(R.id.container, diaryList_fragmentViewpager);
+            transaction.commit();
+            show=0;
+        }
+    }//오버로딩
 }
