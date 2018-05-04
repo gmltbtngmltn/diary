@@ -303,7 +303,13 @@ public class DiaryDao {
     }//diary객체들을 쓰는부분(2) (카메라에서 찍은 이미지를 경로에 저장)
 
     public void deleteDiary(int position){
+
+
         //배열에서 삭제
+        String imagename=diaries.get(position).getPhotoPath();
+        File fileB = new File(childPath, imagename);
+        fileB.delete();
+
         diaries.remove(position);
 
         //변경된 배열을 파일에 다시 저장
@@ -331,6 +337,10 @@ public class DiaryDao {
     public void deleteDiary(List<Diary> list,int position){
 
         //배열에서 삭제
+        String imagename=list.get(position).getPhotoPath();
+        File fileB = new File(childPath, imagename);
+        fileB.delete();
+        
         list.remove(position);
         diaries.remove(realindex.get(0)+position);
 

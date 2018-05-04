@@ -139,11 +139,13 @@ public class DiaryList_FragmentRecycler extends Fragment {
 
                                     if(comm==0) {
                                         DiaryDao.getInstance().deleteDiary(position);
+                                        dataset = DiaryDao.getInstance().getContactList();
                                     }else if(comm==1){
                                         DiaryDao.getInstance().deleteDiary(dataset,position);
+                                        dataset = DiaryDao.getInstance().getContactList();
                                     }
                                     Toast.makeText(getContext(), "삭제됨", Toast.LENGTH_SHORT).show();
-                                    dataset = DiaryDao.getInstance().getContactList();
+
                                     gangshin();
                                 }
                             })
