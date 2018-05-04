@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -32,8 +33,9 @@ public class Note extends AppCompatActivity {
     private Button add, returnto, delete;
     private ListView listView;
 
+    private SingerAdapter adapterd;
     private SingerAdapter adapter;
-    private List<NoteSI> notedata;
+    public List<NoteSI> notedata;
 
     Calendar cal;
     DatePickerDialog datePickerDialog;
@@ -51,7 +53,6 @@ public class Note extends AppCompatActivity {
         //Toast.makeText(Note.this, "노트 = "+notedata.size(), Toast.LENGTH_SHORT).show();
 
         add = findViewById(R.id.add);
-        delete = findViewById(R.id.delete);
         returnto = findViewById(R.id.returnto);
 
         listView = findViewById(R.id.listView);
@@ -59,7 +60,23 @@ public class Note extends AppCompatActivity {
         adapter = new SingerAdapter(this, notedata);
 
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                detailed();
+//                Intent intent = NoteDatailed.newIntent(Note.this,position);
+//                startActivity(intent);
+            }
+        });
     }
+
+    private void detailed() {
+        NoteDatailed noteDatailed = new NoteDatailed();
+        noteDatailed.show(getSupportFragmentManager(), "noteDatailed");
+        notedata=DiaryDao.getInstance().getNoteSISList();
+    }
+
 
     public void returnto(View view) {
         Intent intent = new Intent(Note.this, DaySearch.class);
@@ -174,13 +191,18 @@ public class Note extends AppCompatActivity {
             finalDaySee.setText(notedata.get(position).getYear()+"/"+ (notedata.get(position).getMonth() +1) +"/"+notedata.get(position).getDay());
 
             AlertDialog.Builder mBuilder = new AlertDialog.Builder(Note.this);
-            View nview = getLayoutInflater().inflate(R.layout.activity_note_detailed, null);
-            final EditText contentInput = (EditText) nview.findViewById(R.id.contentInput);
-            final TextView finalDayInput = (TextView) nview.findViewById(R.id.finalDayInput);
-            final Button btndelete = (Button) nview.findViewById(R.id.btnsave);
-            final Button btn = nview.findViewById(R.id.btnCalendar);
+
+//            Button del = findViewById(R.id.delete);
+//            del.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Toast.makeText(Note.this,"del",Toast.LENGTH_SHORT).show();
+//                }
+//            });
 
             return view;
         }
     }
+
+
 }
