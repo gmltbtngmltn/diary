@@ -166,6 +166,7 @@ public class DiaryDao {
         BufferedInputStream bin = null;
         ObjectInputStream ois = null;
         List<Diary> diariesBydate=null;
+        List<Integer> integers=new ArrayList<>();
 
         try {
             in = new FileInputStream(file);
@@ -178,8 +179,10 @@ public class DiaryDao {
             for(int i=0;i<diaries.size();i++){
                 if(diaries.get(i).getTitle().equals(text_Or_title)||diaries.get(i).getTxt().equals(text_Or_title)){
                     diariesBydate.add(diaries.get(i));
+                    integers.add(i);
                 }
             }
+            realindex=integers;
         } catch (Exception e) {
             Log.e(TAG,e.getMessage());
         } finally {
