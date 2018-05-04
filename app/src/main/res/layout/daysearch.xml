@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
     android:layout_height="match_parent">
 
     <DatePicker
@@ -25,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="36dp"
-        android:background="@drawable/background_rec3"
+        android:background="@drawable/background_rec4"
         android:fontFamily="@font/regular"
         android:onClick="next"
         android:text="확인"
@@ -41,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginStart="36dp"
-        android:background="@drawable/background_rec3"
+        android:background="@drawable/background_rec4"
         android:fontFamily="@font/regular"
         android:text="메모"
         android:textColor="@color/RestGreen"
@@ -56,7 +57,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:background="@drawable/background_rec3"
+        android:background="@drawable/background_rec4"
         android:fontFamily="@font/regular"
         android:onClick="bot_ki"
         android:text="전체보기"

@@ -1,11 +1,15 @@
 package edu.android.diary;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+
+import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.util.Calendar;
 
@@ -28,10 +32,11 @@ public class DaySearch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.daysearch);
 
-        Calendar calendar = Calendar.getInstance();
+        final Calendar calendar = Calendar.getInstance();
         curYear = calendar.get(Calendar.YEAR);
         curMonth = calendar.get(Calendar.MONTH)+1;
         curDay = calendar.get(Calendar.DAY_OF_MONTH);
+
 
         datePicker = findViewById(R.id.datePicker);
         datePicker.init(curYear, curMonth-1, curDay, new DatePicker.OnDateChangedListener() {
@@ -42,6 +47,10 @@ public class DaySearch extends AppCompatActivity {
                 curMonth = monthOfYear + 1;
                 curDay = dayOfMonth;
                 //Toast.makeText(MainActivity.this, "year:" + year + "month:" + monthOfYear + "day:" + dayOfMonth, Toast.LENGTH_LONG).show();
+
+
+
+
             }
         });
         check = findViewById(R.id.check);
@@ -71,6 +80,8 @@ public class DaySearch extends AppCompatActivity {
         Intent intent = new Intent(DaySearch.this, Note.class);
         startActivity(intent);
     }
+
+
 
 }
 

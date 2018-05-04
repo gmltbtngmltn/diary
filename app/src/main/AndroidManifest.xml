@@ -32,12 +32,15 @@
             android:name=".DiarySetting"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".DirayListActivity" />
+        <activity android:name=".DirayListActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Recorde"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".DetailText"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <!--
         <activity
@@ -46,9 +49,12 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".MainSampleActivity" />
         -->
-        <activity android:name=".NoteSlist" />
-        <activity android:name=".Note"/>
-        <activity android:name=".DaySearch"/>
+        <activity android:name=".NoteSlist"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Note"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".DaySearch"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

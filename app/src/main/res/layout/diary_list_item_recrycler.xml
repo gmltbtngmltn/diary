@@ -10,6 +10,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="8dp"
+        android:background="@drawable/baground_imageview_2"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -24,8 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textColor="@color/RestBlueD"
-            android:background="@drawable/background_rec4"
+            android:textColor="@color/black"
+            android:background="@drawable/background_rec6"
             android:textSize="15dp"
             android:fontFamily="@font/regular"
             android:gravity="center"
@@ -37,9 +38,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/background_rec4"
+            android:background="@drawable/background_rec6"
             android:textSize="15dp"
-            android:textColor="@color/RestBlue"
+            android:textColor="@color/black"
             android:layout_margin="8dp"
             android:text="date" />
 

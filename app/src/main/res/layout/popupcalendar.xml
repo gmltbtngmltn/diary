@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:background="@color/RoyalBlue"
     android:padding="5dp"
+    android:fitsSystemWindows="true"
     android:layout_gravity="center"
     >
 
