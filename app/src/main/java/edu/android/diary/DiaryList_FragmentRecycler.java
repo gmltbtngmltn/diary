@@ -164,9 +164,12 @@ public class DiaryList_FragmentRecycler extends Fragment {
                                     if(comm==0) {
                                         DiaryDao.getInstance().deleteDiary(position);
                                         dataset = DiaryDao.getInstance().getContactList();
-                                    }else if(comm==1 || comm==2){
+                                    }else if(comm==1){
                                         DiaryDao.getInstance().deleteDiary(dataset,position);
                                         dataset = DiaryDao.getInstance().getContactList(year,month,day);
+                                    }else if(comm==2){
+                                        DiaryDao.getInstance().deleteDiary(dataset,position);
+                                        dataset = DiaryDao.getInstance().getContactList(searchtxt);
                                     }
                                     Toast.makeText(getContext(), "삭제됨", Toast.LENGTH_SHORT).show();
 

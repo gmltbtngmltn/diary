@@ -128,12 +128,16 @@ public class Recorde extends AppCompatActivity {
                             DiaryDao.getInstance().writeDiary(title, bitmap, bimapName, main);
                         }
 
-                    }else if(que==1){List<Diary> dataset = (ArrayList<Diary>) modify.getSerializableExtra(KEY_ARR);
+                    }else if(que==1){
+                        List<Diary> dataset = (ArrayList<Diary>) modify.getSerializableExtra(KEY_ARR);
                         if(comm==0) {
                             DiaryDao.getInstance().updateDiary(position, bitmap, bimapName, main);
-                        }else if(comm==1 || comm==2){
+                        }else if(comm==1){
+                            DiaryDao.getInstance().updateDiary(dataset, position, bitmap, bimapName, main);
+                        }else if(comm==2){
                             DiaryDao.getInstance().updateDiary(dataset, position, bitmap, bimapName, main);
                         }
+
                     }
                 }catch (Exception exc){
                     Log.i("aaaa",exc.getMessage());

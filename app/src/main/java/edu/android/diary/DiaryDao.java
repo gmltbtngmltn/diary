@@ -340,9 +340,9 @@ public class DiaryDao {
 //        String imagename=list.get(position).getPhotoPath();
 //        File fileB = new File(childPath, imagename);
 //        fileB.delete();
-        
-        list.remove(position);
         diaries.remove(realindex.get(0)+position);
+        list.remove(position);
+
 
         //변경된 배열을 파일에 다시 저장
         OutputStream out = null;
