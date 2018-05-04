@@ -3,6 +3,7 @@ package edu.android.diary;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -44,9 +45,6 @@ public class Note extends AppCompatActivity {
     private int month;
     private int day;
 
-    public static List<NoteSI> getNotedata() {
-        return notedata;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,16 +65,14 @@ public class Note extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                detailed();
-//                Intent intent = NoteDatailed.newIntent(Note.this,position);
-//                startActivity(intent);
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                detailed(position);
             }
         });
     }
 
-    private void detailed() {
-        NoteDatailed noteDatailed = new NoteDatailed();
+    private void detailed(int position) {
+        NoteDatailed noteDatailed = NoteDatailed.newInstance(position);
         noteDatailed.show(getSupportFragmentManager(), "noteDatailed");
     }
 

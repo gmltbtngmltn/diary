@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -19,8 +20,15 @@ public class NoteDatailed extends AppCompatDialogFragment {
     private TextView contentSees, finalDaySees;
 
     private static final String EXTRA_CONTACT_INDEX = "contact_index";
-    private int index;
-
+    private static List<NoteSI> notedata;
+    private static int index;
+    public NoteDatailed() {
+    }
+    public static  NoteDatailed newInstance(int index){
+        NoteDatailed fragment=new  NoteDatailed();
+        fragment.index=index;
+        return fragment;
+    }
     public static Intent newIntent(Context context, int index) {
         Intent intent = new Intent(context, NoteDatailed.class);
         intent.putExtra(EXTRA_CONTACT_INDEX, index);
@@ -29,6 +37,7 @@ public class NoteDatailed extends AppCompatDialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        notedata=DiaryDao.getInstance().getNoteSISList();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -37,8 +46,8 @@ public class NoteDatailed extends AppCompatDialogFragment {
         contentSees = view.findViewById(R.id.finalDaySees);
         finalDaySees = view.findViewById(R.id.finalDaySeess);
 
-        contentSees.setText(Note.getNotedata().get(index).getContent());
-        finalDaySees.setText(Note.getNotedata().get(index).getYear()+"/"+ (Note.getNotedata().get(index).getMonth() +1) +"/"+Note.getNotedata().get(index).getDay());
+        contentSees.setText(notedata.get(index).getContent());
+        finalDaySees.setText(notedata.get(index).getYear()+"/"+ (notedata.get(index).getMonth() +1) +"/"+notedata.get(index).getDay());
 
         builder.setView(view).setTitle("상세보기")
                 .setNegativeButton("닫기", new DialogInterface.OnClickListener() {
