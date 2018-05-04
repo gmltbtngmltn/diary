@@ -48,7 +48,7 @@ public class Note extends AppCompatActivity {
         setContentView(R.layout.activity_note);
 
         notedata=DiaryDao.getInstance().getNoteSISList();//파일경로에 쓰여진 note객체들을 읽어온다
-        Toast.makeText(Note.this, "노트 = "+notedata.size(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(Note.this, "노트 = "+notedata.size(), Toast.LENGTH_SHORT).show();
 
         add = findViewById(R.id.add);
         delete = findViewById(R.id.delete);
@@ -68,6 +68,10 @@ public class Note extends AppCompatActivity {
 
 
     public void delete(View view) {
+        notedata=DiaryDao.getInstance().getNoteSISList();
+
+       // DiaryDao.getInstance().deleteNote(); //파일경로에 note객체를 쓴다
+        Toast.makeText(Note.this, "삭제됨 = "+notedata.size(), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -77,15 +81,13 @@ public class Note extends AppCompatActivity {
 
 
 
-
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(Note.this);
         View mView = getLayoutInflater().inflate(R.layout.activity_note_new_save, null);
-        final EditText mContentInput = (EditText) mView.findViewById(R.id.contentInput);
-        final TextView mfinalDayInput = (TextView) mView.findViewById(R.id.finalDayInput);
+        final EditText contentInput = (EditText) mView.findViewById(R.id.contentInput);
+        final TextView finalDayInput = (TextView) mView.findViewById(R.id.finalDayInput);
         final Button btnsave = (Button) mView.findViewById(R.id.btnsave);
         final Button btnCalendar = mView.findViewById(R.id.btnCalendar);
         //final Button btnClose = mView.findViewById(R.id.btnClose);
-        final TextView finalDayInput = mView.findViewById(R.id.finalDayInput);
 
         btnCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,20 +120,20 @@ public class Note extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String naeyong  = mContentInput .getText().toString();
+                String naeyong  = contentInput.getText().toString();
 
-                DiaryDao.getInstance().writeNote(naeyong,year,month,day); //파일경로에 note객체를 쓴다
-                Toast.makeText(Note.this, "저장됨 = "+notedata.size(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(Note.this, "저장 했으면 backButton을 눌러 주세요", Toast.LENGTH_SHORT).show();
+                if (!contentInput.getText().toString().isEmpty() && !finalDayInput.getText().toString().equals("")) { // 고칠점: 할일만 적어도 넘어감
+                    DiaryDao.getInstance().writeNote(naeyong,year,month,day); //파일경로에 note객체를 쓴다
+//                    Toast.makeText(Note.this, "저장됨 = "+notedata.size(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Note.this, "저장 했으면 backButton을 눌러 주세요", Toast.LENGTH_SHORT).show();
 
-//                if (!mContentInput.getText().toString().isEmpty() && !mfinalDayInput.getText().toString().isEmpty()) {
 //                    Toast.makeText(Note.this, "할 일과 마감일이 써있음", Toast.LENGTH_SHORT).show();
-////                    memoMessage.setText(mContentInput.getText());
-////                    memoFinalDay.setText(mfinalDayInput.getText());
-////                    dialog.dismiss();
-//                }else {
-//                    Toast.makeText(Note.this, "할 일과 마감일이 쓰여 있지 않음", Toast.LENGTH_SHORT).show();
-//                }
+//                    memoMessage.setText(mContentInput.getText());
+//                    memoFinalDay.setText(mfinalDayInput.getText());
+//                    dialog.dismiss();
+                }else {
+                    Toast.makeText(Note.this, "할 일과 마감일이 쓰여 있지 않음", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -170,6 +172,13 @@ public class Note extends AppCompatActivity {
 
             TextView finalDaySee = view.findViewById(R.id.finalDaySee);
             finalDaySee.setText(notedata.get(position).getYear()+"/"+ (notedata.get(position).getMonth() +1) +"/"+notedata.get(position).getDay());
+
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(Note.this);
+            View nview = getLayoutInflater().inflate(R.layout.activity_note_detailed, null);
+            final EditText contentInput = (EditText) nview.findViewById(R.id.contentInput);
+            final TextView finalDayInput = (TextView) nview.findViewById(R.id.finalDayInput);
+            final Button btndelete = (Button) nview.findViewById(R.id.btnsave);
+            final Button btn = nview.findViewById(R.id.btnCalendar);
 
             return view;
         }

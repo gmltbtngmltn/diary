@@ -31,7 +31,6 @@
         <activity
             android:name=".DiarySetting"
             android:screenOrientation="portrait" />
-
         <activity android:name=".DirayListActivity" />
         <activity
             android:name=".Recorde"
@@ -47,8 +46,9 @@
         <activity android:name=".MainSampleActivity" />
         -->
         <activity android:name=".NoteSlist" />
-        <activity android:name=".Note"/>
-        <activity android:name=".DaySearch"/>
+        <activity android:name=".Note" />
+        <activity android:name=".DaySearch" />
+        <activity android:name=".NoteDetailed"></activity>
     </application>
 
 </manifest>
