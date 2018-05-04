@@ -34,6 +34,7 @@
 
         <activity android:name=".DirayListActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".DirayListActivity" />
         <activity
             android:name=".Recorde"
             android:screenOrientation="portrait"
