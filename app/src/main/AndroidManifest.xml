@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="edu.android.diary">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -28,9 +29,6 @@
         <activity
             android:name=".SetThema"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".DiarySetting"
-            android:screenOrientation="portrait" />
 
         <activity android:name=".DirayListActivity"
             android:screenOrientation="portrait"/>
@@ -42,13 +40,7 @@
             android:name=".DetailText"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--
-        <activity
-            android:name=".ScrollingDetailDiary"
-            android:label="@string/title_activity_scrolling_detail_diary"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".MainSampleActivity" />
-        -->
+
         <activity android:name=".NoteSlist"
             android:screenOrientation="portrait"/>
         <activity android:name=".Note"

@@ -24,13 +24,14 @@
             android:textColor="@color/CornflowerBlue"
             android:textSize="25dp"
             />
+
         <TextView
             android:id="@+id/textDetailText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="18dp"
-            android:textColor="@color/DimGray"
-            android:text="@string/large_text"/>
+            android:text="@string/large_text"
+            android:textColor="@color/DimGray" />
 
 
     </LinearLayout>
